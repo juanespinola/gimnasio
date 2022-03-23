@@ -1,7 +1,4 @@
-<?php include '../layout/header.php';
-
-
-?>
+<?php include '../layout/header.php'; ?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
@@ -56,31 +53,12 @@
           <!--end of modal-dialog-->
         </div>
 
-
-
-
-
-
         <?php
-
-
         $fechaactual = date('Y-m-d');
         $nuevafecha = strtotime('-1420 day', strtotime($fechaactual));
         $nuevafecha = date('Y-m-j', $nuevafecha);
         ?>
-        <!-- Date range -->
 
-
-
-
-        <?php
-        //    if ($guardar=="si") {
-
-        ?>
-
-        <?php
-        //  }
-        ?>
         <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -134,11 +112,11 @@
           <h3 class="box-title"></h3>
 
         </div><!-- /.box-header -->
-        <button type="button" class="btn btn-primary btn-print" data-toggle="modal" data-target="#miModal">Nuevo</button>
+
         <div class="box-header">
           <h3 class="box-title">Lista de Gastos</h3>
         </div><!-- /.box-header -->
-
+        <button type="button" class="btn btn-primary btn-print" data-toggle="modal" data-target="#miModal">Nuevo</button>
         <div class="box-body">
 
           <table id="example2" class="table table-bordered table-striped">
@@ -153,10 +131,10 @@
             <tbody>
               <?php
 
-              $query = mysqli_query($con, "select * from gastos") or die(mysqli_error($con));
+              $query = mysqli_query($con, "SELECT * FROM gastos") or die(mysqli_error($con));
 
               while ($row = mysqli_fetch_array($query)) {
-                $cid = $row['id_gastos'];
+                $id_gasto = $row['id_gastos'];
                 $cantidad = $row['cantidad'];
               ?>
                 <tr>
@@ -164,10 +142,11 @@
                   <td><?php echo $row['descripcion']; ?></td>
                   <td><?php echo $row['cantidad']; ?></td>
                   <td>
-                    <a class="btn btn-danger btn-print" href="<?php echo "eliminar_gastos.php?cid=$cid&cantidad=$cantidad"; ?>" role="button">Eliminar</a>
+                    <a class="btn btn-danger btn-print" href="<?php echo "eliminar_gastos.php?id_gasto=$id_gasto&cantidad=$cantidad"; ?>" role="button">Eliminar</a>
                     <a class="btn btn-success btn-print" href="#updateordinance<?php echo $row['id_gastos']; ?>" data-target="#updateordinance<?php echo $row['id_gastos']; ?>" data-toggle="modal" style="color:#fff;" style="height:25%; width:75%; font-size: 12px " role="button">Editar</a>
                   </td>
                 </tr>
+
                 <div id="updateordinance<?php echo $row['id_gastos']; ?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                   <div class="modal-dialog">
                     <div class="modal-content" style="height:auto">
@@ -237,9 +216,6 @@
 
                             </div>
 
-
-
-
                             <div class="row">
                               <div class="col-md-3 btn-print">
                                 <div class="form-group">
@@ -250,8 +226,8 @@
                               <div class="col-md-7 btn-print">
                                 <div class="form-group">
 
-                                  <button type="submit" class="btn btn-primary">GUARDAR</button>
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                                  <button type="submit" class="btn btn-primary btn-print">Guardar</button>
+                                  <button type="button" class="btn btn-default btn-print" data-dismiss="modal">Cerrar</button>
                                 </div>
                               </div>
                               <div class="col-md-1 btn-print">

@@ -60,7 +60,7 @@
 
 
         <div class="box-header">
-          <h3 class="box-title"> REGISTRAR USUARIOS </h3>
+          <h3 class="box-title"> Registrar Usuario </h3>
 
         </div><!-- /.box-header -->
         <a class="btn btn-warning btn-print" href="usuario.php" style="height:25%; width:15%; font-size: 12px " role="button">Regresar</a>
@@ -75,23 +75,7 @@
 
 
         <div class="box-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
           <form class="form-horizontal" method="post" action="usuario_add.php" enctype='multipart/form-data'>
-
-
-
             <div class="row">
               <div class="col-md-3 btn-print">
                 <div class="form-group">
@@ -256,22 +240,7 @@
 
               </div>
             </div>
-
-
-
-
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
-
-
-
-
-
-
-
-
-
-
-
             <div class="modal-footer">
 
 

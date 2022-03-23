@@ -60,21 +60,16 @@
           <!-- Date range -->
 
           <form method="post" action="grafica_gastos_ingresos.php" enctype="multipart/form-data" class="form-horizontal">
-
-
-
-
-
-
             <div class="form-group">
               <div class="col-md-12 btn-print">
                 <div class="form-group">
                   <label for="date" class="col-sm-3 control-label">Seleccione Mes</label>
                   <div class="input-group col-sm-8">
                     <select name="mes" class="form-control select2" autofocus required>
+                      <option value="">Seleccione Opcion</option>
                       <option value="1">Enero</option>
                       <option value="2">Febrero</option>
-                      <option value="3">Marso</option>
+                      <option value="3">Marzo</option>
                       <option value="4">Abril</option>
                       <option value="5">Mayo</option>
                       <option value="6">Junio</option>
