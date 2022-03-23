@@ -90,7 +90,7 @@ $id = $_SESSION['id'];
 
 
 
-        <li><a href="../ventas_menbrecia/ventas_planes_lista.php"><i class="fa fa-retweet"></i>Registro entrada de membresia<span class="fa fa-chevron-right"></span></li></a>
+        <li><a href="../ventas_menbrecia/ventas_planes_lista.php"><i class="fa fa-retweet"></i>Registro Entrada de Membresia<span class="fa fa-chevron-right"></span></li></a>
 
 
       <?php
@@ -98,12 +98,8 @@ $id = $_SESSION['id'];
       if ($tipo == "administrador") {
 
       ?>
-
         <li><a href="../graficos/ganancias_anio.php"><i class="fa fa-line-chart"></i>Ganancios del año<span class="fa fa-chevron-right"></span></li></a>
-
-        <li><a href="../gastos/buscar_gastos_ingresos.php"><i class="fa fa-line-chart"></i>Informe gastos vs ingresos por mes<span class="fa fa-chevron-right"></span></li></a>
-
-
+        <!-- <li><a href="../gastos/buscar_gastos_ingresos.php"><i class="fa fa-line-chart"></i>Informe gastos vs ingresos por mes<span class="fa fa-chevron-right"></span></li></a> -->
       <?php } ?>
 
 
@@ -160,16 +156,6 @@ $id = $_SESSION['id'];
       <?php
       }
       ?>
-
-
-
-
-
-
-
-
-
-
 
       <li><a><i class="fa fa-gear"></i>Configuracion<span class="fa fa-chevron-s"></span></a>
         <ul class="nav child_menu">
