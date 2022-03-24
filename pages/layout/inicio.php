@@ -56,26 +56,15 @@
         </div>
 
         <div class="box-header">
-          <h3 class="box-title"> MENU</h3>
+          <h3 class="box-title">Bienvenido!</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
-
-
-
-
-
-
-
-
-
-
 
           <div class="box-header with-border">
             <h3 class="box-title"></h3>
           </div><!-- /.box-header -->
           <div class="box-body">
             <div class="row">
-
 
               <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
@@ -85,7 +74,7 @@
                     <h4>
                       <?php
                       $num = 0;
-                      $select = mysqli_query($con, "SELECT * FROM caja ") or die(mysqli_error($link));
+                      $select = mysqli_query($con, "SELECT * FROM caja ") or die(mysqli_error($con));
                       $num = mysqli_num_rows($select);
                       echo $num;
                       ?>
@@ -99,11 +88,6 @@
                 </div>
               </div>
 
-
-
-
-
-
               <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-red">
@@ -112,7 +96,7 @@
                     <h4>
                       <?php
                       $num = 0;
-                      $query = mysqli_query($con, "select * from producto ") or die(mysqli_error());
+                      $query = mysqli_query($con, "select * from producto ") or die(mysqli_error($con));
                       $i = 0;
                       while ($row = mysqli_fetch_array($query)) {
                         $num++;
@@ -146,7 +130,7 @@
                       <h4>
                         <?php
                         $num = 0;
-                        $select = mysqli_query($con, "SELECT * FROM usuario ") or die(mysqli_error($link));
+                        $select = mysqli_query($con, "SELECT * FROM usuario ") or die(mysqli_error($con));
                         $num = mysqli_num_rows($select);
                         echo $num;
                         ?>
@@ -207,7 +191,7 @@
                     <h4>
                       <?php
                       $num = 0;
-                      $query = mysqli_query($con, "select * from planes ") or die(mysqli_error());
+                      $query = mysqli_query($con, "select * from planes ") or die(mysqli_error($con));
                       $i = 0;
                       while ($row = mysqli_fetch_array($query)) {
                         $num++;
@@ -236,7 +220,7 @@
                     <h4>
                       <?php
                       $num = 0;
-                      $select = mysqli_query($con, "SELECT * FROM clientes ") or die(mysqli_error($link));
+                      $select = mysqli_query($con, "SELECT * FROM clientes ") or die(mysqli_error($con));
                       $num = mysqli_num_rows($select);
                       echo $num;
                       ?>
@@ -260,12 +244,12 @@
                     <h4>
                       <?php
                       $num = 1;
-                      $select = mysqli_query($con, "SELECT * FROM plan_cliente ") or die(mysqli_error($link));
+                      $select = mysqli_query($con, "SELECT * FROM plan_cliente ") or die(mysqli_error($con));
 
                       echo $num;
                       ?>
                     </h4>
-                    <p>REGISTRO ENTRADA MEMBRECIA</p>
+                    <p>Registro Entrada Membresia</p>
                   </div>
                   <div class="icon"><img height="80" width="80" src="img/membrecia.png">
                     <i class=""></i>
@@ -284,7 +268,7 @@
                       <?php
 
                       $num = 1;
-                      $query = mysqli_query($con, "select * from pedidos ") or die(mysqli_error());
+                      $query = mysqli_query($con, "select * from pedidos ") or die(mysqli_error($con));
                       $i = 0;
                       while ($row = mysqli_fetch_array($query)) {
                         $num++;
@@ -300,26 +284,6 @@
                   <?php echo ($num > 0) ? '<a href="../ventas/pos.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
                 </div>
               </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             </div>
             <!--row-->
@@ -342,7 +306,7 @@
                       <?php
 
                       $num = 1;
-                      $query = mysqli_query($con, "select * from venta_diaria ") or die(mysqli_error());
+                      $query = mysqli_query($con, "select * from venta_diaria ") or die(mysqli_error($con));
                       $i = 0;
                       while ($row = mysqli_fetch_array($query)) {
                         $num++;
@@ -367,7 +331,7 @@
                       <?php
 
                       $num = 1;
-                      $query = mysqli_query($con, "select * from plan_cliente ") or die(mysqli_error());
+                      $query = mysqli_query($con, "select * from plan_cliente ") or die(mysqli_error($con));
                       $i = 0;
                       while ($row = mysqli_fetch_array($query)) {
                         $num++;

@@ -14,7 +14,7 @@ $id = $_SESSION['id'];
 
       <?php if ($tipo == "administrador" or $tipo == "empleado") {  ?>
 
-        <li><a><i class="fa fa-money"></i> Ventas POS<span class="fa fa-chevron-down"></span></a>
+        <li><a><i class="fa fa-money"></i> Ventas<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <li><a href="../ventas/pos.php">Ventas productos</a></li>
             <li><a href="../ventas_menbrecia/pos.php">Venta planes /membresias</a></li>
@@ -44,7 +44,7 @@ $id = $_SESSION['id'];
           </ul>
         </li>
 
-        <li><a href="../asignar_sueldo/asignar_sueldo.php"><i class="fa fa-money"></i>Asginar sueldo<span class="fa fa-chevron-right"></span></li>
+        <li><a href="../asignar_sueldo/asignar_sueldo.php"><i class="fa fa-money"></i>Asignar sueldo<span class="fa fa-chevron-right"></span></li>
 
         </a>
       <?php

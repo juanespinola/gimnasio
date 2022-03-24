@@ -1,3 +1,14 @@
+<?php
+
+/**
+ * TODO: los gastos que se realizan en el dia, solamente deben ser descontadas de la caja actual
+ * TODO: se debe colocar un filtro para que realice la resta o suma solamente de la fecha de la caja abierta
+ * TODO: no puede existir una caja con saldo negativo
+ */
+
+?>
+
+
 <?php include '../layout/header.php'; ?>
 
 <!-- Font Awesome -->

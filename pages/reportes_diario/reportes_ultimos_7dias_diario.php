@@ -41,112 +41,58 @@
 
           </section>
 
-          <a class="btn btn-success btn-print" href="" onclick="window.print()"><i class="glyphicon glyphicon-print"></i> Impresión</a>
-
 
           <div class="box-header">
             <h3 class="box-title"> ULTIMOS 7 DIAS</h3>
           </div><!-- /.box-header -->
+          <a class="btn btn-success btn-print" href="" onclick="window.print()"><i class="glyphicon glyphicon-print"></i> Impresión</a>
           <div class="box-body">
             <table id="example2" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Nombre cliente</th>
-                  <th>Dni</th>
-
+                  <th>C.I.</th>
                   <th>Fecha </th>
                   <th class="btn-print"> ACCION </th>
-
                 </tr>
               </thead>
               <tbody>
-
-
-
-
-
                 <?php
-
-
                 $fechaActual = date('Y-m-d');
-
                 $fecha7days = date('Y-m-d', strtotime('-7 day'));
-
                 ?>
-
                 <?php
-
-                $query = mysqli_query($con, "select * from  venta_diaria AS z INNER JOIN clientes AS c
-      ON c.id_cliente = z.id_cliente   where  fecha BETWEEN '$fecha7days' AND '$fechaActual'  ") or die(mysqli_error());
+                $query = mysqli_query($con, "select * from  venta_diaria AS z INNER JOIN clientes AS c ON c.id_cliente = z.id_cliente   where  fecha BETWEEN '$fecha7days' AND '$fechaActual'  ") or die(mysqli_error($con));
                 $contador = 0;
                 while ($row = mysqli_fetch_array($query)) {
                   $contador++;
                 }
 
                 ?>
-
                 <div class="row">
                   <div class="col-md-4 col-lg-12 hide-section">
-                    <a class="btn btn-danger btn-print" disabled="true" style="height:25%; width:50%; font-size: 25px " role="button">Nro ELEMENTOS= <label style='color:black;  font-size: 25px '>=<?php echo $contador; ?></label></a>
-
-
-
+                    <!-- <a class="btn btn-danger btn-print" disabled="true" style="height:25%; width:50%; font-size: 25px " role="button">Nro ELEMENTOS= <label style='color:black;  font-size: 25px '>=<?php echo $contador; ?></label></a> -->
                   </div>
-
-
                 </div>
-
                 <?php
-
-
-
-
-
-
-
-                $query = mysqli_query($con, "select * from  venta_diaria AS z INNER JOIN clientes AS c
-      ON c.id_cliente = z.id_cliente   where  fecha BETWEEN '$fecha7days' AND '$fechaActual' ") or die(mysqli_error());
+                $query = mysqli_query($con, "select * from  venta_diaria AS z INNER JOIN clientes AS c ON c.id_cliente = z.id_cliente   where  fecha BETWEEN '$fecha7days' AND '$fechaActual' ") or die(mysqli_error($con));
                 $i = 1;
                 while ($row = mysqli_fetch_array($query)) {
                   $codigo = $row['codigo'];
                 ?>
-
                   <tr>
                     <td><?php echo $row['nombre']; ?></td>
                     <td><?php echo $row['dni']; ?></td>
                     <td><?php echo $row['fecha']; ?></td>
                     <td>
-                      <?php
-
-
-                      ?>
                       <a class="btn btn-danger btn-print" href="<?php echo "../Impresion/generar_ticket_diario.php?codigo=$codigo"; ?>" role="button">Ver comprobante</a>
-
-
-                      <?php
-                      //          }
-                      ?>
-
                     </td>
                   </tr>
-
                 <?php
                 }
-
                 ?>
-
-
-                <!--end of modal-->
-
               </tbody>
-
-
-
-
-
             </table>
-
-
 
             <footer>
               <div class="pull-right">
@@ -189,4 +135,3 @@
 </body>
 
 </html>
-}

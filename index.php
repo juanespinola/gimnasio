@@ -46,9 +46,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <body>
-    <center>
-        <h2 style="color:white;">Para comprar o cotizar contactanos a tusolutionweb@gmail.com</h2>
-    </center>
+    <CENTER>
+
+        <div class="pull-center">
+            <a href="">Cronos Academy</a>
+            <img src="" alt="">
+        </div>
+        <div class="clearfix"></div>
+
+    </CENTER>
     <div class=" w3l-login-form">
         <h2>Login </h2>
         <form action="login.php" method="post">
@@ -68,12 +74,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
             <div class="forgot">
-                <a href="rhttps://comprayventacodigofuente.com/all-items">CATALOGO DE SISTEMAS AQUI</a>
                 <p><input type="checkbox">Recordar password</p>
             </div>
             <button type="submit" name="login">Login</button>
         </form>
-        <p class=" w3l-register-p">Cotza tu desarrollo web por chat aqui?<a href="https://comprayventacodigofuente.com/all-items" class="register"> Cotiza aqui</a></p>
     </div>
 
     <CENTER>

@@ -81,15 +81,15 @@ while ($row = mysqli_fetch_array($query)) {
 
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="../layout/img/pos.png" alt="">POS
+            <img src="../layout/img/pos.png" alt="">Ventas
 
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
 
-            <li><a href="../ventas/pos.php"><i class="fa fa-money"></i> POS productos</a></li>
-            <li><a href="../ventas_menbrecia/pos.php"><i class="fa fa-money"></i> POS planes</a></li>
-            <li><a href="../venta_dia/venta_diaria.php"><i class="fa fa-money"></i> POS entrada diaria</a></li>
+            <li><a href="../ventas/pos.php"><i class="fa fa-money"></i> Venta productos</a></li>
+            <li><a href="../ventas_menbrecia/pos.php"><i class="fa fa-money"></i> Venta planes</a></li>
+            <li><a href="../venta_dia/venta_diaria.php"><i class="fa fa-money"></i> Venta entrada diaria</a></li>
 
           </ul>
           <?php

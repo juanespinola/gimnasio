@@ -41,120 +41,69 @@
 
           </section>
 
-          <a class="btn btn-success btn-print" href="" onclick="window.print()"><i class="glyphicon glyphicon-print"></i> Impresión</a>
 
 
           <div class="box-header">
             <h3 class="box-title"> ULTIMOS 7 DIAS</h3>
           </div><!-- /.box-header -->
+
+          <a class="btn btn-success btn-print" href="" onclick="window.print()"><i class="glyphicon glyphicon-print"></i> Impresión</a>
+
           <div class="box-body">
             <table id="example2" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th> Id </th>
-                  <th> fecha </th>
-
-                  <th> cliente </th>
+                  <th> Fecha </th>
+                  <th> Cliente </th>
                   <th class="btn-print"> ACCION </th>
-
                 </tr>
               </thead>
               <tbody>
-
-
-
-
-
                 <?php
-
-
                 $fechaActual = date('Y-m-d');
-
                 $fecha7days = date('Y-m-d', strtotime('-7 day'));
-
                 ?>
-
                 <?php
 
-                $query = mysqli_query($con, "select * from pedidos  where  fecha BETWEEN '$fecha7days' AND '$fechaActual'  ") or die(mysqli_error());
+                $query = mysqli_query($con, "select * from pedidos  where  fecha BETWEEN '$fecha7days' AND '$fechaActual'  ") or die(mysqli_error($con));
                 $contador = 0;
                 while ($row = mysqli_fetch_array($query)) {
                   $contador++;
                 }
-
                 ?>
-
                 <div class="row">
                   <div class="col-md-4 col-lg-12 hide-section">
-                    <a class="btn btn-danger btn-print" disabled="true" style="height:25%; width:50%; font-size: 25px " role="button">Nro ELEMENTOS= <label style='color:black;  font-size: 25px '>=<?php echo $contador; ?></label></a>
-
-
-
+                    <!-- <a class="btn btn-danger btn-print" disabled="true" style="height:25%; width:50%; font-size: 25px " role="button">Nro ELEMENTOS= <label style='color:black;  font-size: 25px '>=<?php echo $contador; ?></label></a> -->
                   </div>
-
-
                 </div>
 
                 <?php
-
-
-
-
-
-
-
-                $query = mysqli_query($con, "select * from pedidos AS p
-INNER JOIN clientes AS u
-    ON u.id_cliente = p.id_cliente  where  fecha BETWEEN '$fecha7days' AND '$fechaActual' ") or die(mysqli_error());
+                $query = mysqli_query($con, "select * from pedidos AS p INNER JOIN clientes AS u ON u.id_cliente = p.id_cliente  where  fecha BETWEEN '$fecha7days' AND '$fechaActual' ") or die(mysqli_error($con));
                 $i = 1;
                 while ($row = mysqli_fetch_array($query)) {
                   $num_pedido = $row['id_pedido'];
                 ?>
-
                   <tr>
                     <td><?php echo $row['id_cliente']; ?></td>
                     <td><?php echo $row['fecha']; ?></td>
                     <td><?php echo $row['nombre']; ?></td>
                     <td>
-                      <?php
-
-
-                      ?>
                       <a class="btn btn-danger btn-print" href="<?php echo "../impresion/generar_pdf.php?num_pedido=$num_pedido"; ?>" role="button">Ver comprobante</a>
-
-
-                      <?php
-                      //          }
-                      ?>
-
                     </td>
                   </tr>
-
                 <?php
                 }
-
                 ?>
-
-
-                <!--end of modal-->
-
               </tbody>
-
-
-
-
-
-
-
-
-
-              <footer>
-                <div class="pull-right">
-                  <a href="">Cronos Academy</a>
-                </div>
-                <div class="clearfix"></div>
-              </footer>
-              <!-- /footer content -->
+            </table>
+            <footer>
+              <div class="pull-right">
+                <a href="">Cronos Academy</a>
+              </div>
+              <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
           </div>
         </div>
 
