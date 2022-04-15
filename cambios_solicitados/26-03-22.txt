@@ -1,0 +1,13 @@
+nuevas implemanetaciones
+- cada profesor tenga un apartado de alumnos 
+- cada alumno tenga un apartado del deporte que entrena 
+- cada profesor saca un porcentaje de ganancias en base a los alumnos, reporte
+- un apartado de horarios para anotar las clases de los alumnos 
+- apartado de disciplinas que debemos colocar 
+- cambiar de imagenes en el medio (imagenes de deportes)
+- que paso con las ventas?
+- mejorar el apartado de carrito
+- seccionar la caja por sucursales
+- despues de un periodo de tiempo, el alumno debe volverse inactivo si es que no viene donde se le enviara un mensaje de texto indicando que vuelva
+- apartado de redes sociales, estan deben abrirse en una pestanha nueva
+- filtros de estudiantes, profesores o alumnos

@@ -1,12 +1,12 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   background: url(../cronos_logo.jpg) no-repeat 0px -400px;
   min-height: 100vh;
   background-size: cover;
   font-family: "Raleway", sans-serif;
-}
-h1 {
+} */
+/* h1 {
   margin: 0;
   color: #ffffff;
   text-align: center;
@@ -153,19 +153,46 @@ footer {
   padding: 4em 0;
   text-align: center;
 }
+*/ .img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.login-wrap {
+  position: relative;
+}
+
+.ftco-section {
+  padding: 7em 0;
+}
 /*--//footer--*/
 
 /*-- /responsive design --*/
+@media (max-width: 991px) {
+  h1 {
+    font-size: 47px;
+  }
+  .img {
+    width: 100%;
+  }
+}
 
 @media (max-width: 768px) {
   h1 {
     font-size: 47px;
+  }
+  .img {
+    width: 100%;
   }
 }
 
 @media (max-width: 667px) {
   h1 {
     font-size: 45px;
+  }
+  .img {
+    width: 50%;
   }
 }
 

@@ -13,8 +13,6 @@
 
 <head>
 	<style type="text/css">
-		#cssload-pgloading {}
-
 		#cssload-pgloading:after {
 			content: "";
 			z-index: -1;

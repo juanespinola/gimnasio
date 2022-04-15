@@ -60,13 +60,13 @@
         ?>
 
         <div class="box-header">
-          <h3 class="box-title"> MODIFICAR CLIENTE</h3>
+          <h3 class="box-title"> Editar Alumno</h3>
         </div><!-- /.box-header -->
 
-        <a class="btn btn-warning btn-print" href="cliente.php" style="height:25%; width:15%; font-size: 12px " role="button">Regresar</a>
+        <a class="btn btn-warning btn-print" href="cliente.php" role="button">Regresar</a>
         <?php
         // $branch=$_SESSION['branch'];
-        $query = mysqli_query($con, "select * from clientes where id_cliente= '$id_cliente' ") or die(mysqli_error());
+        $query = mysqli_query($con, "select * from clientes where id_cliente= '$id_cliente' ") or die(mysqli_error($con));
         $i = 1;
         while ($row = mysqli_fetch_array($query)) {
           $id_cliente = $row['id_cliente'];
@@ -180,6 +180,30 @@
               <div class="col-md-4 btn-print">
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-md-3 btn-print">
+                <div class="form-group">
+                  <label for="estado">Estado</label>
+
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+                <div class="form-group">
+                  <select class="form-control select2" name="estado" id="estado" required>
+                    <option value="activo" <?php if ($row['estado'] == "activo") {
+                                              echo "selected";
+                                            } ?>>Activo</option>
+                    <option value="inactivo" <?php if ($row['estado'] == "inactivo") {
+                                                echo "selected";
+                                              } ?>>Inactivo</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+              </div>
+            </div>
+
 
             <button type="submit" class="btn btn-primary">Guardar</button>
 

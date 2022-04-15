@@ -44,19 +44,27 @@ $id = $_SESSION['id'];
           </ul>
         </li>
 
-        <li><a href="../asignar_sueldo/asignar_sueldo.php"><i class="fa fa-money"></i>Asignar sueldo<span class="fa fa-chevron-right"></span></li>
+        <li><a><i class="fa fa-money"></i>Salarios<span class="fa fa-chevron-right"></span></a>
+          <ul class="nav child_menu">
+            <li><a href="../asignar_sueldo/asignar_sueldo.php">Empleados</a></li>
+            <li><a href="../salarios/salario_profesores.php">Profesores</a></li>
+          </ul>
 
-        </a>
+        </li>
+
+
       <?php
       }
       ?>
-      <li><a><i class="fa fa-user-md"></i> Cliente<span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fa fa-user-md"></i> Personas<span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
 
-          <li><a href="../cliente/cliente.php">Mostrar</a></li>
-          <li><a href="../cliente/cliente_agregar.php">Agregar</a></li>
-
-
+          <li><a href="../cliente/cliente.php">Lista de Alumnos</a></li>
+          <li><a href="../profesores/profesores.php">Lista de Profesores</a></li>
+          <!-- <li><a href="../deporte_profesor/deportes_profesores.php">Agregar</a></li> -->
+          <li><a href="../actividades/actividades.php">Actividades</a></li>
+          <li><a href="../alumnos_profesor/alumnos_profesor.php">Alumnos por Profesor</a></li>
+          <li><a href="../alumnos_deporte/alumnos_deporte.php">Alumnos por Disciplinas</a></li>
         </ul>
       </li>
 
@@ -170,6 +178,11 @@ $id = $_SESSION['id'];
           <?php
           }
           ?>
+          <li><a href="../tipos_clientes/tipos_clientes.php">Tipos de Cliente</a></li>
+          <li><a href="../deportes/deportes.php">Disciplinas</a></li>
+
+
+
 
         </ul>
       </li>

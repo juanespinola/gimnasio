@@ -189,9 +189,7 @@
 
                     <td>
                       <a class="small-box-footer btn-print" href="<?php echo "eliminar_plan.php?id_plan=$id_plan"; ?>" onclick="return confirm('¿Está seguro de que desea eliminar este producto??');"> <i class=" glyphicon glyphicon-remove"></i></a>
-
                       <a href="#updateordinance<?php echo $row['id_plan']; ?>" data-target="#updateordinance<?php echo $row['id_plan']; ?>" data-toggle="modal" style="color:#fff;" class="small-box-footer btn-print"><i class="glyphicon glyphicon-edit text-blue"></i></a>
-
                     </td>
                   </tr>
                   <div id="updateordinance<?php echo $row['id_plan']; ?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

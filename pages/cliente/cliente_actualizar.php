@@ -10,10 +10,11 @@
 	$dni = $_POST['dni'];
 	$telefono = $_POST['telefono'];
 	$fecha_nacimiento = $_POST['fecha_nacimiento'];
+	$estado = $_POST['estado'];
 
-	mysqli_query($con, "update clientes set nombre='$nombre',apellido='$apellido',ruc='$ruc',telefono='$telefono',dni='$dni',fecha_nacimiento='$fecha_nacimiento' where id_cliente='$id_cliente'") or die(mysqli_error($con));
+	mysqli_query($con, "UPDATE clientes SET nombre='$nombre',apellido='$apellido',ruc='$ruc',telefono='$telefono',dni='$dni',fecha_nacimiento='$fecha_nacimiento',estado='$estado' WHERE id_cliente='$id_cliente'") or die(mysqli_error($con));
 
-	echo "<script type='text/javascript'>alert(' actualizado correctamente!');</script>";
+	echo "<script type='text/javascript'>alert('Registro Actualizado Correctamente!');</script>";
 	echo "<script>document.location='cliente.php'</script>";
 
 

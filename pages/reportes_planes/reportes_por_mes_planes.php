@@ -1,7 +1,4 @@
-<?php include '../layout/header.php';
-
-
-?>
+<?php include '../layout/header.php'; ?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">

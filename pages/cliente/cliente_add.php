@@ -14,10 +14,9 @@ $query2 = mysqli_query($con, "select * from clientes where dni='$dni'") or die(m
 $count = mysqli_num_rows($query2);
 
 if ($count > 0) {
-	echo "<script type='text/javascript'>alert('dni ya existe!');</script>";
+	echo "<script type='text/javascript'>alert('Registro ya existe!');</script>";
 	echo "<script>document.location='cliente.php'</script>";
 } else {
-	mysqli_query($con, "INSERT INTO clientes(nombre,apellido,ruc,telefono,dni,fecha_nacimiento)
-				VALUES('$nombre','$apellido','$ruc','$telefono','$dni', '$fecha_nacimiento')") or die(mysqli_error($con));
+	mysqli_query($con, "INSERT INTO clientes(nombre,apellido,ruc,telefono,dni,fecha_nacimiento)	VALUES('$nombre','$apellido','$ruc','$telefono','$dni', '$fecha_nacimiento')") or die(mysqli_error($con));
 	echo "<script>document.location='cliente.php'</script>";
 }
