@@ -1,9 +1,9 @@
 nuevas implemanetaciones
-- cada profesor tenga un apartado de alumnos 
-- cada alumno tenga un apartado del deporte que entrena 
+- cada profesor tenga un apartado de alumnos (x)
+- cada alumno tenga un apartado del deporte que entrena (x)
 - cada profesor saca un porcentaje de ganancias en base a los alumnos, reporte
-- un apartado de horarios para anotar las clases de los alumnos 
-- apartado de disciplinas que debemos colocar 
+- un apartado de horarios para anotar las clases de los alumnos (x)
+- apartado de disciplinas que debemos colocar (x)
 - cambiar de imagenes en el medio (imagenes de deportes)
 - que paso con las ventas?
 - mejorar el apartado de carrito

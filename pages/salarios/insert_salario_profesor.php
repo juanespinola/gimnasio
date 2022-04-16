@@ -49,16 +49,19 @@ $query = mysqli_query($con, "SELECT id_actividad FROM actividades WHERE id_profe
 // echo "<pre>";
 // print_r($query);
 // echo "</pre>";
-if ($query->num_rows == 0) {
+if ($query->num_rows == 1) {
     while ($row = mysqli_fetch_array($query)) {
         $id_actividad = $row['id_actividad'];
-        mysqli_query($con, "INSERT INTO sueldo_profesores(id_actividad, salario) VALUES ('$id_actividad', '$sueldo')") or die(mysqli_error($con));
-        echo "<script>document.location='salario_profesores.php'</script>";
+        $sueldo_existente = mysqli_query($con, "SELECT * FROM sueldo_profesores WHERE id_actividad = $id_actividad") or die(mysqli_error($con));
+        if ($sueldo_existente->num_rows > 0) {
+            echo "<script type='text/javascript'>alert('Registro existente!');</script>";
+            echo "<script>document.location='agregar_salario_profesor.php'</script>";
+        } else {
+            mysqli_query($con, "INSERT INTO sueldo_profesores(id_actividad, salario) VALUES ('$id_actividad', '$sueldo')") or die(mysqli_error($con));
+            echo "<script>document.location='salario_profesores.php'</script>";
+        }
     }
-} else if ($query->num_rows >= 1) {
-    echo "<script type='text/javascript'>alert('Registro existente!');</script>";
-    echo "<script>document.location='agregar_salario_profesor.php'</script>";
-} else {
-    echo "<script type='text/javascript'>alert('Registro no existente!');</script>";
+} else if ($query->num_rows < 1) {
+    echo "<script type='text/javascript'>alert('Registro Actividad no existente!');</script>";
     echo "<script>document.location='agregar_salario_profesor.php'</script>";
 }
