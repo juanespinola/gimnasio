@@ -8,6 +8,7 @@ $id_profesor = $_POST['profesor'];
 $id_deporte = $_POST['deporte'];
 $horario_inicio = $_POST['horario_inicio'];
 $horario_final = $_POST['horario_final'];
+$id_plan = $_POST['plan'];
 
 $lunes =  isset($_POST['lunes']) ? $_POST['lunes'] : '0';
 $martes = isset($_POST['martes']) ? $_POST['martes'] : '0';
@@ -22,7 +23,8 @@ $update = mysqli_query($con, "UPDATE actividades SET
     id_profesor='$id_profesor',
     id_deporte='$id_deporte', 
     horario_inicio='$horario_inicio', 
-    horario_final='$horario_final' 
+    horario_final='$horario_final',
+    id_plan='$id_plan'
 WHERE id_actividad='$id_actividad'") or die(mysqli_error($con));
 
 if ($update) {

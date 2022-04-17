@@ -93,9 +93,9 @@
                 $i = 1;
                 while ($row = mysqli_fetch_array($query)) {
                     $id_actividad = $row['id_actividad'];
-                    echo '<pre>';
-                    print_r($row);
-                    echo '</pre>';
+                    // echo '<pre>';
+                    // print_r($row);
+                    // echo '</pre>';
 
                     $lunes =  (isset($row['lunes']) && $row['lunes'] == 1) ? $row['lunes'] : '0';
                     $martes = isset($row['martes']) ? $row['martes'] : '0';
@@ -251,6 +251,36 @@
                                 <div class="form-group">
                                     <input type="time" class="form-control pull-right" id="horario_final" name="horario_final" min="07:00" max="21:00" value="<?php echo $row['horario_final']; ?>" required>
 
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
+
+                            </div>
+                        </div>
+
+                        <!-- CAMPO PLANES -->
+                        <div class="row">
+                            <div class="col-md-3 btn-print">
+                                <div class="form-group">
+                                    <label for="plan">Plan</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
+                                <div class="form-group">
+                                    <select class="form-control pull-right" name="plan" id="plan">
+                                        <option value="0" selected>Seleccione Opcion</option>
+                                        <?php
+                                        $planes = mysqli_query($con, "SELECT * FROM planes") or die(mysqli_error($con));
+                                        while ($plan = mysqli_fetch_array($planes)) {
+                                        ?>
+                                            <?php if ($plan['id_plan'] == $row['id_plan']) { ?>
+                                                <option value="<?php echo $plan['id_plan']  ?>" selected="selected"> <?php echo $plan['nombre_plan']; ?></option>
+                                            <?php } else { ?>
+                                                <option value="<?php echo $plan['id_plan']  ?>"> <?php echo $plan['nombre_plan']; ?></option>
+                                            <?php } ?>
+
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4 btn-print">

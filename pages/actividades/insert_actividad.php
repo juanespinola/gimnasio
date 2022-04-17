@@ -9,6 +9,8 @@ $id_deporte = $_POST['deporte'];
 $id_dia = $_POST['dia'];
 $horario_inicio = $_POST['horario_inicio'];
 $horario_final = $_POST['horario_final'];
+$id_plan = $_POST['plan'];
+
 
 $lunes =  isset($_POST['lunes']) ? $_POST['lunes'] : '0';
 $martes = isset($_POST['martes']) ? $_POST['martes'] : '0';
@@ -60,6 +62,13 @@ if (!isset($_POST['horario_final']) || empty($_POST['horario_final'])) {
     echo "<script>document.location='agregar_actividad.php'</script>";
 }
 
+if (!isset($_POST['plan']) || empty($_POST['plan'])) {
+    // print(json_encode(array("status" => "error", "reason" => "No se recibe la horario_final"), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP));
+    // exit();
+    echo "<script type='text/javascript'>alert('No se recibe el plan!');</script>";
+    echo "<script>document.location='agregar_actividad.php'</script>";
+}
+
 $select = mysqli_query($con, "SELECT * 
     FROM actividades 
     WHERE id_profesor = $id_profesor 
@@ -74,8 +83,8 @@ if ($select->num_rows >= 1) {
     echo "<script type='text/javascript'>alert('El registro ya existe!');</script>";
     echo "<script>document.location='actividades.php'</script>";
 } else {
-    $insert = mysqli_query($con, "INSERT INTO actividades(id_cliente, id_profesor, id_deporte, horario_inicio, horario_final) 
-    VALUES ('$id_cliente', '$id_profesor','$id_deporte','$horario_inicio','$horario_final')") or die(mysqli_error($con));
+    $insert = mysqli_query($con, "INSERT INTO actividades(id_cliente, id_profesor, id_deporte, horario_inicio, horario_final, id_plan) 
+    VALUES ('$id_cliente', '$id_profesor','$id_deporte','$horario_inicio','$horario_final', '$id_plan')") or die(mysqli_error($con));
     $id_actividad = mysqli_insert_id($con);
 
     if ($insert) {

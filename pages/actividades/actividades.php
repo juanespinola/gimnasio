@@ -77,6 +77,7 @@
                                     <th>Horario</th>
                                     <th>Actividad</th>
                                     <th>Dia</th>
+                                    <th>Plan</th>
                                     <th class="btn-print"> Accion </th>
                                 </tr>
                             </thead>
@@ -95,15 +96,16 @@
                                 IF(ad.jueves = 1, 'J', ''),' ',
                                 IF(ad.viernes = 1, 'V', ''),' ',
                                 IF(ad.sabado = 1, 'S', ''),' ',
-                                IF(ad.domingo = 1, 'D', '')) as dias
+                                IF(ad.domingo = 1, 'D', '')) as dias, 
+                                pl.id_plan,
+                                pl.nombre_plan
                                 FROM actividades a
                                 JOIN clientes c ON a.id_cliente = c.id_cliente
                                 JOIN profesores p ON a.id_profesor = p.id_profesor
                                 JOIN deportes d ON a.id_deporte = d.id_deporte
+                                JOIN planes pl ON a.id_plan = pl.id_plan
                                 LEFT JOIN actividades_dias ad ON a.id_actividad = ad.id_actividad") or die(mysqli_error($con));
                                 $i = 0;
-
-
                                 while ($row = mysqli_fetch_array($query)) {
                                     $id_actividad = $row['id_actividad'];
                                     $i++;
@@ -115,6 +117,7 @@
                                         <td><?php echo $row['horario']; ?></td>
                                         <td><?php echo $row['deporte']; ?></td>
                                         <td><?php echo $row['dias']; ?></td>
+                                        <td><?php echo $row['nombre_plan']; ?></td>
                                         <td>
                                             <a class="small-box-footer btn-print" title="Editar Actividad" href="<?php echo "editar_actividad.php?id_actividad=$id_actividad"; ?>"><i class="glyphicon glyphicon-edit text-blue"></i></a>
                                             <a class="small-box-footer btn-print" title="Eliminar Actividad" href="<?php echo "delete_actividad.php?id_actividad=$id_actividad"; ?>"><i class="glyphicon glyphicon-remove text-blue" onClick="return confirm('¿Está seguro de que quieres eliminar usuario?');"></i></a>

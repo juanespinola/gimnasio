@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="../layout/dist/css/skins/_all-skins.min.css">
 <!-- <script src="../ventas/public/js/jquery.min.js"></script> -->
 
-
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
@@ -155,6 +154,31 @@
                                 <div class="form-group">
                                     <input type="time" class="form-control pull-right" id="horario_final" name="horario_final" min="07:00" max="21:00" required>
 
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
+
+                            </div>
+                        </div>
+
+                        <!-- CAMPO PLANES -->
+                        <div class="row">
+                            <div class="col-md-3 btn-print">
+                                <div class="form-group">
+                                    <label for="plan">Plan</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
+                                <div class="form-group">
+                                    <select class="form-control pull-right" name="plan" id="plan">
+                                        <option value="0" selected>Seleccione Opcion</option>
+                                        <?php
+                                        $planes = mysqli_query($con, "SELECT * FROM planes") or die(mysqli_error($con));
+                                        while ($plan = mysqli_fetch_array($planes)) {
+                                        ?>
+                                            <option value="<?php echo $plan['id_plan']; ?>"><?php echo $plan['nombre_plan']; ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4 btn-print">
