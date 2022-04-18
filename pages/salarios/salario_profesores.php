@@ -59,12 +59,41 @@
 
                     </div><!-- /.box-header -->
 
+
+                    <div class="container">
+                        <div class="col-md-12">
+                            <form method="post" action="salario_profesores.php" enctype="multipart/form-data" class="form-horizontal">
+                                <button class="btn btn-danger btn-print" id="filtrar_alumnos" name="filtrar_alumnos">Filtrar</button>
+                                <div class="col-md-8 btn-print">
+                                    <div class="form-group">
+                                        <label for="profesor" class="col-sm-3 control-label">Seleccione un Profesor</label>
+                                        <div class="input-group col-sm-8">
+                                            <select name="profesor" class="form-control select2" autofocus>
+                                                <option value="0" selected>Seleccione Opcion</option>
+                                                <?php
+                                                $profesores = mysqli_query($con, "SELECT * FROM profesores WHERE estado='activo'") or die(mysqli_error($con));
+                                                while ($profesor = mysqli_fetch_array($profesores)) {
+                                                ?>
+                                                    <option value="<?php echo $profesor['id_profesor']; ?>"><?php echo $profesor['nombre']; ?> <?php echo $profesor['apellido']; ?></option>
+                                                <?php } ?>
+                                            </select>
+
+                                        </div><!-- /.input group -->
+                                    </div><!-- /.form group -->
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="box-header">
                         <h3 class="box-title">Lista de Profesores</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <!-- <button type="button" class="btn btn-primary btn-print" data-toggle="modal" data-target="#miModal">Agregar Salario</button> -->
                         <a class="btn btn-warning btn-print" href="agregar_salario_profesor.php" role="button">Agregar</a>
+                        <a class="btn btn-success btn-print" href="salario_profesor_total.php<?php if (isset($_POST['profesor'])) { ?>?id_profesor=<?php echo $_POST['profesor']; ?><?php } ?>">Pago total</a>
+
 
                         <table id="example2" class="table table-bordered table-striped">
                             <thead>
@@ -72,24 +101,54 @@
                                     <th style="width:5%">Profesor</th>
                                     <th style="width:10%"> Alumno </th>
                                     <th style="width:5%"> Pago por clase</th>
-                                    <th style="width:1%"> Pagar sueldo </th>
+                                    <th style="width:1%"> Pagar parcial </th>
                                     <th style="width:1%" class="btn-print"> Pagos hechos </th>
                                     <th style="width:10%" class="btn-print"> Acciones </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($con, "SELECT sp.id_sueldo_profesor, 
-                                a.id_profesor,
-                                concat(p.nombre, ' ', p.apellido) as profesor, 
-                                p.documento,
-                                concat(c.nombre, ' ', c.apellido) as alumno, 
-                                sp.salario,
-                                a.id_actividad
-                                FROM sueldo_profesores sp
-                                LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
-                                LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
-                                LEFT JOIN clientes c ON a.id_cliente = c.id_cliente") or die(mysqli_error($con));
+                                if (isset($_POST['profesor'])) {
+                                    if ($_POST['profesor'] == '0') {
+                                        $query = mysqli_query($con, "SELECT sp.id_sueldo_profesor, 
+                                        a.id_profesor,
+                                        concat(p.nombre, ' ', p.apellido) as profesor, 
+                                        p.documento,
+                                        concat(c.nombre, ' ', c.apellido) as alumno, 
+                                        sp.salario,
+                                        a.id_actividad
+                                        FROM sueldo_profesores sp
+                                        LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
+                                        LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
+                                        LEFT JOIN clientes c ON a.id_cliente = c.id_cliente") or die(mysqli_error($con));
+                                    } else {
+                                        $query = mysqli_query($con, "SELECT sp.id_sueldo_profesor, 
+                                        a.id_profesor,
+                                        concat(p.nombre, ' ', p.apellido) as profesor, 
+                                        p.documento,
+                                        concat(c.nombre, ' ', c.apellido) as alumno, 
+                                        sp.salario,
+                                        a.id_actividad
+                                        FROM sueldo_profesores sp
+                                        LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
+                                        LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
+                                        LEFT JOIN clientes c ON a.id_cliente = c.id_cliente
+                                        WHERE p.id_profesor = " . $_POST['profesor']) or die(mysqli_error($con));
+                                    }
+                                } else {
+                                    $query = mysqli_query($con, "SELECT sp.id_sueldo_profesor, 
+                                    a.id_profesor,
+                                    concat(p.nombre, ' ', p.apellido) as profesor, 
+                                    p.documento,
+                                    concat(c.nombre, ' ', c.apellido) as alumno, 
+                                    sp.salario,
+                                    a.id_actividad
+                                    FROM sueldo_profesores sp
+                                    LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
+                                    LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
+                                    LEFT JOIN clientes c ON a.id_cliente = c.id_cliente") or die(mysqli_error($con));
+                                }
+
                                 while ($row = mysqli_fetch_array($query)) {
                                     $id_sueldo_profesor = $row['id_sueldo_profesor'];
                                     $id_profesor = $row['id_profesor'];
