@@ -12,7 +12,7 @@ $fechaactual = date('Y-m-d');
 
 $porcentaje_impuesto = 0;
 $simbolo_moneda = "";
-$query = mysqli_query($con, "select * from empresa  ") or die(mysqli_error($con));
+$query = mysqli_query($con, "select * from empresa") or die(mysqli_error($con));
 $i = 1;
 while ($row = mysqli_fetch_array($query)) {
   //   $porcentaje_impuesto=$row['impuesto'];
@@ -30,7 +30,7 @@ $id_sesion = $_SESSION['id'];
 <html>
 
 <head>
-  <link rel="stylesheet" href="../ventas/css/styles.css">
+  <link rel="stylesheet" href="../ventas_old/css/styles.css">
 
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -77,14 +77,14 @@ $id_sesion = $_SESSION['id'];
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href="../ventas/public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../ventas_old/public/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../ventas/public/css/font-awesome.css">
+  <link rel="stylesheet" href="../ventas_old/public/css/font-awesome.css">
 
   <!-- Theme style -->
-  <link rel="stylesheet" href="../ventas/public/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../ventas_old/public/css/AdminLTE.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="../ventas/public/css/blue.css">
+  <link rel="stylesheet" href="../ventas_old/public/css/blue.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -94,7 +94,7 @@ $id_sesion = $_SESSION['id'];
     <![endif]-->
   <style type="text/css">
     #myInput {
-      background-image: url('../ventas/css/buscador.png');
+      background-image: url('../ventas_old/css/buscador.png');
       /* Add a search icon to input */
       background-position: 10px 12px;
       /* Position the search icon */
@@ -237,7 +237,7 @@ $id_sesion = $_SESSION['id'];
                             <td><?php echo $producto->precio_venta ?></td>
                             <td><?php echo $producto->cantidad ?></td>
                             <td><?php echo $producto->total ?></td>
-                            <td><a class="btn btn-danger" href="../ventas/<?php echo "quitarDelCarrito.php?indice=$indice"; ?>"><i class="fa fa-trash"></i></a>
+                            <td><a class="btn btn-danger" href="../ventas_old/<?php echo "quitarDelCarrito.php?indice=$indice"; ?>"><i class="fa fa-trash"></i></a>
 
                             </td>
                           </tr>
@@ -269,7 +269,7 @@ $id_sesion = $_SESSION['id'];
         <!--/.col (left) -->
         <!-- right column -->
         <div class="col-md-8">
-          <form class="form-inline" name="f1" action="../ventas/terminarVenta.php" method="POST">
+          <form class="form-inline" name="f1" action="../ventas_old/terminarVenta.php" method="POST">
 
             <!-- Horizontal Form -->
             <div class="box box-info">
@@ -355,7 +355,7 @@ $id_sesion = $_SESSION['id'];
 
                                         </div>
                                         <div class="modal-body">
-                                          <form class="form-horizontal" method="post" action="../ventas/agregarAlCarrito.php">
+                                          <form class="form-horizontal" method="post" action="../ventas_old/agregarAlCarrito.php">
                                             <div class="row">
                                               <div class="col-md-3 btn-print">
                                                 <div class="form-group">
@@ -496,11 +496,11 @@ $id_sesion = $_SESSION['id'];
   }
 </script>
 <!-- jQuery 2.1.4 -->
-<script src="../ventas/public/js/jquery.min.js"></script>
+<script src="../ventas_old/public/js/jquery.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="../ventas/public/js/bootstrap.min.js"></script>
+<script src="../ventas_old/public/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="../ventas/public/js/icheck.min.js"></script>
+<script src="../ventas_old/public/js/icheck.min.js"></script>
 
 
 </body>

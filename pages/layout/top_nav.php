@@ -86,10 +86,10 @@ while ($row = mysqli_fetch_array($query)) {
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
-
-            <li><a href="../ventas/pos.php"><i class="fa fa-money"></i> Venta productos</a></li>
-            <li><a href="../ventas_menbrecia/pos.php"><i class="fa fa-money"></i> Venta planes</a></li>
-            <li><a href="../venta_dia/venta_diaria.php"><i class="fa fa-money"></i> Venta entrada diaria</a></li>
+            <li><a href="../ventas/agregar_venta.php">Ventas Productos</a></li>
+            <!-- <li><a href="../ventas/pos.php"><i class="fa fa-money"></i> Venta productos</a></li> -->
+            <!-- <li><a href="../ventas_menbrecia/pos.php"><i class="fa fa-money"></i> Venta planes</a></li> -->
+            <!-- <li><a href="../venta_dia/venta_diaria.php"><i class="fa fa-money"></i> Venta entrada diaria</a></li> -->
 
           </ul>
           <?php

@@ -67,21 +67,32 @@
                             <thead>
                                 <tr>
                                     <th style="width:30%">Nombre y Apellidos</th>
-                                    <th style="width:10%"> Sueldo </th>
+                                    <th style="width:10%"> Sueldo Total</th>
                                     <th style="width:30%" class="btn-print"> Accion </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($con, "SELECT * FROM  usuario u INNER JOIN sueldo_empleado AS s ON s.id_usuario = u.id where s.id_usuario='$id_usuario'") or die(mysqli_error($con));
+                                $query = mysqli_query($con, "SELECT sp.id_sueldo_profesor, 
+                                a.id_profesor,
+                                concat(p.nombre, ' ', p.apellido) as profesor, 
+                                p.documento,
+                                concat(c.nombre, ' ', c.apellido) as alumno, 
+                                sp.salario,
+                                a.id_actividad
+                                FROM sueldo_profesores sp
+                                LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
+                                LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
+                                LEFT JOIN clientes c ON a.id_cliente = c.id_cliente
+                                WHERE a.id_profesor = " . $id_profesor) or die(mysqli_error($con));
                                 while ($row = mysqli_fetch_array($query)) {
                                     // $cid = $row['id'];
-                                    $pago = $row['sueldo'];
+                                    // $pago = $row['sueldo'];
 
                                 ?>
                                     <tr>
-                                        <td><?php echo $row['nombre']; ?></td>
-                                        <td><?php echo $row['sueldo']; ?></td>
+                                        <td><?php echo $row['profesor']; ?></td>
+                                        <td><?php echo $row['salario']; ?></td>
                                         <!-- <td><a class="btn btn-success btn-print" href="<?php echo "pagar_sueldo_add.php?id_usuario=$id_usuario&pago=$pago"; ?>" onClick="return confirm('¿Está seguro que quieres pagar?');" role="button">Pagar ahora</a></td> -->
                                     </tr>
                                 <?php } ?>

@@ -16,9 +16,10 @@ $id = $_SESSION['id'];
 
         <li><a><i class="fa fa-money"></i> Ventas<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="../ventas/pos.php">Ventas productos</a></li>
-            <li><a href="../ventas_menbrecia/pos.php">Venta planes /membresias</a></li>
-            <li><a href="../venta_dia/venta_diaria.php">Venta diaria</a></li>
+            <li><a href="../ventas/agregar_venta.php">Ventas productos</a></li>
+            <li><a href="../ventas_old/pos.php">Ventas productos</a></li>
+            <!-- <li><a href="../ventas_menbrecia/pos.php">Venta planes /membresias</a></li>-->
+            <!--<li><a href="../venta_dia/venta_diaria.php">Venta diaria</a></li> -->
           </ul>
         </li>
 
