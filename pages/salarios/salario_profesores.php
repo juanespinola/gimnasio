@@ -92,7 +92,7 @@
                     <div class="box-body">
                         <!-- <button type="button" class="btn btn-primary btn-print" data-toggle="modal" data-target="#miModal">Agregar Salario</button> -->
                         <a class="btn btn-warning btn-print" href="agregar_salario_profesor.php" role="button">Agregar</a>
-                        <a class="btn btn-success btn-print" href="salario_profesor_total.php<?php if (isset($_POST['profesor'])) { ?>?id_profesor=<?php echo $_POST['profesor']; ?><?php } ?>">Pago total</a>
+                        <a class="btn btn-success btn-print" href="insert_pagar_salario_total_profesor.php<?php if (isset($_POST['profesor'])) { ?>?id_profesor=<?php echo $_POST['profesor']; ?><?php } ?>">Pago total</a>
 
 
                         <table id="example2" class="table table-bordered table-striped">
@@ -100,6 +100,7 @@
                                 <tr>
                                     <th style="width:5%">Profesor</th>
                                     <th style="width:10%"> Alumno </th>
+                                    <th style="width:5%"> Actividad</th>
                                     <th style="width:5%"> Pago por clase</th>
                                     <th style="width:1%"> Pagar parcial </th>
                                     <th style="width:1%" class="btn-print"> Pagos hechos </th>
@@ -116,9 +117,11 @@
                                         p.documento,
                                         concat(c.nombre, ' ', c.apellido) as alumno, 
                                         sp.salario,
-                                        a.id_actividad
+                                        a.id_actividad,
+                                        d.descripcion as actividad
                                         FROM sueldo_profesores sp
                                         LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
+                                        LEFT JOIN deportes d ON a.id_deporte = d.id_deporte
                                         LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
                                         LEFT JOIN clientes c ON a.id_cliente = c.id_cliente") or die(mysqli_error($con));
                                     } else {
@@ -128,9 +131,11 @@
                                         p.documento,
                                         concat(c.nombre, ' ', c.apellido) as alumno, 
                                         sp.salario,
-                                        a.id_actividad
+                                        a.id_actividad,
+                                        d.descripcion as actividad
                                         FROM sueldo_profesores sp
                                         LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
+                                        LEFT JOIN deportes d ON a.id_deporte = d.id_deporte
                                         LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
                                         LEFT JOIN clientes c ON a.id_cliente = c.id_cliente
                                         WHERE p.id_profesor = " . $_POST['profesor']) or die(mysqli_error($con));
@@ -142,9 +147,11 @@
                                     p.documento,
                                     concat(c.nombre, ' ', c.apellido) as alumno, 
                                     sp.salario,
-                                    a.id_actividad
+                                    a.id_actividad,
+                                    d.descripcion as actividad
                                     FROM sueldo_profesores sp
                                     LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
+                                    LEFT JOIN deportes d ON a.id_deporte = d.id_deporte
                                     LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
                                     LEFT JOIN clientes c ON a.id_cliente = c.id_cliente") or die(mysqli_error($con));
                                 }
@@ -158,6 +165,7 @@
                                     <tr>
                                         <td><?php echo $row['profesor']; ?></td>
                                         <td><?php echo $row['alumno']; ?></td>
+                                        <td><?php echo $row['actividad']; ?></td>
                                         <td><?php echo $row['salario']; ?></td>
                                         <td><a class="btn btn-success btn-print" href="<?php echo "insert_pagar_salario_profesor.php?id_actividad=$id_actividad&id_profesor=$id_profesor&sueldo=$sueldo"; ?>">Pagar Sueldo</a></td>
                                         <td><a class="btn btn-warning btn-print" href="<?php echo "pagos_hechos.php?id_sueldo_profesor=$id_sueldo_profesor"; ?>">Pagos hechos</a></td>
@@ -172,7 +180,14 @@
 
                                 <?php } ?>
                             </tbody>
-
+                            <?php if (isset($_POST['profesor']) && $_POST['profesor'] != '0') { ?>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="3" style="text-align:left">Total a Pagar:</th>
+                                        <th colspan="4"></th>
+                                    </tr>
+                                </tfoot>
+                            <?php } ?>
                         </table>
                     </div><!-- /.box-body -->
 
@@ -216,16 +231,44 @@
                                 "next": "posterior"
                             },
                             "search": "Buscar:",
-
-
                         },
-
                         "info": false,
                         "lengthChange": false,
                         "searching": false,
-
-
                         "searching": true,
+                        "footerCallback": function(row, data, start, end, display) {
+                            var api = this.api();
+
+                            var intVal = function(i) {
+                                return typeof i === 'string' ?
+                                    i.replace(/[\$,]/g, '') * 1 :
+                                    typeof i === 'number' ?
+                                    i : 0;
+                            };
+
+                            // Total over all pages
+                            total = api
+                                .column(3)
+                                .data()
+                                .reduce(function(a, b) {
+                                    return intVal(a) + intVal(b);
+                                }, 0);
+
+                            // Total over this page
+                            // pageTotal = api
+                            //     .column(3, {
+                            //         page: 'current'
+                            //     })
+                            //     .data()
+                            //     .reduce(function(a, b) {
+                            //         return intVal(a) + intVal(b);
+                            //     }, 0);
+
+                            // Update footer
+                            $(api.column(3).footer()).html(
+                                total + ' Gs'
+                            );
+                        }
                     }
 
                 );
