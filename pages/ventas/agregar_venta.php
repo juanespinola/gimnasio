@@ -3,7 +3,7 @@
 <?php
 @session_start();
 
-unset($_SESSION['carrito']);
+// unset($_SESSION['carrito']);
 $id_usuario = $_SESSION['id'];
 $fecha_actual = date('Y-m-d');
 
@@ -191,10 +191,9 @@ while ($row = mysqli_fetch_array($query)) {
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nombre</th>
-                                                        <th>Descripción</th>
-                                                        <th>Precio de venta</th>
+                                                        <th>Producto</th>
                                                         <th>Cantidad</th>
+                                                        <th>Precio de venta</th>
                                                         <th>Total</th>
                                                         <th></th>
                                                     </tr>
@@ -202,24 +201,27 @@ while ($row = mysqli_fetch_array($query)) {
                                                 <tbody>
                                                     <?php foreach ($_SESSION["carrito"] as $indice => $producto) {
                                                         $granTotal += $producto->total;
-                                                        echo "<pre>";
-                                                        print_r($_SESSION);
-                                                        echo "</pre>";
+                                                        $total += $producto['precio_total'];
+
                                                     ?>
                                                         <tr>
-                                                            <td><?php echo $producto->nombre; ?></td>
-                                                            <td><?php echo $producto->descripcion ?></td>
-                                                            <td><?php echo $producto->precio_venta ?></td>
-                                                            <td><?php echo $producto->cantidad ?></td>
-                                                            <td><?php echo $producto->total ?></td>
+                                                            <td><?php echo $producto['nombre_producto']; ?></td>
+                                                            <td><?php echo $producto['cantidad']; ?></td>
+                                                            <td><?php echo $producto['precio_unitario']; ?></td>
+                                                            <td><?php echo $producto['precio_total']; ?></td>
                                                             <td><a class="btn btn-danger" href="../ventas/<?php echo "eliminar_producto.php?indice=$indice"; ?>"><i class="fa fa-trash"></i></a>
 
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
+                                                    <?php
+                                                    echo "<pre>";
+                                                    print_r($_SESSION);
+                                                    echo "</pre>";
+                                                    ?>
                                                 </tbody>
                                             </table>
-                                            <h4> Total: <?php echo $granTotal; ?></h4>
+                                            <h4> Total de Compra: <?php echo $total; ?></h4>
                                         </div>
                                     </div>
                                 </div><!-- /.box-body -->
