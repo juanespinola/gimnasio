@@ -35,7 +35,7 @@ while ($row = mysqli_fetch_array($query)) {
     <link rel="stylesheet" href="../ventas/public/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../ventas/public/css/font-awesome.css">
-
+    <link rel="stylesheet" href="../layout/plugins/select2/select2.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../ventas/public/css/AdminLTE.min.css">
     <!-- iCheck -->
@@ -168,18 +168,17 @@ while ($row = mysqli_fetch_array($query)) {
 
                             <div class="container">
                                 <div class="col-md-12">
-                                    <form method="post" action="agregar_cliente.php" enctype="multipart/form-data" class="form-horizontal">
-                                        <button class="btn btn-danger btn-print" id="filtrar_cliente" name="filtrar_cliente">Filtrar</button>
-                                        <div class="col-md-8 btn-print">
-                                            <div class="col-12">
-                                                <label for="profesor" class="col-3 control-label">Seleccione un cliente</label>
-                                                <div class="input-group col-sm-8">
-                                                    <select class="form-control pull-right" name="cliente" id="cliente"></select>
-                                                </div><!-- /.input group -->
-                                            </div><!-- /.form group -->
+                                    <!-- <form method="POST" action="./insert_cliente_al_carrito.php" enctype="multipart/form-data" class="form-horizontal"> -->
+                                    <a href="./insert_cliente_al_carrito.php?" class="btn btn-danger btn-print" id="filtrar_alumno" name="filtrar_alumno">Filtrar</a>
+                                    <div class="col-md-8 btn-print">
+                                        <div class="col-12">
+                                            <label for="profesor" class="col-3 control-label">Seleccione un alumno</label>
+                                            <div class="input-group col-sm-8">
+                                                <select class="form-control pull-right" name="alumno" id="alumno"></select>
+                                            </div>
                                         </div>
-
-                                    </form>
+                                    </div>
+                                    <!-- </form> -->
                                 </div>
                             </div>
                             <!-- form start -->
@@ -202,15 +201,14 @@ while ($row = mysqli_fetch_array($query)) {
                                                     <?php foreach ($_SESSION["carrito"] as $indice => $producto) {
                                                         $granTotal += $producto->total;
                                                         $total += $producto['precio_total'];
-
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $producto['nombre_producto']; ?></td>
                                                             <td><?php echo $producto['cantidad']; ?></td>
                                                             <td><?php echo $producto['precio_unitario']; ?></td>
                                                             <td><?php echo $producto['precio_total']; ?></td>
-                                                            <td><a class="btn btn-danger" href="../ventas/<?php echo "eliminar_producto.php?indice=$indice"; ?>"><i class="fa fa-trash"></i></a>
-
+                                                            <td>
+                                                                <a class="btn btn-danger" href="../ventas/delete_producto_entero_del_carrito.php?indice=<?php echo $indice; ?>"><i class="fa fa-trash"></i></a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
@@ -397,8 +395,39 @@ while ($row = mysqli_fetch_array($query)) {
                 }
             }
         }
-    </script>
+        $(document).ready(function() {
 
+            $('#alumno').select2({
+                placeholder: '',
+                minimumInputLength: 4,
+                allowClear: true,
+                ajax: {
+                    // quietMillis: 200,
+                    delay: 200,
+                    url: './ajax.php',
+                    dataType: 'json',
+                    cache: true,
+                    data: function(term, page) {
+                        return {
+                            pageSize: 10,
+                            pageNum: page,
+                            searchTerm: term,
+                            action: 'alumno',
+                        };
+                    },
+                    processResults: function(data, page) {
+                        var more = (page * 10) < data.total;
+                        console.log(data);
+                        return {
+                            results: data.data,
+                            more: more
+                        };
+                    }
+                }
+            });
+        })
+    </script>
+    <script src="../layout/plugins/select2/select2.min.js"></script>
 </body>
 
 </html>
