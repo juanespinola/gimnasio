@@ -134,9 +134,6 @@
     </div><!-- /.box-body -->
 
   </div>
-  </div>
-  </div>
-  </div>
   <!-- /page content -->
 
   <!-- footer content -->

@@ -41,12 +41,6 @@ while ($row = mysqli_fetch_array($query)) {
     <!-- iCheck -->
     <link rel="stylesheet" href="../ventas/public/css/blue.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <style type="text/css">
         #myInput {
             background-image: url('../ventas/css/buscador.png');
@@ -142,7 +136,7 @@ while ($row = mysqli_fetch_array($query)) {
                         <strong>Error: </strong>El producto está agotado
                     </div>
                 <?php
-                } else {
+                } else if ($_GET["status"] === "6") {
                 ?>
                     <div class="alert alert-danger">
                         <strong>Error:</strong> Algo salió mal mientras se realizaba la venta
@@ -169,10 +163,10 @@ while ($row = mysqli_fetch_array($query)) {
                             <div class="container">
                                 <div class="col-md-12">
                                     <!-- <form method="POST" action="./insert_cliente_al_carrito.php" enctype="multipart/form-data" class="form-horizontal"> -->
-                                    <a href="./insert_cliente_al_carrito.php?" class="btn btn-danger btn-print" id="filtrar_alumno" name="filtrar_alumno">Filtrar</a>
+                                    <!-- <a href="./insert_cliente_al_carrito.php?" class="btn btn-danger btn-print" id="filtrar_alumno" name="filtrar_alumno">Filtrar</a> -->
                                     <div class="col-md-8 btn-print">
                                         <div class="col-12">
-                                            <label for="profesor" class="col-3 control-label">Seleccione un alumno</label>
+                                            <label for="alumno" class="col-3 control-label">Seleccione un alumno</label>
                                             <div class="input-group col-sm-8">
                                                 <select class="form-control pull-right" name="alumno" id="alumno"></select>
                                             </div>
@@ -181,51 +175,68 @@ while ($row = mysqli_fetch_array($query)) {
                                     <!-- </form> -->
                                 </div>
                             </div>
-                            <!-- form start -->
-                            <form id="venta_actual" name="venta_actual">
-                                <div class="box-body">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Producto</th>
-                                                        <th>Cantidad</th>
-                                                        <th>Precio de venta</th>
-                                                        <th>Total</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($_SESSION["carrito"] as $indice => $producto) {
-                                                        $granTotal += $producto->total;
-                                                        $total += $producto['precio_total'];
-                                                    ?>
-                                                        <tr>
-                                                            <td><?php echo $producto['nombre_producto']; ?></td>
-                                                            <td><?php echo $producto['cantidad']; ?></td>
-                                                            <td><?php echo $producto['precio_unitario']; ?></td>
-                                                            <td><?php echo $producto['precio_total']; ?></td>
-                                                            <td>
-                                                                <a class="btn btn-danger" href="../ventas/delete_producto_entero_del_carrito.php?indice=<?php echo $indice; ?>"><i class="fa fa-trash"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                    <?php
-                                                    echo "<pre>";
-                                                    print_r($_SESSION);
-                                                    echo "</pre>";
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                            <h4> Total de Compra: <?php echo $total; ?></h4>
+                            <br>
+                            <div class="container">
+                                <div class="col-md-12">
+                                    <form method="POST" action="" enctype="multipart/form-data" class="form-horizontal">
+                                        <!-- <a href="./insert_cliente_al_carrito.php?" class="btn btn-danger btn-print" id="filtrar_alumno" name="filtrar_alumno">Filtrar</a> -->
+                                        <div class="col-md-8 btn-print">
+                                            <div class="col-12">
+                                                <label for="nombre_cliente" class="col-3 control-label">O seleccione un Cliente</label>
+                                                <div class="input-group col-sm-4">
+                                                    <input type="text" id="nombre_cliente" name="nombre_cliente" class="form-control pull-right">
+                                                </div>
+                                                <label for="documento_cliente" class="col-3 control-label">Y su CI</label>
+                                                <div class="input-group col-sm-3">
+                                                    <input type="text" id="documento_cliente" name="documento_cliente" class="form-control pull-right">
+                                                </div>
+                                            </div>
                                         </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Producto</th>
+                                                    <th>Cantidad</th>
+                                                    <th>Precio de venta</th>
+                                                    <th>Total</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($_SESSION["carrito"] as $indice => $producto) {
+                                                    $granTotal += $producto->total;
+                                                    $total += $producto['precio_total'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?php echo $producto['nombre_producto']; ?></td>
+                                                        <td><?php echo $producto['cantidad']; ?></td>
+                                                        <td><?php echo $producto['precio_unitario']; ?></td>
+                                                        <td><?php echo $producto['precio_total']; ?></td>
+                                                        <td>
+                                                            <a class="btn btn-danger" href="../ventas/delete_producto_entero_del_carrito.php?indice=<?php echo $indice; ?>"><i class="fa fa-trash"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                                <?php
+                                                echo "<pre>";
+                                                print_r($_SESSION);
+                                                echo "</pre>";
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                        <input type="hidden" id="monto_total" name="monto_total" value="<?php echo $total; ?>">
+                                        <h4>Total de Compra: <?php echo $total; ?></h4>
                                     </div>
-                                </div><!-- /.box-body -->
-
-
-                            </form>
+                                </div>
+                            </div><!-- /.box-body -->
                         </div><!-- /.box -->
                     </div>
                 </div>
@@ -243,9 +254,6 @@ while ($row = mysqli_fetch_array($query)) {
                                 <div class="box-body no-padding">
                                     <div class="row">
                                         <div id="content" class="col-lg-12">
-                                            <form class="form-inline" method="post" action="#">
-
-                                            </form>
                                             <div id="suggestions"></div>
                                         </div>
                                     </div>
@@ -287,70 +295,6 @@ while ($row = mysqli_fetch_array($query)) {
                                                                     </div>
                                                                 </li>
                                                                 <!-- </tr> -->
-                                                                <!-- <div id="updateordinance<?php echo $row['id_producto']; ?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content" style="height:auto">
-                                                                            <div class="modal-header">
-                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true"></span></button>
-
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form class="form-horizontal" method="post" action="../ventas/agregarAlCarrito.php">
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-3 btn-print">
-                                                                                            <div class="form-group">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-7 btn-print">
-                                                                                            <div class="form-group">
-                                                                                                <input type="hidden" class="form-control" id="id_producto" name="id_producto" value="<?php echo $row['id_producto']; ?>" required>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-1 btn-print">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-3 btn-print">
-                                                                                            <div class="form-group">
-
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-7 btn-print">
-                                                                                            <div class="form-group">
-                                                                                                <label style="color: black;">Cantidad</label>
-                                                                                                <input class="form-control" id="cantidad" name="cantidad" type="number" min="0" max="<?php echo $row['stock']; ?>" id="cantidad" placeholder="cantidad" style="width: : 100%;" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-1 btn-print">
-
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-3 btn-print">
-                                                                                            <div class="form-group">
-
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-7 btn-print">
-                                                                                            <div class="form-group">
-
-                                                                                                <button type="submit" class="btn btn-primary">Agregar</button>
-                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-1 btn-print">
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
                                                             </div>
                                                         </div>
                                                     </div>
