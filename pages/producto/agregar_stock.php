@@ -1,6 +1,6 @@
 <?php include '../layout/header.php';
 
-//$branch_id = $_GET['id'];
+
 ?>
 
 <!-- Font Awesome -->
@@ -44,7 +44,7 @@
         }
       </style>
 
-      <!-- page content -->
+
       <div class="right_col" role="main">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -53,48 +53,22 @@
             </div>
 
           </div>
-          <!--end of modal-dialog-->
+
 
         </div>
         <?php
-        if (isset($_REQUEST['id_pro'])) {
-          $id_pro = $_REQUEST['id_pro'];
+        if (isset($_REQUEST['id_producto'])) {
+          $id_producto = $_REQUEST['id_producto'];
         } else {
-          $id_pro = $_POST['id_pro'];
+          $id_producto = $_POST['id_producto'];
         }
 
 
         ?>
 
-        <?php
-
-        //         if ($guardar=="si") {
-
-        ?>
-
-        <?php
-        //       }
-        ?>
-
-        <!-- Date range -->
-
-
-
-        <!--end of modal-->
-
-
-
-
-
-
-
-
-
-
-
         <div class="box-header">
           <h3 class="box-title"> AGREGAR STOCK PRODUCTO</h3>
-        </div><!-- /.box-header -->
+        </div>
 
         <a class="btn btn-warning btn-print" href="producto.php" style="height:25%; width:15%; font-size: 12px " role="button">Regresar</a>
 
@@ -102,8 +76,8 @@
 
 
           <?php
-          // $branch=$_SESSION['branch'];
-          $query = mysqli_query($con, "select * from producto where id_pro= '$id_pro' ") or die(mysqli_error());
+
+          $query = mysqli_query($con, "SELECT * FROM producto WHERE id_producto= '$id_producto' ") or die(mysqli_error($con));
           $i = 1;
           while ($row = mysqli_fetch_array($query)) {
 
@@ -111,15 +85,7 @@
           ?>
 
             <form class="form-horizontal" method="post" action="producto_stock_add.php" enctype='multipart/form-data'>
-              <input type="hidden" class="form-control" id="id_pro" name="id_pro" value="<?php echo $id_pro; ?>" required>
-
-
-
-
-
-
-
-
+              <input type="hidden" class="form-control" id="id_producto" name="id_producto" value="<?php echo $id_producto; ?>" required>
 
               <div class="row">
                 <div class="col-md-3 btn-print">
@@ -131,7 +97,7 @@
                 <div class="col-md-4 btn-print">
                   <div class="form-group">
 
-                    <input type="text" class="form-control" id="nombre_pro" name="nombre_pro" value="<?php echo $row['nombre_pro']; ?>" readonly>
+                    <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" value="<?php echo $row['nombre']; ?>" readonly>
                   </div>
                 </div>
                 <div class="col-md-4 btn-print">
@@ -158,12 +124,7 @@
                 </div>
               </div>
 
-
-
-
-
-              <button type="submit" class="btn btn-primary">MODIFICAR</button>
-
+              <button type="submit" class="btn btn-primary">Agregar</button>
 
               <br><br><br>
               <hr>
@@ -173,26 +134,22 @@
               </div>
             </form>
 
-            <!--end of modal-->
-
           <?php } ?>
 
-        </div><!-- /.box-body -->
+        </div>
 
-      </div><!-- /.col -->
-
-
-    </div><!-- /.row -->
+      </div>
 
 
+    </div>
 
 
-  </div><!-- /.box-body -->
+
 
   </div>
-  </div>
-  </div>
-  </div>
+
+
+
   <!-- /page content -->
 
   <!-- footer content -->
@@ -233,13 +190,7 @@
       );
     });
   </script>
-  <?php
-  // }    
-  ?>
 
-
-
-  <!-- /gauge.js -->
 </body>
 
 </html>

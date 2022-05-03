@@ -1,7 +1,12 @@
-<?php include '../layout/dbcon.php'; ?>
+<?php  ?>
 
 <?php
-@session_start();
+session_start();
+include '../layout/dbcon.php';
+if (empty($_SESSION['id'])) {
+    echo "<script>document.location='../../index.php'</script>";
+    exit;
+}
 
 // unset($_SESSION['carrito']);
 $id_usuario = $_SESSION['id'];
@@ -141,6 +146,18 @@ while ($row = mysqli_fetch_array($query)) {
                     <div class="alert alert-danger">
                         <strong>Error:</strong> Algo salió mal mientras se realizaba la venta
                     </div>
+                <?php
+                } else if ($_GET["status"] === "7") {
+                ?>
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong> No existe un total actual
+                    </div>
+                <?php
+                } else if ($_GET["status"] === "8") {
+                ?>
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong> Debe existir un cliente o un alumno que realiza la compra
+                    </div>
             <?php
                 }
             }
@@ -279,6 +296,7 @@ while ($row = mysqli_fetch_array($query)) {
                                                                         <br>
                                                                         <?php echo $simbolo_moneda . ' ' . $row['precio_venta']; ?>
                                                                         <br>
+                                                                        <label for="">Cantidad: <?php echo $row['stock']; ?></label>
                                                                         <div class="container">
                                                                             <div class="row">
                                                                                 <div class="col-2" style="width: 100px; height:100px; ">

@@ -1,20 +1,14 @@
-
-
-
-<?php session_start();
-if(empty($_SESSION['id'])):
-endif;
+<?php 
+session_start();
 include('../../dist/includes/dbcon.php');
-
-$id_pro = $_POST['id_pro'];
-
-	$cantidad = $_POST['cantidad'];
-
-  $update=mysqli_query($con,"update producto set stock=stock+'$cantidad' where id_pro='$id_pro' ");
+if (empty($_SESSION['id'])) {
+  echo "<script>document.location='../../index.php'</script>";
+}
 
 
 
+$id_producto = $_POST['id_producto'];
+$cantidad = $_POST['cantidad'];
+$update = mysqli_query($con, "UPDATE producto SET stock=stock+'$cantidad' WHERE id_producto='$id_producto' ");
 
-echo "<script>document.location='../producto/producto.php'</script>";	
-
-?>
+echo "<script>document.location='../producto/producto.php'</script>";
