@@ -19,7 +19,7 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
 ?>
 <?php
 $cont_alerta = 0;
-$query = mysqli_query($con, "select * from clientes  where MONTH(fecha_nacimiento)='$mes' and DAY(fecha_nacimiento)='$dia' ") or die(mysqli_error($con));
+// $query = mysqli_query($con, "select * from clientes  where MONTH(fecha_nacimiento)='$mes' and DAY(fecha_nacimiento)='$dia' ") or die(mysqli_error($con));
 $i = 0;
 while ($row = mysqli_fetch_array($query)) {
   $cont_alerta++;
@@ -82,20 +82,20 @@ while ($row = mysqli_fetch_array($query)) {
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="../layout/img/pos.png" alt="">Ventas
-
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
-            <li><a href="../ventas/agregar_venta.php">Ventas Productos</a></li>
+            <li><a href="../ventas/agregar_venta.php">Agregar Venta</a></li>
             <!-- <li><a href="../ventas/pos.php"><i class="fa fa-money"></i> Venta productos</a></li> -->
             <!-- <li><a href="../ventas_menbrecia/pos.php"><i class="fa fa-money"></i> Venta planes</a></li> -->
             <!-- <li><a href="../venta_dia/venta_diaria.php"><i class="fa fa-money"></i> Venta entrada diaria</a></li> -->
 
           </ul>
+
+
           <?php
           if ($cont_alerta > 0) {
             # code...
-
           ?>
 
         <li class="">
@@ -108,17 +108,25 @@ while ($row = mysqli_fetch_array($query)) {
 
             <li><a href="cliente_cumple.php"><i class="fa fa-exclamation-triangle"></i> Clientes en cumpleaños</a></li>
 
-
-
           </ul>
         </li>
       <?php
           }
       ?>
+      </li>
 
+      <li class="">
+        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <img src="../layout/img/gestion-redes-sociales.jpg" alt="">Redes Sociales
+          <span class=" fa fa-angle-down"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-usermenu pull-right">
+          <li><a href="https://web.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i>WhatsApp Web</a></li>
+          <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instragram</a></li>
+          <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+          <!-- <li><a href="../venta_dia/venta_diaria.php"><i class="fa fa-money"></i> Venta entrada diaria</a></li> -->
 
-
-
+        </ul>
       </li>
 
       </ul>

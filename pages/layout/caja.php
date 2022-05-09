@@ -56,19 +56,19 @@
         </div>
 
         <div class="box-header">
-          <h3 class="box-title"> MENU</h3>
+          <h3 class="box-title"> </h3>
         </div><!-- /.box-header -->
         <div class="box-body">
 
           <div class="box-header with-border">
-            <h3 class="box-title"></h3>
+            <h3 class="box-title">Caja</h3>
           </div><!-- /.box-header -->
           <div class="box-body">
             <div class="row">
               <?php
               // $caja_cont = 0;
               // $acumulado = 0;
-              $caja_query = mysqli_query($con, "select * from caja where estado='abierto'") or die(mysqli_error($con));
+              $caja_query = mysqli_query($con, "SELECT * FROM caja WHERE estado='abierto'") or die(mysqli_error($con));
               // $i = 0;
               // while ($row_caja = mysqli_fetch_array($caja_query)) {
               //   // $caja_cont++;
@@ -106,21 +106,23 @@
                         <form method="post" action="caja_close.php" enctype="multipart/form-data" class="form-horizontal">
                           <div class="col-md-6 btn-print">
                             <div class="form-group">
-                              <label for="date">MONTO ACTUAL</label>
-
-                              <div class="input-group col-md-8">
-                                <input type="text" class="form-control pull-right" id="monto" name="monto" value="<?php echo "$acumulado"; ?>" readonly="readonly">
+                              <div class="row">
+                                <div class="input-group col-4">
+                                  <label for="date">MONTO ACTUAL</label>
+                                </div>
+                                <div class="input-group col-4">
+                                  <input type="text" class="form-control pull-right" id="monto" name="monto" value="<?php echo "$acumulado"; ?>" readonly="readonly">
+                                </div>
                               </div>
                             </div>
                           </div>
                       </div>
-
-                      <br><br>
+                      <!-- <div class="col-md-12"> -->
                       <div class="col-md-12">
-                        <div class="col-md-12">
-                          <button class="btn btn-primary btn-print" id="daterange-btn" name="guardar">Cerrar caja</button>
-                        </div>
+                        <button class="btn btn-primary btn-print" id="daterange-btn" name="guardar">Cerrar caja</button>
+                        <button class="btn btn-secundary btn-print" data-dismiss="modal">Cancelar</button>
                       </div>
+                      <!-- </div> -->
                       </form>
                     </div>
                   </div>

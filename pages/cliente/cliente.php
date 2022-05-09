@@ -52,7 +52,7 @@
 
 
 
-        <div class="container">
+        <!-- <div class="container">
           <div class="col-md-12">
             <form method="post" action="cliente.php" enctype="multipart/form-data" class="form-horizontal">
               <button class="btn btn-danger btn-print" id="filtrar_alumnos" name="filtrar_alumnos">Filtrar</button>
@@ -70,13 +70,13 @@
                       <?php } ?>
                     </select>
 
-                  </div><!-- /.input group -->
-                </div><!-- /.form group -->
+                  </div>
+                </div>
               </div>
 
             </form>
           </div>
-        </div>
+        </div> -->
 
         <!--end of modal-->
 
@@ -113,7 +113,11 @@
                   if ($_POST['profesor'] == '0') {
                     $query = mysqli_query($con, "SELECT * FROM clientes c") or die(mysqli_error($con));
                   } else {
-                    $query = mysqli_query($con, "SELECT c.id_cliente, c.nombre, c.apellido, c.dni, c.telefono, c.ruc, c.fecha_nacimiento, c.estado FROM alumnos a JOIN clientes c ON a.id_cliente = c.id_cliente JOIN profesores p ON a.id_profesor = p.id_profesor WHERE a.id_profesor = " . $_POST['profesor']) or die(mysqli_error($con));
+                    $query = mysqli_query($con, "SELECT c.id_cliente, c.nombre, c.apellido, c.dni, c.telefono, c.ruc, c.fecha_nacimiento, c.estado 
+                    FROM actividades a
+                    JOIN clientes c ON a.id_cliente = c.id_cliente
+                    JOIN profesores p ON a.id_profesor = p.id_profesor
+                    WHERE a.id_profesor = " . $_POST['profesor']) or die(mysqli_error($con));
                   }
                 } else {
                   $query = mysqli_query($con, "SELECT * FROM clientes c") or die(mysqli_error($con));

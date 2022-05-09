@@ -60,37 +60,13 @@
 
 
         <div class="box-header">
-          <h3 class="box-title"> PRODUCTO </h3>
+          <h3 class="box-title"> Producto </h3>
 
         </div><!-- /.box-header -->
         <a class="btn btn-warning btn-print" href="producto.php" style="height:25%; width:15%; font-size: 12px " role="button">Regresar</a>
-
-
-
-
-
-
-
-
-
-
         <div class="box-body">
 
-
-
-
-
-
-
-
-
-
-
-
-
           <form class="form-horizontal" method="post" action="producto_add.php" enctype='multipart/form-data'>
-
-
 
             <div class="row">
               <div class="col-md-3 btn-print">
@@ -202,7 +178,7 @@
             <div class="row">
               <div class="col-md-3 btn-print">
                 <div class="form-group">
-                  <label for="date">Stock incial</label>
+                  <label for="date">Stock inicial</label>
 
                 </div><!-- /.form group -->
               </div>
@@ -218,7 +194,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
 
 
             <div class="modal-footer">

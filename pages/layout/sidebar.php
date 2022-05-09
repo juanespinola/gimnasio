@@ -12,11 +12,13 @@ $id = $_SESSION['id'];
     <ul class="nav side-menu">
       <li><a href="../layout/inicio.php"><i class="fa fa-dashboard"></i> inicio <span class="fa fa-chevron-right"></span></a></li>
 
+
       <?php if ($tipo == "administrador" or $tipo == "empleado") {  ?>
 
         <li><a><i class="fa fa-money"></i> Ventas<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="../ventas/agregar_venta.php">Ventas Productos</a></li>
+            <li><a href="../ventas/agregar_venta.php">Agregar ventas</a></li>
+            <li><a href="../ventas/ventas.php">Ventas</a></li>
             <!-- <li><a href="../ventas_old/pos.php">Ventas productos</a></li> -->
             <!-- <li><a href="../ventas_menbrecia/pos.php">Venta planes /membresias</a></li>-->
             <!--<li><a href="../venta_dia/venta_diaria.php">Venta diaria</a></li> -->
@@ -64,6 +66,7 @@ $id = $_SESSION['id'];
           <li><a href="../profesores/profesores.php">Lista de Profesores</a></li>
           <!-- <li><a href="../deporte_profesor/deportes_profesores.php">Agregar</a></li> -->
           <li><a href="../actividades/actividades.php">Actividades</a></li>
+          <li><a href="../asistencias/asistencias.php">Asistencias</a></li>
           <li><a href="../alumnos_profesor/alumnos_profesor.php">Alumnos por Profesor</a></li>
           <li><a href="../alumnos_deporte/alumnos_deporte.php">Alumnos por Disciplinas</a></li>
         </ul>
@@ -99,7 +102,7 @@ $id = $_SESSION['id'];
 
 
 
-        <li><a href="../ventas_menbrecia/ventas_planes_lista.php"><i class="fa fa-retweet"></i>Registro Entrada de Membresia<span class="fa fa-chevron-right"></span></li></a>
+        <!-- <li><a href="../ventas_menbrecia/ventas_planes_lista.php"><i class="fa fa-retweet"></i>Registro Entrada de Membresia<span class="fa fa-chevron-right"></span></li></a> -->
 
 
       <?php

@@ -1,11 +1,3 @@
-<?php
-
-/**
- * TODO: cambiar disenho del login
- */
-
-?>
-
 <?php session_start();
 ?>
 <!DOCTYPE html>
@@ -488,7 +480,7 @@ if (isset($_POST['login'])) {
 	date_default_timezone_set("America/Asuncion");
 	$date = date("Y-m-d H:i:s");
 
-	$query = mysqli_query($con, "select * from usuario where  usuario='$user' and password='$pass' ") or die(mysqli_error($con));
+	$query = mysqli_query($con, "SELECT * FROM usuario WHERE usuario='$user' AND password='$pass' ") or die(mysqli_error($con));
 	$row = mysqli_fetch_array($query);
 	$id = $row['id'];
 	$name = $row['usuario'];

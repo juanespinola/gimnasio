@@ -1,19 +1,29 @@
 <?php
 
-/**
- * TODO: venta anulada?
- */
+session_start();
+include('../../dist/includes/dbcon.php');
+
+if (empty($_SESSION['id'])) {
+    echo "<script>document.location='../../../index.php'</script>";
+    exit;
+}
+
+if (empty($_GET['id_venta'])) {
+    echo "<script>document.location='./venta.php'</script>";
+    exit;
+}
+
+
 ?>
 
 
 <?php include '../layout/header.php'; ?>
 
-<!-- Font Awesome -->
+
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
 <link rel="stylesheet" href="../layout/dist/css/AdminLTE.min.css">
 <link rel="stylesheet" href="../layout/plugins/select2/select2.min.css">
-<!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
+
 <link rel="stylesheet" href="../layout/dist/css/skins/_all-skins.min.css">
 
 <body class="nav-md">
@@ -61,21 +71,14 @@
                     <!--end of modal-dialog-->
                 </div>
 
-                <?php
-                $fechaactual = date('Y-m-d');
-                $nuevafecha = strtotime('-1420 day', strtotime($fechaactual));
-                $nuevafecha = date('Y-m-j', $nuevafecha);
-                ?>
 
-
-                <!--end of modal-->
                 <div class="box-header">
                     <h3 class="box-title"></h3>
 
                 </div><!-- /.box-header -->
 
                 <div class="box-header">
-                    <h3 class="box-title">Lista de Ventas</h3>
+                    <h3 class="box-title">Detalles de Venta</h3>
                 </div><!-- /.box-header -->
                 <!-- <button type="button" class="btn btn-primary btn-print" data-toggle="modal" data-target="#miModal">Nuevo</button> -->
                 <div class="box-body">
@@ -83,55 +86,40 @@
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th style="width:10%">Nombre Cliente</th>
-                                <th style="width:10%">Documento</th>
-                                <th style="width:10%">Fecha de Venta</th>
-                                <th style="width:10%">Monto Total</th>
-                                <th style="width:10%">Vendedor</th>
-                                <th style="width:10%">Estado</th>
-                                <th style="width:20%" class="btn-print"> Accion </th>
+                                <th style="width:20%">Producto</th>
+                                <th style="width:20%">Descripción</th>
+                                <th style="width:20%">Cantidad</th>
+                                <th style="width:20%">Precio Unitario</th>
+                                <th style="width:20%">Precio total</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             <?php
 
                             $query = mysqli_query($con, "SELECT 
-                            v.id_venta,
-                            concat(c.nombre, ' ', c.apellido) as cliente,
-                            c.dni,
-                            v.nombre_cliente,
-                            v.documento,
-                            v.fecha_actual,
-                            v.monto_total,
-                            v.id_usuario,
-                            concat(u.nombre, ' ', u.apellido) as usuario,
-                            v.estado
-                            FROM ventas v
-                            LEFT JOIN clientes c ON v.id_cliente = c.id_cliente
-                            JOIN usuario u ON v.id_usuario = u.id
-                            ORDER BY v.id_venta DESC") or die(mysqli_error($con));
+                            p.nombre,
+                            p.descripcion,
+                            vd.cantidad,
+                            vd.precio_unitario,
+                            vd.precio_total
+                            FROM ventas_detalle vd
+                            JOIN producto p ON vd.id_producto = p.id_producto
+                            WHERE vd.id_venta = " . $_GET['id_venta']) or die(mysqli_error($con));
 
                             while ($row = mysqli_fetch_array($query)) {
-                                $id_venta = $row['id_venta'];
-                                $cliente = (isset($row['cliente'])) ? $row['cliente'] : $row['nombre_cliente'];
-                                $documento = (isset($row['dni'])) ? $row['dni'] : $row['documento'];
-
                             ?>
                                 <tr>
-                                    <td><?php echo $cliente; ?></td>
-                                    <td><?php echo $documento; ?></td>
-                                    <td><?php echo $row['fecha_actual']; ?></td>
-                                    <td><?php echo $row['monto_total']; ?></td>
-                                    <td><?php echo $row['usuario']; ?></td>
-                                    <td><?php echo $row['estado']; ?></td>
+                                    <td><?php echo $row['nombre']; ?></td>
+                                    <td><?php echo $row['descripcion']; ?></td>
+                                    <td><?php echo $row['cantidad']; ?></td>
+                                    <td><?php echo $row['precio_unitario']; ?></td>
+                                    <td><?php echo $row['precio_total']; ?></td>
                                     <td>
-                                        <a class="btn btn-success btn-print" href="./detalle_venta.php?id_venta=<?php echo $id_venta ?>" style="color:#fff;" role="button">Detalles</a>
+                                        <!-- <a class="btn btn-success btn-print" href="./detalle_venta.php?<?php echo $id_venta ?>" style="color:#fff;" role="button">Detalles</a> -->
                                         <!-- <a class="btn btn-danger btn-print" href="<?php echo "eliminar_gastos.php?id_gasto=$id_gasto&cantidad=$cantidad"; ?>" role="button">Anular</a> -->
                                     </td>
                                 </tr>
-
-
-
                             <?php } ?>
                         </tbody>
 

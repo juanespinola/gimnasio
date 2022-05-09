@@ -49,7 +49,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col-md-12 col-lg-10">
                     <div class="wrap d-md-flex">
                         <div class="img" style="background: url(./cronos_logo.jpg) no-repeat 0px -400px;"> a</div>
-                        <!-- <div class="login-wrap p-4 p-md-5">
+                        <div class="login-wrap p-4 p-md-5">
                             <div class="w3l-login-form">
                                 <h2>Login </h2>
                                 <form action="login.php" method="post">
@@ -73,7 +73,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <button type="submit" name="login">Login</button>
                                 </form>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

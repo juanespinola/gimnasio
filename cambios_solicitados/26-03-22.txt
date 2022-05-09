@@ -1,7 +1,7 @@
 nuevas implemanetaciones
 - cada profesor tenga un apartado de alumnos (x)
 - cada alumno tenga un apartado del deporte que entrena (x)
-- cada profesor saca un porcentaje de ganancias en base a los alumnos, reporte 
+- cada profesor saca un porcentaje de ganancias en base a los alumnos, reporte (x?)
 - un apartado de horarios para anotar las clases de los alumnos (x)
 - apartado de disciplinas que debemos colocar (x)
 - cambiar de imagenes en el medio (imagenes de deportes)

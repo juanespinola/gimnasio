@@ -1,19 +1,29 @@
 <?php
 
-/**
- * TODO: venta anulada?
- */
+session_start();
+include('../../dist/includes/dbcon.php');
+
+if (empty($_SESSION['id'])) {
+    echo "<script>document.location='../../../index.php'</script>";
+    exit;
+}
+
+if (empty($_GET['id_actividad'])) {
+    echo "<script>document.location='./asistencias.php'</script>";
+    exit;
+}
+
+
 ?>
 
 
 <?php include '../layout/header.php'; ?>
 
-<!-- Font Awesome -->
+
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
 <link rel="stylesheet" href="../layout/dist/css/AdminLTE.min.css">
 <link rel="stylesheet" href="../layout/plugins/select2/select2.min.css">
-<!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
+
 <link rel="stylesheet" href="../layout/dist/css/skins/_all-skins.min.css">
 
 <body class="nav-md">
@@ -61,77 +71,65 @@
                     <!--end of modal-dialog-->
                 </div>
 
-                <?php
-                $fechaactual = date('Y-m-d');
-                $nuevafecha = strtotime('-1420 day', strtotime($fechaactual));
-                $nuevafecha = date('Y-m-j', $nuevafecha);
-                ?>
 
-
-                <!--end of modal-->
                 <div class="box-header">
                     <h3 class="box-title"></h3>
 
-                </div><!-- /.box-header -->
-
+                </div>
                 <div class="box-header">
-                    <h3 class="box-title">Lista de Ventas</h3>
-                </div><!-- /.box-header -->
-                <!-- <button type="button" class="btn btn-primary btn-print" data-toggle="modal" data-target="#miModal">Nuevo</button> -->
+                    <?php
+                    $query = mysqli_query($con, "SELECT 
+                        concat(c.nombre, ' ', c.apellido) as alumno
+                        FROM actividades a 
+                        JOIN clientes c ON a.id_cliente = c.id_cliente
+                        WHERE a.id_actividad = " . $_GET['id_actividad']) or die(mysqli_error($con));
+                    while ($row = mysqli_fetch_array($query)) {
+
+                    ?>
+                        <h3 class="box-title">Detalle de Asistencia <?php echo $row['alumno']; ?></h3>
+                    <?php } ?>
+                </div>
+                <a type="button" class="btn btn-primary btn-print" href="./asistencias.php">Regresar</a>
                 <div class="box-body">
 
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th style="width:10%">Nombre Cliente</th>
-                                <th style="width:10%">Documento</th>
-                                <th style="width:10%">Fecha de Venta</th>
-                                <th style="width:10%">Monto Total</th>
-                                <th style="width:10%">Vendedor</th>
-                                <th style="width:10%">Estado</th>
-                                <th style="width:20%" class="btn-print"> Accion </th>
+                                <th style="width:20%">Fecha Asistencia</th>
+                                <th style="width:20%">Horario</th>
+                                <th style="width:20%">Profesor</th>
+                                <th style="width:20%">Deporte</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
 
                             $query = mysqli_query($con, "SELECT 
-                            v.id_venta,
-                            concat(c.nombre, ' ', c.apellido) as cliente,
-                            c.dni,
-                            v.nombre_cliente,
-                            v.documento,
-                            v.fecha_actual,
-                            v.monto_total,
-                            v.id_usuario,
-                            concat(u.nombre, ' ', u.apellido) as usuario,
-                            v.estado
-                            FROM ventas v
-                            LEFT JOIN clientes c ON v.id_cliente = c.id_cliente
-                            JOIN usuario u ON v.id_usuario = u.id
-                            ORDER BY v.id_venta DESC") or die(mysqli_error($con));
+                            ac.fecha_asistencia,
+                            concat(a.horario_inicio, ' - ', a.horario_final) as horario,
+                            concat(p.nombre, ' ', p.apellido) as profesor,
+                            d.descripcion as deporte,
+                            concat(c.nombre, ' ', c.apellido) as alumno
+                            FROM asistencia_clientes ac
+                            JOIN actividades a ON ac.id_actividad = a.id_actividad
+                            JOIN profesores p ON a.id_profesor = p.id_profesor
+                            JOIN deportes d ON a.id_deporte = d.id_deporte
+                            JOIN clientes c ON a.id_cliente = c.id_cliente
+                            WHERE ac.id_actividad = " . $_GET['id_actividad']) or die(mysqli_error($con));
 
                             while ($row = mysqli_fetch_array($query)) {
-                                $id_venta = $row['id_venta'];
-                                $cliente = (isset($row['cliente'])) ? $row['cliente'] : $row['nombre_cliente'];
-                                $documento = (isset($row['dni'])) ? $row['dni'] : $row['documento'];
-
+                                $alumno = $row['alumno'];
                             ?>
                                 <tr>
-                                    <td><?php echo $cliente; ?></td>
-                                    <td><?php echo $documento; ?></td>
-                                    <td><?php echo $row['fecha_actual']; ?></td>
-                                    <td><?php echo $row['monto_total']; ?></td>
-                                    <td><?php echo $row['usuario']; ?></td>
-                                    <td><?php echo $row['estado']; ?></td>
-                                    <td>
-                                        <a class="btn btn-success btn-print" href="./detalle_venta.php?id_venta=<?php echo $id_venta ?>" style="color:#fff;" role="button">Detalles</a>
-                                        <!-- <a class="btn btn-danger btn-print" href="<?php echo "eliminar_gastos.php?id_gasto=$id_gasto&cantidad=$cantidad"; ?>" role="button">Anular</a> -->
-                                    </td>
+                                    <td><?php echo $row['fecha_asistencia']; ?></td>
+                                    <td><?php echo $row['horario']; ?></td>
+                                    <td><?php echo $row['profesor']; ?></td>
+                                    <td><?php echo $row['deporte']; ?></td>
+                                    <!-- <td> -->
+                                    <!-- <a class="btn btn-success btn-print" href="./detalle_venta.php?<?php echo $id_venta ?>" style="color:#fff;" role="button">Detalles</a> -->
+                                    <!-- <a class="btn btn-danger btn-print" href="<?php echo "eliminar_gastos.php?id_gasto=$id_gasto&cantidad=$cantidad"; ?>" role="button">Anular</a> -->
+                                    <!-- </td> -->
                                 </tr>
-
-
-
                             <?php } ?>
                         </tbody>
 

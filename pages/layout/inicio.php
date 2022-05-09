@@ -53,30 +53,27 @@ unset($_SESSION["carrito"]);
             </div>
 
           </div>
-          <!--end of modal-dialog-->
+
         </div>
-        <!--end of modal-->
+
         <div class="box-body">
-          <!-- Date range -->
 
         </div>
 
         <div class="box-header">
           <h3 class="box-title">Bienvenido!</h3>
-        </div><!-- /.box-header -->
+        </div>
         <div class="box-body">
 
           <div class="box-header with-border">
             <h3 class="box-title"></h3>
-          </div><!-- /.box-header -->
+          </div>
           <div class="box-body">
             <div class="row">
 
               <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
                 <div class="small-box bg-aqua">
                   <div class="inner">
-
                     <h4>
                       <?php
                       $num = 0;
@@ -102,7 +99,7 @@ unset($_SESSION["carrito"]);
                     <h4>
                       <?php
                       $num = 0;
-                      $query = mysqli_query($con, "select * from producto ") or die(mysqli_error($con));
+                      $query = mysqli_query($con, "SELECT * FROM producto ") or die(mysqli_error($con));
                       $i = 0;
                       while ($row = mysqli_fetch_array($query)) {
                         $num++;
@@ -112,7 +109,7 @@ unset($_SESSION["carrito"]);
                     </h4>
                     <p>Productos</p>
                   </div>
-                  <div class="icon"><img height="80" width="80" src="img/productos.png">
+                  <div class="icon"><img height="80" width="80" src="img/mancuerna_1.png">
                     <i class=""></i>
                   </div>
                   <?php echo ($num > 0) ? '<a href="../producto/producto.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
@@ -136,14 +133,14 @@ unset($_SESSION["carrito"]);
                       <h4>
                         <?php
                         $num = 0;
-                        $select = mysqli_query($con, "SELECT * FROM usuario ") or die(mysqli_error($con));
+                        $select = mysqli_query($con, "SELECT * FROM usuario WHERE estado = 'activo'") or die(mysqli_error($con));
                         $num = mysqli_num_rows($select);
                         echo $num;
                         ?>
                       </h4>
-                      <p>usuarios</p>
+                      <p>Usuarios</p>
                     </div>
-                    <div class="icon"><img height="80" width="80" src="img/comittee.png">
+                    <div class="icon"><img height="80" width="80" src="img/usuarios.png">
                       <i class=""></i>
                     </div>
                     <?php echo ($num > 0) ? '<a href="../usuario/usuario.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
@@ -173,7 +170,7 @@ unset($_SESSION["carrito"]);
                         echo $num;
                         ?>
                       </h4>
-                      <p>Configuracion empresa</p>
+                      <p>Configuracion</p>
                     </div>
                     <div class="icon"><img height="80" width="80" src="img/setting.png">
                       <i class=""></i>
@@ -190,7 +187,6 @@ unset($_SESSION["carrito"]);
 
 
               <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
                 <div class="small-box bg-green">
                   <div class="inner">
 
@@ -219,21 +215,21 @@ unset($_SESSION["carrito"]);
 
 
               <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+
                 <div class="small-box bg-purple">
                   <div class="inner">
 
                     <h4>
                       <?php
                       $num = 0;
-                      $select = mysqli_query($con, "SELECT * FROM clientes ") or die(mysqli_error($con));
+                      $select = mysqli_query($con, "SELECT * FROM clientes WHERE estado = 'activo' ") or die(mysqli_error($con));
                       $num = mysqli_num_rows($select);
                       echo $num;
                       ?>
                     </h4>
                     <p>Clientes</p>
                   </div>
-                  <div class="icon"><img height="80" width="80" src="img/school.png">
+                  <div class="icon"><img height="80" width="80" src="img/clientes.png">
                     <i class=""></i>
                   </div>
                   <?php echo ($num > 0) ? '<a href="../cliente/cliente.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
@@ -242,8 +238,8 @@ unset($_SESSION["carrito"]);
 
 
 
-              <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+              <!-- <div class="col-lg-3 col-xs-6">
+                
                 <div class="small-box bg-aqua">
                   <div class="inner">
 
@@ -262,12 +258,12 @@ unset($_SESSION["carrito"]);
                   </div>
                   <?php echo ($num > 0) ? '<a href="../ventas_menbrecia/ventas_planes_lista.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
                 </div>
-              </div>
+              </div> -->
 
 
               <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-red">
+
+                <div class="small-box bg-aqua">
                   <div class="inner">
 
                     <h4>
@@ -284,52 +280,70 @@ unset($_SESSION["carrito"]);
                     </h4>
                     <p>Ventas productos</p>
                   </div>
-                  <div class="icon"><img height="80" width="80" src="img/fair.png">
+                  <div class="icon"><img height="80" width="80" src="img/ventas_productos.png">
                     <i class=""></i>
                   </div>
-                  <?php echo ($num > 0) ? '<a href="../ventas/pos.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
+                  <?php echo ($num > 0) ? '<a href="../ventas/ventas.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
                 </div>
               </div>
 
-            </div>
-            <!--row-->
-
-
-
-
-          </div><!-- /.col (right) -->
-
-
-
-          <div class="box-body">
-            <div class="row">
               <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-purple">
+                <div class="small-box bg-orange">
                   <div class="inner">
 
                     <h4>
                       <?php
 
                       $num = 1;
-                      $query = mysqli_query($con, "select * from venta_diaria ") or die(mysqli_error($con));
-                      $i = 0;
-                      while ($row = mysqli_fetch_array($query)) {
-                        $num++;
-                      }
+
                       echo $num;
                       ?>
                     </h4>
-                    <p>Ventas diaria</p>
+                    <p>Mensajes</p>
                   </div>
-                  <div class="icon"><img height="80" width="80" src="img/fair.png">
+                  <div class="icon"><img height="80" width="80" src="img/mensaje.png">
                     <i class=""></i>
                   </div>
-                  <?php echo ($num > 0) ? '<a href="../venta_dia/venta_diaria.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
+                  <?php echo ($num > 0) ? '<a href="../mensaje/mensaje.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
                 </div>
               </div>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- <div class="box-body">
+            <div class="row">
               <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+             
+          <div class="small-box bg-purple">
+            <div class="inner">
+
+              <h4>
+                <?php
+
+                $num = 1;
+                $query = mysqli_query($con, "select * from venta_diaria ") or die(mysqli_error($con));
+                $i = 0;
+                while ($row = mysqli_fetch_array($query)) {
+                  $num++;
+                }
+                echo $num;
+                ?>
+              </h4>
+              <p>Vender</p>
+            </div>
+            <div class="icon"><img height="80" width="80" src="img/fair.png">
+              <i class=""></i>
+            </div>
+            <?php echo ($num > 0) ? '<a href="../venta_dia/venta_diaria.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
+          </div>
+        </div> -->
+
+          <!-- <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-orange">
                   <div class="inner">
 
@@ -352,53 +366,20 @@ unset($_SESSION["carrito"]);
                   </div>
                   <?php echo ($num > 0) ? '<a href="../ventas_menbrecia/pos.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
                 </div>
-              </div>
-
-              <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-green">
-                  <div class="inner">
-
-                    <h4>
-                      <?php
-
-                      $num = 1;
-
-                      echo $num;
-                      ?>
-                    </h4>
-                    <p>Mensajes</p>
-                  </div>
-                  <div class="icon"><img height="80" width="80" src="img/message.png">
-                    <i class=""></i>
-                  </div>
-                  <?php echo ($num > 0) ? '<a href="../mensaje/mensaje.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
-                </div>
-              </div>
-            </div>
-
-          </div>
+              </div> -->
 
 
-        </div><!-- /.box-body -->
+        </div>
 
-      </div><!-- /.col -->
-
-
-    </div><!-- /.row -->
+      </div>
 
 
-
-
-  </div><!-- /.box-body -->
+    </div>
 
   </div>
-  </div>
-  </div>
-  </div>
-  <!-- /page content -->
 
-  <!-- footer content -->
+
+
   <footer>
     <div class="pull-right">
       <a href="">Cronos Academy</a>

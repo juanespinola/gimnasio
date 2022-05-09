@@ -1,9 +1,3 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <title>Login - <?php include('dist/includes/title.php'); ?></title>
+    <link rel="icon" href="./cronos_logo.jpg">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -30,7 +25,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="keywords" content="sistema de parqueamiento, parqueo,codigo fuente parqueo, sistema de parqueamiento con codigo fuente" />
     <!-- /meta tags -->
     <!-- custom style sheet -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style_login.css" rel="stylesheet" type="text/css" />
+    <link href="css/util.css" rel="stylesheet" type="text/css" />
     <!-- /custom style sheet -->
     <!-- fontawesome css -->
     <link href="css/fontawesome-all.css" rel="stylesheet" />
@@ -46,49 +42,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <body>
-    <CENTER>
 
-        <div class="pull-center">
-            <a href="">Cronos Academy</a>
-            <img src="" alt="">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" action="login.php" method="post">
+                    <span class="login100-form-title p-b-43">Ingresar</span>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="username" id="username" required="required">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Usuario</span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="password" id="password" required="required">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+                    <!-- <div class="flex-sb-m w-full p-t-3 p-b-32">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+                                Remember me
+                            </label>
+                        </div>
+                        <div>
+                            <a href="#" class="txt1">
+                                Forgot Password?
+                            </a>
+                        </div>
+                    </div> -->
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" name="login">Login</button>
+                    </div>
+                    <!-- <div class="text-center p-t-46 p-b-20">
+                        <span class="txt2">
+                            or sign up using
+                        </span>
+                    </div> -->
+                    <div class="login100-form-social flex-c-m">
+                        <!-- <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a> -->
+                    </div>
+                </form>
+
+                <div class="login100-more" style="background-image: url('./cronos_logo.jpg');">
+                </div>
+            </div>
         </div>
-        <div class="clearfix"></div>
-
-    </CENTER>
-    <div class=" w3l-login-form">
-        <h2>Login </h2>
-        <form action="login.php" method="post">
-
-            <div class=" w3l-form-group">
-                <label>Usuario:</label>
-                <div class="group">
-                    <i class="fas fa-user"></i>
-                    <input type="text" class="form-control" placeholder="Usuario" name="username" value="admin" required="required" />
-                </div>
-            </div>
-            <div class=" w3l-form-group">
-                <label>Password:</label>
-                <div class="group">
-                    <i class="fas fa-unlock"></i>
-                    <input type="password" class="form-control" placeholder="Password" name="password" value="admin" required="required" />
-                </div>
-            </div>
-            <div class="forgot">
-                <p><input type="checkbox">Recordar password</p>
-            </div>
-            <button type="submit" name="login">Login</button>
-        </form>
     </div>
-
-    <CENTER>
-        <footer>
-            <div class="pull-right">
-                <a href="">Cronos Academy</a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
-    </CENTER>
-
 
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
@@ -101,6 +106,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
+    <script src="dist/js/javascript.js"></script>
 </body>
 
 </html>
