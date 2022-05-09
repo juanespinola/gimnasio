@@ -1,7 +1,18 @@
 <?php
 session_start();
 include('../../dist/includes/dbcon.php');
-//$branch=$_SESSION['branch'];
+
+$query = mysqli_query($con, "SELECT * FROM caja WHERE estado = 'abierto'") or die(mysqli_error($con));
+
+if ($query->num_rows == 0) {
+    echo "<script type='text/javascript'>alert('Debe contar con una caja activa!');</script>";
+    echo "<script>document.location='../layout/inicio.php'</script>";
+    exit;
+}
+
+
+
+
 $fecha = $_POST['fecha'];
 $descripcion = $_POST['descripcion'];
 

@@ -1,7 +1,10 @@
 <?php
+date_default_timezone_set("America/Asuncion");
 $fechaactual = date('Y-m-d');
 $mes = date('m');
 $dia = date('d');
+
+
 ?>
 
 
@@ -9,7 +12,7 @@ $dia = date('d');
 $caja_cont = 0;
 $acumulado = 0;
 
-$caja_query = mysqli_query($con, "select * from caja where estado='abierto' ") or die(mysqli_error($con));
+$caja_query = mysqli_query($con, "SELECT * FROM caja WHERE estado='abierto' ") or die(mysqli_error($con));
 $i = 0;
 while ($row_caja = mysqli_fetch_array($caja_query)) {
   $caja_cont++;
@@ -17,14 +20,7 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
 }
 
 ?>
-<?php
-$cont_alerta = 0;
-// $query = mysqli_query($con, "select * from clientes  where MONTH(fecha_nacimiento)='$mes' and DAY(fecha_nacimiento)='$dia' ") or die(mysqli_error($con));
-$i = 0;
-while ($row = mysqli_fetch_array($query)) {
-  $cont_alerta++;
-}
-?>
+
 
 <div class="top_nav">
   <div class="nav_menu">
@@ -94,23 +90,28 @@ while ($row = mysqli_fetch_array($query)) {
 
 
           <?php
-          if ($cont_alerta > 0) {
-            # code...
+          $cumpleanos = mysqli_query($con, "SELECT * FROM clientes  WHERE MONTH(fecha_nacimiento)='$mes' and DAY(fecha_nacimiento)='$dia' ") or die(mysqli_error($con));
+          if ($cumpleanos->num_rows > 0) {
+
+
           ?>
 
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="img/alerta.png" alt=""><?php echo ' ' . $mes . ''; ?> <?php echo 'alerta clientes con cumpleaños ( ' . $cont_alerta . ' )'; ?>
+            <img src="../layout/img/cumpleanos.png" alt=""><?php echo 'Cumpleaños ( ' . $cumpleanos->num_rows . ' )'; ?>
 
-            <span class=" fa fa-angle-down"></span>
+            <span class="fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
-
-            <li><a href="cliente_cumple.php"><i class="fa fa-exclamation-triangle"></i> Clientes en cumpleaños</a></li>
+            <?php while ($cumpleanero = mysqli_fetch_array($cumpleanos)) { ?>
+              <li><a><?php echo $cumpleanero['nombre']; ?> <?php echo $cumpleanero['apellido']; ?> </a></li>
+            <?php }  ?>
+            <!-- <li><a href="cliente_cumple.php"><i class="fa fa-exclamation-triangle"></i> Clientes en cumpleaños</a></li> -->
 
           </ul>
         </li>
       <?php
+
           }
       ?>
       </li>

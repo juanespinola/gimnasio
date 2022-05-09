@@ -5,6 +5,17 @@ endif;
 
 include('../../dist/includes/dbcon.php');
 
+
+$query = mysqli_query($con, "SELECT * FROM caja WHERE estado = 'abierto'") or die(mysqli_error($con));
+
+if ($query->num_rows == 0) {
+  echo "<script type='text/javascript'>alert('Debe contar con una caja activa!');</script>";
+  echo "<script>document.location='../layout/inicio.php'</script>";
+  exit;
+}
+
+
+
 if (isset($_REQUEST['id_gasto'])) {
   $id_gasto = $_REQUEST['id_gasto'];
 } else {
@@ -17,8 +28,8 @@ if (isset($_REQUEST['cantidad'])) {
 }
 
 
-$update = mysqli_query($con, "update caja set monto=monto+'$cantidad' where estado='abierto'");
+$update = mysqli_query($con, "UPDATE caja SET monto=monto+'$cantidad' WHERE estado='abierto'");
 
-mysqli_query($con, "delete from gastos where id_gastos='$id_gasto'") or die(mysqli_error($con));
+mysqli_query($con, "DELETE FROM gastos WHERE id_gastos='$id_gasto'") or die(mysqli_error($con));
 echo "<script type='text/javascript'>alert('Eliminado correctamente!');</script>";
 echo "<script>document.location='gastos.php'</script>";

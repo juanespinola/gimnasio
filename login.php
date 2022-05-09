@@ -492,6 +492,9 @@ if (isset($_POST['login'])) {
 		$_SESSION['id'] = $id;
 		$_SESSION['name'] = $name;
 
+		$_SESSION['id_sucursal'] = $row['id_sucursal'];
+		$_SESSION['id_sucursal'] = $row['id_sucursal'];
+
 		$remarks = "ha iniciado sesión en el sistema en ";
 		echo "<script type='text/javascript'>document.location='pages/layout/inicio.php'</script>";
 	}

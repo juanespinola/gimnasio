@@ -168,6 +168,15 @@ $id = $_SESSION['id'];
       <?php
       }
       ?>
+      <?php if ($tipo == "administrador") { ?>
+        <li><a><i class="fa fa-bar-chart"></i>Sucursales<span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li><a href="../sucursales/sucursales.php">Sucursales</a></li>
+            <li><a href="">Agregar Sucursal</a></li>
+            <li><a href="">Agregar Usuario a Sucursal</a></li>
+          </ul>
+        </li>
+      <?php  } ?>
 
       <li><a><i class="fa fa-gear"></i>Configuracion<span class="fa fa-chevron-s"></span></a>
         <ul class="nav child_menu">

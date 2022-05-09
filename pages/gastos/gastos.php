@@ -7,10 +7,18 @@
  */
 
 ?>
-
-
 <?php include '../layout/header.php'; ?>
 
+<?php
+$query = mysqli_query($con, "SELECT * FROM caja WHERE estado = 'abierto'") or die(mysqli_error($con));
+
+if ($query->num_rows == 0) {
+  echo "<script type='text/javascript'>alert('Debe contar con una caja activa!');</script>";
+  echo "<script>document.location='../layout/inicio.php'</script>";
+  exit;
+}
+
+?>
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
 <link rel="stylesheet" href="../layout/dist/css/AdminLTE.min.css">
