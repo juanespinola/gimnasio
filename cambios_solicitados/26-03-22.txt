@@ -4,10 +4,10 @@ nuevas implemanetaciones
 - cada profesor saca un porcentaje de ganancias en base a los alumnos, reporte (x?)
 - un apartado de horarios para anotar las clases de los alumnos (x)
 - apartado de disciplinas que debemos colocar (x)
-- cambiar de imagenes en el medio (imagenes de deportes)
+- cambiar de imagenes en el medio (imagenes de deportes) (x)
 - que paso con las ventas? (x)
 - mejorar el apartado de carrito (x)
-- seccionar la caja por sucursales
+- seccionar la caja por sucursales (x)
 - despues de un periodo de tiempo, el alumno debe volverse inactivo si es que no viene donde se le enviara un mensaje de texto indicando que vuelva
-- apartado de redes sociales, estan deben abrirse en una pestanha nueva
+- apartado de redes sociales, estan deben abrirse en una pestanha nueva (x)
 - filtros de estudiantes, profesores o alumnos (x)

@@ -63,16 +63,7 @@
           <h3 class="box-title"> Registrar Usuario </h3>
 
         </div><!-- /.box-header -->
-        <a class="btn btn-warning btn-print" href="usuario.php" style="height:25%; width:15%; font-size: 12px " role="button">Regresar</a>
-
-
-
-
-
-
-
-
-
+        <a class="btn btn-warning btn-print" href="usuario.php" role="button">Regresar</a>
 
         <div class="box-body">
           <form class="form-horizontal" method="post" action="usuario_add.php" enctype='multipart/form-data'>
@@ -213,8 +204,8 @@
                 <div class="form-group">
                   <select class="form-control select2" name="tipo" required>
                     <option value="">Seleccione Opcion</option>
-                    <option value="administrador">administrador</option>
-                    <option value="empleado">empleado</option>
+                    <option value="administrador">Administrador</option>
+                    <option value="empleado">Empleado</option>
 
 
                   </select>
@@ -224,12 +215,13 @@
 
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-3 btn-print">
                 <div class="form-group">
                   <label for="date">Correo</label>
 
-                </div><!-- /.form group -->
+                </div>
               </div>
               <div class="col-md-4 btn-print">
                 <div class="form-group">
@@ -240,6 +232,28 @@
 
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-md-3 btn-print">
+                <div class="form-group">
+                  <label for="date">Correo</label>
+                  <select class="form-control select2" name="tipo" required>
+                    <option value="">Seleccione Opcion</option>
+                    <option value="administrador">Administrador</option>
+                    <option value="empleado">Empleado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="correo" name="correo" placeholder="correo" required>
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+
+              </div>
+            </div>
+
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
             <div class="modal-footer">
 

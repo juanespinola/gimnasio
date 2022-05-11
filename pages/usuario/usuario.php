@@ -85,15 +85,16 @@
                   <th>Usuario</th>
                   <th>Tipo Usuario</th>
                   <th>Correo</th>
-
-
+                  <th>Sucursal</th>
                   <th class="btn-print"> Accion </th>
                 </tr>
               </thead>
               <tbody>
                 <?php
                 // $branch=$_SESSION['branch'];
-                $query = mysqli_query($con, "select * from usuario ") or die(mysqli_error($con));
+                $query = mysqli_query($con, "SELECT * 
+                FROM usuario u 
+                JOIN sucursales s ON u.id_sucursal = s.id_sucursal") or die(mysqli_error($con));
                 $i = 0;
                 while ($row = mysqli_fetch_array($query)) {
                   $cid = $row['id'];
@@ -101,14 +102,16 @@
                 ?>
                   <tr>
                     <td><?php echo $cid; ?></td>
-                    <td><IMG src="subir_us/<?php echo $row['imagen']; ?>" style="height:50PX" alt="" /></td>
+                    <td><img src="subir_us/<?php echo $row['imagen']; ?>" style="height:50px" alt="" /></td>
                     <td><?php echo $row['nombre'] . '  ' . $row['apellido']; ?></td>
                     <td><?php echo $row['telefono']; ?></td>
                     <td><?php echo $row['usuario']; ?></td>
                     <td><?php echo $row['tipo']; ?></td>
                     <td><?php echo $row['correo']; ?></td>
+                    <td><?php echo $row['descripcion']; ?></td>
+
                     <td>
-                      <a class="small-box-footer btn-print" title="Eliminar Usuario" href="<?php echo "eliminar_usuario.php?cid=$cid"; ?>"><i class="glyphicon glyphicon-remove" onClick="return confirm('¿Está seguro de que quieres eliminar usuario??');"></i></a>
+                      <a class="small-box-footer btn-print" title="Eliminar Usuario" href="<?php echo "eliminar_usuario.php?cid=$cid"; ?>"><i class="glyphicon glyphicon-remove" onClick="return confirm('¿Está seguro de que quieres eliminar usuario?');"></i></a>
                       <a class="small-box-footer btn-print" title="Cambiar Contrasena" href="<?php echo "editar_password.php?cid=$cid"; ?>"><i class="glyphicon glyphicon-eye-open"></i></a>
                       <a class="small-box-footer btn-print" title="Editar Usuario" href="<?php echo "editar_usuario.php?cid=$cid"; ?>"><i class="glyphicon glyphicon-edit text-blue"></i></a>
                     </td>

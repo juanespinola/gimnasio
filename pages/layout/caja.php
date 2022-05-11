@@ -68,7 +68,9 @@
               <?php
               // $caja_cont = 0;
               // $acumulado = 0;
-              $caja_query = mysqli_query($con, "SELECT * FROM caja WHERE estado='abierto'") or die(mysqli_error($con));
+              $id_empresa = $_SESSION['id_empresa'];
+              $id_sucursal = $_SESSION['id_sucursal'];
+              $caja_query = mysqli_query($con, "SELECT * FROM caja WHERE estado='abierto' AND id_empresa = '$id_empresa' AND id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
               // $i = 0;
               // while ($row_caja = mysqli_fetch_array($caja_query)) {
               //   // $caja_cont++;
@@ -163,7 +165,7 @@
 
 
             <div class="box-header">
-              <h3 class="box-title"> LISTA DE CAJAS</h3>
+              <h3 class="box-title"> Lista de Cajas</h3>
             </div>
             <div class="box-body">
 
@@ -179,7 +181,7 @@
                 </thead>
                 <tbody>
                   <?php
-                  $query = mysqli_query($con, "select * from caja ORDER BY id_caja ASC;") or die(mysqli_error($con));
+                  $query = mysqli_query($con, "SELECT * FROM caja WHERE id_empresa = '$id_empresa' AND id_sucursal = '$id_sucursal' ORDER BY id_caja ASC;") or die(mysqli_error($con));
                   $i = 0;
                   while ($row = mysqli_fetch_array($query)) {
                   ?>
