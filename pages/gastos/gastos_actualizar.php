@@ -24,11 +24,11 @@ $descripcion = $_POST['descripcion'];
 $cantidad = $_POST['cantidad'];
 $cantidad_antigua = $_POST['cantidad_antigua'];
 
-$update = mysqli_query($con, "update caja set monto=monto+'$cantidad_antigua' where estado='abierto' ");
+$update = mysqli_query($con, "UPDATE caja SET monto=monto+'$cantidad_antigua' WHERE estado='abierto' ");
 
-$update = mysqli_query($con, "update caja set monto=monto-'$cantidad' where estado='abierto' ");
+$update = mysqli_query($con, "UPDATE caja SET monto=monto-'$cantidad' WHERE estado='abierto' ");
 
-mysqli_query($con, "update gastos set fecha='$fecha',descripcion='$descripcion',cantidad='$cantidad' where id_gastos='$id_gastos'") or die(mysqli_error($con));
+mysqli_query($con, "UPDATE gastos SET fecha='$fecha',descripcion='$descripcion',cantidad='$cantidad' WHERE id_gastos='$id_gastos'") or die(mysqli_error($con));
 
 echo "<script type='text/javascript'>alert('gastos actualizado correctamente!');</script>";
 echo "<script>document.location='gastos.php'</script>";

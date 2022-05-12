@@ -10,15 +10,27 @@ $password2 = $_POST['password2'];
 $tipo = $_POST['tipo'];
 $telefono = $_POST['telefono'];
 $correo = $_POST['correo'];
+$id_sucursal = $_POST['sucursal'];
 $total = 0;
 
+// echo '<pre>';
+// print_r($_POST);
+// echo '</pre>';
+
 if ($tipo == "") {
-	echo "Seleccione un tipo de usuario";
+	echo "<script type='text/javascript'>alert('Seleccione un tipo de Usuario!');</script>";
+	echo "<script>document.location='usuario.php'</script>";
+	exit;
+}
+
+if ($id_sucursal == 0) {
+	echo "<script type='text/javascript'>alert('Elija una sucursal!');</script>";
+	echo "<script>document.location='usuario.php'</script>";
 	exit;
 }
 
 if ($password == $password2) {
-	$query2 = mysqli_query($con, "select * from usuario where usuario='$usuario'") or die(mysqli_error($con));
+	$query2 = mysqli_query($con, "SELECT * FROM usuario WHERE usuario='$usuario'") or die(mysqli_error($con));
 	$count = mysqli_num_rows($query2);
 
 	if ($count > 0) {
@@ -69,8 +81,8 @@ if ($password == $password2) {
 				///finzalizo encriptacion
 
 
-				mysqli_query($con, "INSERT INTO usuario(usuario,password,imagen,tipo,nombre,apellido,telefono,correo,estado)
-				VALUES('$usuario','$pass','$img','$tipo','$nombre','$apellido','$telefono','$correo','activo')") or die(mysqli_error($con));
+				mysqli_query($con, "INSERT INTO usuario(usuario, password, imagen, tipo, nombre, apellido, telefono, correo, estado, id_sucursal)
+				VALUES('$usuario','$pass','$img','$tipo','$nombre','$apellido','$telefono','$correo','activo', '$id_sucursal')") or die(mysqli_error($con));
 
 
 				echo "<script>document.location='usuario.php'</script>";
@@ -83,14 +95,12 @@ if ($password == $password2) {
 			$pass = $salt . $pass;
 
 
-			mysqli_query($con, "INSERT INTO usuario(usuario,password,imagen,tipo,nombre,apellido,telefono,correo,estado)
-				VALUES('$usuario','$pass','','$tipo','$nombre','$apellido','$telefono','$correo','activo')") or die(mysqli_error($con));
-
+			mysqli_query($con, "INSERT INTO usuario(usuario, password, imagen, tipo, nombre, apellido, telefono, correo, estado, id_sucursal)
+				VALUES('$usuario','$pass','$img','$tipo','$nombre','$apellido','$telefono','$correo','activo', '$id_sucursal')") or die(mysqli_error($con));
 
 			echo "<script>document.location='usuario.php'</script>";
 		}
 	}
 } else {
 	echo "<script type='text/javascript'>alert('Error Las contraseñas no coinciden registre de nuevo!');</script>";
-	//		echo "<script>document.location='usuario.php'</script>";
 }

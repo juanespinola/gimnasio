@@ -63,7 +63,7 @@
           <h3 class="box-title"> Producto </h3>
 
         </div><!-- /.box-header -->
-        <a class="btn btn-warning btn-print" href="producto.php" style="height:25%; width:15%; font-size: 12px " role="button">Regresar</a>
+        <a class="btn btn-warning btn-print" href="producto.php" role="button">Regresar</a>
         <div class="box-body">
 
           <form class="form-horizontal" method="post" action="producto_add.php" enctype='multipart/form-data'>

@@ -56,18 +56,29 @@ if (!empty($_FILES['imagen']['name'])) {
 
 
 
-		mysqli_query($con, "update producto set nombre_pro='$nombre_pro',imagen='$img',descripcion='$descripcion',unidad='$unidad',precio_venta='$precio_venta',precio_compra='$precio_compra' where id_producto='$id_producto'") or die(mysqli_error($con));
+		mysqli_query($con, "UPDATE producto SET 
+			nombre='$nombre_pro',
+			imagen='$img',
+			descripcion='$descripcion',
+			unidad='$unidad',
+			precio_venta='$precio_venta',
+			precio_compra='$precio_compra'
+		WHERE id_producto='$id_producto'") or die(mysqli_error($con));
 
 		echo "<script type='text/javascript'>alert(' actualizado correctamente!');</script>";
 		echo "<script>document.location='../producto/producto.php'</script>";
-		//	header('Location:../usuario.php');	
-
 	} else {
 		echo "No se pudo subir.";
 	}
 } else {
 
-	mysqli_query($con, "update producto set nombre_pro='$nombre_pro',descripcion='$descripcion',unidad='$unidad',precio_venta='$precio_venta',precio_compra='$precio_compra' where id_producto='$id_producto'") or die(mysqli_error($con));
+	mysqli_query($con, "UPDATE producto SET 
+		nombre='$nombre_pro',
+		descripcion='$descripcion',
+		unidad='$unidad',
+		precio_venta='$precio_venta',
+		precio_compra='$precio_compra' 
+	WHERE id_producto='$id_producto'") or die(mysqli_error($con));
 
 	echo "<script type='text/javascript'>alert(' actualizado correctamente!');</script>";
 	echo "<script>document.location='../producto/producto.php'</script>";

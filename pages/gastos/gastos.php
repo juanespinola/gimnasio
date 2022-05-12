@@ -10,7 +10,8 @@
 <?php include '../layout/header.php'; ?>
 
 <?php
-$query = mysqli_query($con, "SELECT * FROM caja WHERE estado = 'abierto'") or die(mysqli_error($con));
+$id_sucursal = $_SESSION['id_sucursal'];
+$query = mysqli_query($con, "SELECT * FROM caja WHERE estado = 'abierto' AND id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
 
 if ($query->num_rows == 0) {
   echo "<script type='text/javascript'>alert('Debe contar con una caja activa!');</script>";
@@ -103,9 +104,9 @@ if ($query->num_rows == 0) {
                     </div>
                     <div class="col-md-12 btn-print">
                       <div class="form-group">
-                        <label for="date" class="col-sm-3 control-label">Cantidad</label>
+                        <label for="date" class="col-sm-3 control-label">Monto Gastado</label>
                         <div class="input-group col-md-8">
-                          <input type="text" class="form-control pull-right" id="date" name="cantidad" placeholder="cantidad" required>
+                          <input type="text" class="form-control pull-right" id="date" name="cantidad" placeholder="monto" required>
                         </div><!-- /.input group -->
                       </div><!-- /.form group -->
                     </div>
@@ -143,14 +144,14 @@ if ($query->num_rows == 0) {
               <tr>
                 <th style="width:30%">Fecha</th>
                 <th style="width:30%">Descripcion</th>
-                <th style="width:10%">Cantidad </th>
+                <th style="width:10%">Monto Gastado </th>
                 <th style="width:30%" class="btn-print"> Accion </th>
               </tr>
             </thead>
             <tbody>
               <?php
 
-              $query = mysqli_query($con, "SELECT * FROM gastos") or die(mysqli_error($con));
+              $query = mysqli_query($con, "SELECT * FROM gastos WHERE id_sucursal = '$id_sucursal' ORDER BY id_gastos DESC") or die(mysqli_error($con));
 
               while ($row = mysqli_fetch_array($query)) {
                 $id_gasto = $row['id_gastos'];
@@ -161,8 +162,8 @@ if ($query->num_rows == 0) {
                   <td><?php echo $row['descripcion']; ?></td>
                   <td><?php echo $row['cantidad']; ?></td>
                   <td>
-                    <a class="btn btn-danger btn-print" href="<?php echo "eliminar_gastos.php?id_gasto=$id_gasto&cantidad=$cantidad"; ?>" role="button">Eliminar</a>
                     <a class="btn btn-success btn-print" href="#updateordinance<?php echo $row['id_gastos']; ?>" data-target="#updateordinance<?php echo $row['id_gastos']; ?>" data-toggle="modal" style="color:#fff;" style="height:25%; width:75%; font-size: 12px " role="button">Editar</a>
+                    <a class="btn btn-danger btn-print" href="<?php echo "eliminar_gastos.php?id_gasto=$id_gasto&cantidad=$cantidad"; ?>" role="button">Eliminar</a>
                   </td>
                 </tr>
 
@@ -172,7 +173,7 @@ if ($query->num_rows == 0) {
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title">ACCION DETALLES GASTOS</h4>
+                        <h4 class="modal-title">Editar Gasto</h4>
                       </div>
                       <div class="modal-body">
 
@@ -221,7 +222,7 @@ if ($query->num_rows == 0) {
                           <div class="row">
                             <div class="col-md-3 btn-print">
                               <div class="form-group">
-                                <label for="date">Cantidad</label>
+                                <label for="date">Monto Gastado</label>
 
                               </div><!-- /.form group -->
                             </div>
@@ -261,33 +262,29 @@ if ($query->num_rows == 0) {
                       </div>
 
                     </div>
-                    <!--end of modal-dialog-->
+
                   </div>
-                  <!--end of modal-->
+
 
                 <?php } ?>
             </tbody>
 
           </table>
-        </div><!-- /.box-body -->
+        </div>
 
-      </div><!-- /.col -->
-
-
-    </div><!-- /.row -->
+      </div>
 
 
+    </div>
 
 
-  </div><!-- /.box-body -->
+
 
   </div>
-  </div>
-  </div>
-  </div>
-  <!-- /page content -->
 
-  <!-- footer content -->
+
+
+
   <footer>
     <div class="pull-right">
       <a href="">Cronos Academy</a>
@@ -314,7 +311,7 @@ if ($query->num_rows == 0) {
 
 
           },
-
+          "order": [0, 'desc'],
           "info": false,
           "lengthChange": false,
           "searching": false,

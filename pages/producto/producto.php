@@ -1,6 +1,6 @@
 <?php include '../layout/header.php';
 
-
+$id_sucursal = $_SESSION['id_sucursal'];
 ?>
 
 <!-- Font Awesome -->
@@ -91,16 +91,21 @@
               <tbody>
                 <?php
                 // $branch=$_SESSION['branch'];
-                $query = mysqli_query($con, "select * from producto where estado='activo' ") or die(mysqli_error($con));
+                $query = mysqli_query($con, "SELECT * FROM producto WHERE estado='activo' AND id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                 $i = 0;
                 while ($row = mysqli_fetch_array($query)) {
+                  $imagen_producto = $row['imagen'];
                   $id_producto = $row['id_producto'];
                   $i++;
                 ?>
                   <tr>
 
                     <td><?php echo $i; ?></td>
-                    <td><IMG src="subir_producto/<?php echo $row['imagen']; ?>" style="height:50PX" /></td>
+                    <td><?php if (isset($row['imagen'])) {
+                          echo "<img src='subir_producto/$imagen_producto' style='height:50px'/>";
+                        } else {
+                          echo  "Sin Imagen";
+                        } ?></td>
                     <td><?php echo $row['nombre']; ?></td>
                     <td><?php echo $row['descripcion']; ?></td>
 

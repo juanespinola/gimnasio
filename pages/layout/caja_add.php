@@ -8,7 +8,7 @@ $id_empresa = $_SESSION['id_empresa'];
 $id_sucursal = $_SESSION['id_sucursal'];
 
 $caja = mysqli_query($con, "INSERT INTO caja (estado, monto, fecha_apertura, fecha_cierre, id_empresa, id_sucursal) 
-VALUES('abierto','$monto','$fecha_apertura', NULL, '$id_empresa', '$id_sucursal')") or die(mysqli_error($con));
+VALUES('abierto','$monto','$fecha_apertura', NULL, NULL, '$id_sucursal')") or die(mysqli_error($con));
 
 if ($caja) {
     echo "<script>document.location='caja.php'</script>";

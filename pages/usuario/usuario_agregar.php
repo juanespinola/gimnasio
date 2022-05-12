@@ -220,7 +220,6 @@
               <div class="col-md-3 btn-print">
                 <div class="form-group">
                   <label for="date">Correo</label>
-
                 </div>
               </div>
               <div class="col-md-4 btn-print">
@@ -233,24 +232,39 @@
               </div>
             </div>
 
+            <!-- <div class="row">
+              <div class="col-md-3 btn-print">
+                <div class="form-group">
+                  <label for="date">Empresa</label>
+
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+                <select class="form-control select2" name="tipo" required>
+                  <option value="">Seleccione Opcion</option>
+                  <option value="administrador">Administrador</option>
+                  <option value="empleado">Empleado</option>
+                </select>
+              </div>
+            </div> -->
+
             <div class="row">
               <div class="col-md-3 btn-print">
                 <div class="form-group">
-                  <label for="date">Correo</label>
-                  <select class="form-control select2" name="tipo" required>
-                    <option value="">Seleccione Opcion</option>
-                    <option value="administrador">Administrador</option>
-                    <option value="empleado">Empleado</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4 btn-print">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="correo" name="correo" placeholder="correo" required>
-                </div>
-              </div>
-              <div class="col-md-4 btn-print">
+                  <label for="date">Sucursales</label>
 
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+                <select class="form-control select2" name="sucursal" required>
+                  <option value="0">Seleccione Opcion</option>
+                  <?php
+                  $sucursales = mysqli_query($con, "SELECT * FROM sucursales WHERE estado='activo'") or die(mysqli_error($con));
+                  while ($sucursal = mysqli_fetch_array($sucursales)) {
+                  ?>
+                    <option value="<?php echo $sucursal['id_sucursal']; ?>"><?php echo $sucursal['descripcion']; ?></option>
+                  <?php } ?>
+                </select>
               </div>
             </div>
 

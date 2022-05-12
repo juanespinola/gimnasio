@@ -3,7 +3,7 @@ date_default_timezone_set("America/Asuncion");
 $fechaactual = date('Y-m-d');
 $mes = date('m');
 $dia = date('d');
-
+$id_sucursal = $_SESSION['id_sucursal'];
 
 ?>
 
@@ -12,7 +12,7 @@ $dia = date('d');
 $caja_cont = 0;
 $acumulado = 0;
 
-$caja_query = mysqli_query($con, "SELECT * FROM caja WHERE estado='abierto' ") or die(mysqli_error($con));
+$caja_query = mysqli_query($con, "SELECT * FROM caja WHERE estado='abierto' AND id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
 $i = 0;
 while ($row_caja = mysqli_fetch_array($caja_query)) {
   $caja_cont++;
@@ -90,7 +90,7 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
 
 
           <?php
-          $cumpleanos = mysqli_query($con, "SELECT * FROM clientes  WHERE MONTH(fecha_nacimiento)='$mes' and DAY(fecha_nacimiento)='$dia' ") or die(mysqli_error($con));
+          $cumpleanos = mysqli_query($con, "SELECT * FROM clientes  WHERE MONTH(fecha_nacimiento)='$mes' and DAY(fecha_nacimiento)='$dia' AND id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
           if ($cumpleanos->num_rows > 0) {
 
 

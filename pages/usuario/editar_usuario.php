@@ -70,7 +70,7 @@
 
           <?php
           // $branch=$_SESSION['branch'];
-          $query = mysqli_query($con, "select * from usuario where id= '$cid' ") or die(mysqli_error($con));
+          $query = mysqli_query($con, "SELECT * FROM usuario WHERE id = '$cid' ") or die(mysqli_error($con));
           $i = 1;
           while ($row = mysqli_fetch_array($query)) {
             $cid = $row['id'];
@@ -79,10 +79,6 @@
 
             <form class="form-horizontal" method="post" action="usuario_actualizar.php" enctype='multipart/form-data'>
               <input type="hidden" class="form-control" id="id_usuario" name="id_usuario" value="<?php echo $row['id']; ?>" required>
-
-
-
-
 
               <div class="row">
                 <div class="col-md-3 btn-print">
@@ -214,8 +210,6 @@
                       <option value="empleado" <?php if ($tipo == "empleado") {
                                                   echo "selected";
                                                 } ?>>empleado</option>
-
-
                     </select>
                   </div>
                 </div>
@@ -241,6 +235,32 @@
                 </div>
                 <div class="col-md-4 btn-print">
 
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-3 btn-print">
+                  <div class="form-group">
+                    <label for="date">Sucursales</label>
+
+                  </div>
+                </div>
+                <div class="col-md-4 btn-print">
+                  <select class="form-control select2" name="sucursal" required>
+                    <option value="0">Seleccione Opcion</option>
+                    <?php
+                    $sucursales = mysqli_query($con, "SELECT * FROM sucursales WHERE estado='activo'") or die(mysqli_error($con));
+                    while ($sucursal = mysqli_fetch_array($sucursales)) {
+                    ?>
+                      <?php if ($sucursal['id_sucursal'] == $row['id_sucursal']) { ?>
+                        <option value="<?php echo $sucursal['id_sucursal']  ?>" selected="selected"> <?php echo $sucursal['descripcion']; ?></option>
+                      <?php } else { ?>
+                        <option value="<?php echo $sucursal['id_sucursal']  ?>"> <?php echo $sucursal['descripcion']; ?></option>
+                      <?php } ?>
+
+                    <?php } ?>
+                  </select>
                 </div>
               </div>
 

@@ -5,6 +5,8 @@ if (empty($_SESSION['id'])) {
   header('Location: ../../index.php');
   exit;
 }
+$id_sucursal = $_SESSION['id_sucursal'];
+
 unset($_SESSION["carrito"]);
 ?>
 
@@ -77,7 +79,7 @@ unset($_SESSION["carrito"]);
                     <h4>
                       <?php
                       $num = 0;
-                      $select = mysqli_query($con, "SELECT * FROM caja ") or die(mysqli_error($con));
+                      $select = mysqli_query($con, "SELECT * FROM caja WHERE id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                       $num = mysqli_num_rows($select);
                       echo $num;
                       ?>
@@ -99,7 +101,7 @@ unset($_SESSION["carrito"]);
                     <h4>
                       <?php
                       $num = 0;
-                      $query = mysqli_query($con, "SELECT * FROM producto ") or die(mysqli_error($con));
+                      $query = mysqli_query($con, "SELECT * FROM producto WHERE id_sucursal = '$id_sucursal' ") or die(mysqli_error($con));
                       $i = 0;
                       while ($row = mysqli_fetch_array($query)) {
                         $num++;
@@ -138,7 +140,7 @@ unset($_SESSION["carrito"]);
                         echo $num;
                         ?>
                       </h4>
-                      <p>Usuarios</p>
+                      <p>Usuarios en total</p>
                     </div>
                     <div class="icon"><img height="80" width="80" src="img/usuarios.png">
                       <i class=""></i>
@@ -166,16 +168,18 @@ unset($_SESSION["carrito"]);
 
                       <h4>
                         <?php
-                        $num = 1;
+                        $num = 0;
+                        $select = mysqli_query($con, "SELECT * FROM sucursales WHERE estado = 'activo'") or die(mysqli_error($con));
+                        $num = mysqli_num_rows($select);
                         echo $num;
                         ?>
                       </h4>
-                      <p>Configuracion</p>
+                      <p>Sucursales</p>
                     </div>
-                    <div class="icon"><img height="80" width="80" src="img/setting.png">
+                    <div class="icon"><img height="80" width="80" src="img/sucursales.png">
                       <i class=""></i>
                     </div>
-                    <?php echo ($num > 0) ? '<a href="../configuracion/configuracion.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
+                    <?php echo ($num > 0) ? '<a href="../sucursales/sucursales.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
                   </div>
                 </div>
 
@@ -193,7 +197,7 @@ unset($_SESSION["carrito"]);
                     <h4>
                       <?php
                       $num = 0;
-                      $query = mysqli_query($con, "select * from planes ") or die(mysqli_error($con));
+                      $query = mysqli_query($con, "SELECT * FROM planes WHERE id_sucursal = '$id_sucursal' ") or die(mysqli_error($con));
                       $i = 0;
                       while ($row = mysqli_fetch_array($query)) {
                         $num++;
@@ -201,7 +205,7 @@ unset($_SESSION["carrito"]);
                       echo $num;
                       ?>
                     </h4>
-                    <p>Planes</p>
+                    <p>Alumnos para hoy</p>
                   </div>
                   <div class="icon"><img height="80" width="80" src="img/planes.png">
                     <i class=""></i>
@@ -222,7 +226,7 @@ unset($_SESSION["carrito"]);
                     <h4>
                       <?php
                       $num = 0;
-                      $select = mysqli_query($con, "SELECT * FROM clientes WHERE estado = 'activo' ") or die(mysqli_error($con));
+                      $select = mysqli_query($con, "SELECT * FROM clientes WHERE estado = 'activo'  AND id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                       $num = mysqli_num_rows($select);
                       echo $num;
                       ?>
@@ -238,27 +242,27 @@ unset($_SESSION["carrito"]);
 
 
 
-              <!-- <div class="col-lg-3 col-xs-6">
-                
+              <div class="col-lg-3 col-xs-6">
+
                 <div class="small-box bg-aqua">
                   <div class="inner">
 
                     <h4>
                       <?php
-                      $num = 1;
-                      $select = mysqli_query($con, "SELECT * FROM plan_cliente ") or die(mysqli_error($con));
-
+                      $num = 0;
+                      $select = mysqli_query($con, "SELECT * FROM gastos WHERE id_sucursal = '$id_sucursal' AND fecha = date_format(NOW(), '%Y-%m-%d');") or die(mysqli_error($con));
+                      $num = mysqli_num_rows($select);
                       echo $num;
                       ?>
                     </h4>
-                    <p>Registro Entrada Membresia</p>
+                    <p>Gastos de hoy</p>
                   </div>
-                  <div class="icon"><img height="80" width="80" src="img/membrecia.png">
+                  <div class="icon"><img height="80" width="80" src="img/gastos.png">
                     <i class=""></i>
                   </div>
-                  <?php echo ($num > 0) ? '<a href="../ventas_menbrecia/ventas_planes_lista.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
+                  <?php echo ($num > 0) ? '<a href="../gastos/gastos.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
                 </div>
-              </div> -->
+              </div>
 
 
               <div class="col-lg-3 col-xs-6">
@@ -270,7 +274,7 @@ unset($_SESSION["carrito"]);
                       <?php
 
                       $num = 1;
-                      $query = mysqli_query($con, "select * from pedidos ") or die(mysqli_error($con));
+                      $query = mysqli_query($con, "SELECT * FROM ventas WHERE id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                       $i = 0;
                       while ($row = mysqli_fetch_array($query)) {
                         $num++;
