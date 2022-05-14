@@ -19,7 +19,11 @@
     } else {
         $id_actividad = $_POST['id_actividad'];
     }
-
+    if (isset($_REQUEST['id_profesor'])) {
+        $id_profesor = $_REQUEST['id_profesor'];
+    } else {
+        $id_profesor = $_POST['id_profesor'];
+    }
 
     ?>
     <?php
@@ -73,18 +77,16 @@
                         <table id="example2" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th style="width:30%">Actividad</th>
                                     <th style="width:10%">Fecha de pago</th>
                                     <th style="width:10%">Pago</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($con, "SELECT * FROM usuario u INNER JOIN  sueldo_pago sp ON sp.id_usuario = u.id where sp.id_usuario='$id_usuario' ") or die(mysqli_error($con));
+                                $query = mysqli_query($con, "SELECT * FROM sueldo_pago WHERE id_profesor = '$id_profesor' AND id_actividad = '$id_actividad'") or die(mysqli_error($con));
                                 while ($row = mysqli_fetch_array($query)) {
                                 ?>
                                     <tr>
-                                        <td><?php echo $row['nombre']; ?> <?php echo $row['apellido']; ?></td>
                                         <td><?php echo $row['fecha_pago']; ?></td>
                                         <td><?php echo $row['pago']; ?></td>
                                     </tr>

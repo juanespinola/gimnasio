@@ -1,4 +1,6 @@
-<?php include '../layout/header.php'; ?>
+<?php include '../layout/header.php';
+$id_sucursal = $_SESSION['id_sucursal'];
+?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
@@ -63,6 +65,7 @@
                     <select name="profesor" class="form-control select2" autofocus>
                       <option value="0" selected>Seleccione Opcion</option>
                       <?php
+
                       $profesores = mysqli_query($con, "SELECT * FROM profesores WHERE estado='activo'") or die(mysqli_error($con));
                       while ($profesor = mysqli_fetch_array($profesores)) {
                       ?>
@@ -99,6 +102,7 @@
                   <th>#</th>
                   <th>Nombres </th>
                   <th>Apellidos </th>
+                  <th>Email </th>
                   <th>C.I</th>
                   <th>Telefono</th>
                   <th>Ruc</th>
@@ -111,7 +115,7 @@
                 <?php
                 if (isset($_POST['profesor'])) {
                   if ($_POST['profesor'] == '0') {
-                    $query = mysqli_query($con, "SELECT * FROM clientes c") or die(mysqli_error($con));
+                    $query = mysqli_query($con, "SELECT * FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                   } else {
                     $query = mysqli_query($con, "SELECT c.id_cliente, c.nombre, c.apellido, c.dni, c.telefono, c.ruc, c.fecha_nacimiento, c.estado 
                     FROM actividades a
@@ -120,7 +124,7 @@
                     WHERE a.id_profesor = " . $_POST['profesor']) or die(mysqli_error($con));
                   }
                 } else {
-                  $query = mysqli_query($con, "SELECT * FROM clientes c") or die(mysqli_error($con));
+                  $query = mysqli_query($con, "SELECT * FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                 }
 
 
@@ -134,6 +138,7 @@
                     <td><?php echo $i; ?></td>
                     <td><?php echo $row['nombre']; ?></td>
                     <td><?php echo $row['apellido']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
                     <td><?php echo $row['dni']; ?></td>
                     <td><?php echo $row['telefono']; ?></td>
                     <td><?php echo $row['ruc']; ?></td>

@@ -1,4 +1,6 @@
-<?php include '../layout/header.php'; ?>
+<?php include '../layout/header.php';
+$id_sucursal = $_SESSION['id_sucursal'];
+?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
@@ -63,23 +65,20 @@
                                         <select name="profesor" class="form-control select2" autofocus>
                                             <option value="0" selected>Seleccione Opcion</option>
                                             <?php
-                                            $profesores = mysqli_query($con, "SELECT * FROM profesores WHERE estado='activo'") or die(mysqli_error($con));
+                                            $profesores = mysqli_query($con, "SELECT * FROM profesores WHERE estado='activo' AND id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                                             while ($profesor = mysqli_fetch_array($profesores)) {
                                             ?>
                                                 <option value="<?php echo $profesor['id_profesor']; ?>"><?php echo $profesor['nombre']; ?> <?php echo $profesor['apellido']; ?></option>
                                             <?php } ?>
                                         </select>
 
-                                    </div><!-- /.input group -->
-                                </div><!-- /.form group -->
+                                    </div>
+                                </div>
                             </div>
 
                         </form>
                     </div>
                 </div>
-
-                <!--end of modal-->
-
 
                 <div class="box-header">
                     <h3 class="box-title"> </h3>
@@ -98,6 +97,7 @@
                                     <th>#</th>
                                     <th>Nombres </th>
                                     <th>Apellidos </th>
+                                    <th>Email </th>
                                     <th>C.I</th>
                                     <th>Telefono</th>
                                     <th>Ruc</th>
@@ -110,15 +110,15 @@
                                 <?php
                                 if (isset($_POST['profesor'])) {
                                     if ($_POST['profesor'] == '0') {
-                                        $query = mysqli_query($con, "SELECT * FROM clientes c") or die(mysqli_error($con));
+                                        $query = mysqli_query($con, "SELECT * FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                                     } else {
-                                        $query = mysqli_query($con, "SELECT c.id_cliente, c.nombre, c.apellido, c.dni, c.telefono, c.ruc, c.fecha_nacimiento, c.estado 
-                                        FROM  actividades a 
+                                        $query = mysqli_query($con, "SELECT c.id_cliente, c.nombre, c.apellido, c.dni, c.telefono, c.ruc, c.fecha_nacimiento, c.estado, c.email 
+                                        FROM actividades a 
                                         JOIN clientes c ON a.id_cliente = c.id_cliente
-                                        JOIN profesores p ON a.id_profesor = p.id_profesor WHERE a.id_profesor = " . $_POST['profesor']) or die(mysqli_error($con));
+                                        JOIN profesores p ON a.id_profesor = p.id_profesor WHERE a.id_profesor = '" . $_POST['profesor'] . "' AND a.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                                     }
                                 } else {
-                                    $query = mysqli_query($con, "SELECT * FROM clientes c") or die(mysqli_error($con));
+                                    $query = mysqli_query($con, "SELECT * FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                                 }
 
 
@@ -132,6 +132,7 @@
                                         <td><?php echo $i; ?></td>
                                         <td><?php echo $row['nombre']; ?></td>
                                         <td><?php echo $row['apellido']; ?></td>
+                                        <td><?php echo $row['email']; ?></td>
                                         <td><?php echo $row['dni']; ?></td>
                                         <td><?php echo $row['telefono']; ?></td>
                                         <td><?php echo $row['ruc']; ?></td>
@@ -146,32 +147,24 @@
                             </tbody>
 
                         </table>
-                    </div><!-- /.box-body -->
+                    </div>
 
-                </div><!-- /.col -->
+                </div>
 
+            </div>
 
-            </div><!-- /.row -->
-
-
-
-
-        </div><!-- /.box-body -->
+        </div>
 
     </div>
-    </div>
-    </div>
-    </div>
-    <!-- /page content -->
 
-    <!-- footer content -->
+
     <footer>
         <div class="pull-right">
             <a href="">Cronos Academy</a>
         </div>
         <div class="clearfix"></div>
     </footer>
-    <!-- /footer content -->
+
     </div>
     </div>
 

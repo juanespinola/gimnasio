@@ -100,11 +100,12 @@
                                 <tr>
                                     <th style="width:5%">Profesor</th>
                                     <th style="width:10%"> Alumno </th>
-                                    <th style="width:5%"> Actividad</th>
-                                    <th style="width:5%"> Pago por clase</th>
+                                    <th style="width:6%"> Actividad</th>
+                                    <th style="width:6%"> Sucursal </th>
+                                    <th style="width:6%"> Pago p/ clase</th>
                                     <th style="width:1%"> Pagar parcial </th>
                                     <th style="width:1%" class="btn-print"> Pagos hechos </th>
-                                    <th style="width:10%" class="btn-print"> Acciones </th>
+                                    <th style="width:12%" class="btn-print"> Acciones </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -118,12 +119,14 @@
                                         concat(c.nombre, ' ', c.apellido) as alumno, 
                                         sp.salario,
                                         a.id_actividad,
-                                        d.descripcion as actividad
+                                        d.descripcion as actividad, 
+                                        s.descripcion as sucursal
                                         FROM sueldo_profesores sp
                                         LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
                                         LEFT JOIN deportes d ON a.id_deporte = d.id_deporte
                                         LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
-                                        LEFT JOIN clientes c ON a.id_cliente = c.id_cliente") or die(mysqli_error($con));
+                                        LEFT JOIN clientes c ON a.id_cliente = c.id_cliente
+                                        JOIN sucursales s ON a.id_sucursal = s.id_sucursal") or die(mysqli_error($con));
                                     } else {
                                         $query = mysqli_query($con, "SELECT sp.id_sueldo_profesor, 
                                         a.id_profesor,
@@ -132,12 +135,14 @@
                                         concat(c.nombre, ' ', c.apellido) as alumno, 
                                         sp.salario,
                                         a.id_actividad,
-                                        d.descripcion as actividad
+                                        d.descripcion as actividad,
+                                        s.descripcion as sucursal
                                         FROM sueldo_profesores sp
                                         LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
                                         LEFT JOIN deportes d ON a.id_deporte = d.id_deporte
                                         LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
                                         LEFT JOIN clientes c ON a.id_cliente = c.id_cliente
+                                        JOIN sucursales s ON a.id_sucursal = s.id_sucursal
                                         WHERE p.id_profesor = " . $_POST['profesor']) or die(mysqli_error($con));
                                     }
                                 } else {
@@ -148,11 +153,13 @@
                                     concat(c.nombre, ' ', c.apellido) as alumno, 
                                     sp.salario,
                                     a.id_actividad,
-                                    d.descripcion as actividad
+                                    d.descripcion as actividad,
+                                    s.descripcion as sucursal
                                     FROM sueldo_profesores sp
                                     LEFT JOIN actividades a ON sp.id_actividad = a.id_actividad
                                     LEFT JOIN deportes d ON a.id_deporte = d.id_deporte
                                     LEFT JOIN profesores p ON a.id_profesor = p.id_profesor
+                                    JOIN sucursales s ON a.id_sucursal = s.id_sucursal
                                     LEFT JOIN clientes c ON a.id_cliente = c.id_cliente") or die(mysqli_error($con));
                                 }
 
@@ -166,9 +173,10 @@
                                         <td><?php echo $row['profesor']; ?></td>
                                         <td><?php echo $row['alumno']; ?></td>
                                         <td><?php echo $row['actividad']; ?></td>
+                                        <td><?php echo $row['sucursal']; ?></td>
                                         <td><?php echo $row['salario']; ?></td>
                                         <td><a class="btn btn-success btn-print" href="<?php echo "insert_pagar_salario_profesor.php?id_actividad=$id_actividad&id_profesor=$id_profesor&sueldo=$sueldo"; ?>">Pagar Sueldo</a></td>
-                                        <td><a class="btn btn-warning btn-print" href="<?php echo "pagos_hechos.php?id_sueldo_profesor=$id_sueldo_profesor"; ?>">Pagos hechos</a></td>
+                                        <td><a class="btn btn-warning btn-print" href="<?php echo "pagos_hechos.php?id_actividad=$id_actividad&id_profesor=$id_profesor"; ?>">Pagos hechos</a></td>
                                         <!-- <td><a class="btn btn-danger btn-print" href="#updateordinance<?php echo $row['id_usuario']; ?>" data-target="#updateordinance<?php echo $row['id_usuario']; ?>" data-toggle="modal" style="color:#fff;" style="height:25%; width:75%; font-size: 12px " role="button">Editar</a></td> -->
                                         <td>
                                             <a class="btn btn-danger btn-print" title="Editar Sueldo" href="<?php echo "editar_salario_profesor.php?id_sueldo_profesor=$id_sueldo_profesor"; ?>">Editar</a>
@@ -189,34 +197,23 @@
                                 </tfoot>
                             <?php } ?>
                         </table>
-                    </div><!-- /.box-body -->
+                    </div>
 
-                </div><!-- /.col -->
-
-
-            </div><!-- /.row -->
+                </div>
 
 
-
-
-        </div><!-- /.box-body -->
+            </div>
 
         </div>
-        </div>
-        </div>
-        </div>
-        <!-- /page content -->
 
-        <!-- footer content -->
         <footer>
             <div class="pull-right">
                 <a href="">Cronos Academy</a>
             </div>
             <div class="clearfix"></div>
         </footer>
-        <!-- /footer content -->
-        </div>
-        </div>
+
+
 
         <?php include '../layout/datatable_script.php'; ?>
 
@@ -248,7 +245,7 @@
 
                             // Total over all pages
                             total = api
-                                .column(3)
+                                .column(4)
                                 .data()
                                 .reduce(function(a, b) {
                                     return intVal(a) + intVal(b);
@@ -265,7 +262,7 @@
                             //     }, 0);
 
                             // Update footer
-                            $(api.column(3).footer()).html(
+                            $(api.column(4).footer()).html(
                                 total + ' Gs'
                             );
                         }

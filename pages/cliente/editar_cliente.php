@@ -114,6 +114,24 @@
             <div class="row">
               <div class="col-md-3 btn-print">
                 <div class="form-group">
+                  <label for="date">Email</label>
+
+                </div><!-- /.form group -->
+              </div>
+              <div class="col-md-4 btn-print">
+                <div class="form-group">
+
+                  <input type="text" class="form-control" id="email" name="email" value="<?php echo $row['email']; ?>" required>
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 btn-print">
+                <div class="form-group">
                   <label for="date">Ruc</label>
 
                 </div><!-- /.form group -->

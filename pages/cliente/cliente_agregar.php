@@ -60,7 +60,7 @@
 
 
         <div class="box-header">
-          <h3 class="box-title"> REGISTRAR CLIENTE </h3>
+          <h3 class="box-title"> Agregar Cliente </h3>
 
         </div><!-- /.box-header -->
         <a class="btn btn-warning btn-print" href="cliente.php" role="button">Regresar</a>
@@ -106,13 +106,31 @@
             <div class="row">
               <div class="col-md-3 btn-print">
                 <div class="form-group">
+                  <label for="date">Email </label>
+
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+                <div class="form-group">
+
+                  <input type="email" class="form-control pull-right" id="email" name="email" placeholder="Email" required>
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 btn-print">
+                <div class="form-group">
                   <label for="date">Ruc</label>
 
                 </div><!-- /.form group -->
               </div>
               <div class="col-md-4 btn-print">
                 <div class="form-group">
-                  <input type="text" class="form-control pull-right" maxlength="11" id="ruc" name="ruc" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="RUC" />
+                  <input type="text" class="form-control pull-right" maxlength="11" id="ruc" name="ruc" placeholder="RUC" />
 
                 </div>
               </div>
@@ -130,7 +148,7 @@
               </div>
               <div class="col-md-4 btn-print">
                 <div class="form-group">
-                  <input type="text" class="form-control pull-right" maxlength="8" id="dni" name="dni" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Cedula" />
+                  <input type="text" class="form-control pull-right" maxlength="11" id="dni" name="dni" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Cedula" />
                 </div>
               </div>
               <div class="col-md-4 btn-print">

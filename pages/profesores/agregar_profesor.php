@@ -99,6 +99,22 @@
                         <div class="row">
                             <div class="col-md-3 btn-print">
                                 <div class="form-group">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
+                                <div class="form-group">
+
+                                    <input type="text" class="form-control pull-right" id="email" name="email" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 btn-print">
+                                <div class="form-group">
                                     <label for="ruc">RUC</label>
                                 </div>
                             </div>
@@ -160,7 +176,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                         <div class="modal-footer">
                         </div>
                     </form>

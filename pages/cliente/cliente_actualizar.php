@@ -11,11 +11,25 @@
 	$telefono = $_POST['telefono'];
 	$fecha_nacimiento = $_POST['fecha_nacimiento'];
 	$estado = $_POST['estado'];
+	$email = $_POST['email'];
 
-	mysqli_query($con, "UPDATE clientes SET nombre='$nombre',apellido='$apellido',ruc='$ruc',telefono='$telefono',dni='$dni',fecha_nacimiento='$fecha_nacimiento',estado='$estado' WHERE id_cliente='$id_cliente'") or die(mysqli_error($con));
+	$update_cliente = mysqli_query($con, "UPDATE clientes SET 
+		nombre='$nombre',
+		apellido='$apellido',
+		ruc='$ruc',
+		telefono='$telefono',
+		dni='$dni',
+		fecha_nacimiento='$fecha_nacimiento',
+		estado='$estado',
+		email = '$email'
+	WHERE id_cliente='$id_cliente'") or die(mysqli_error($con));
 
-	echo "<script type='text/javascript'>alert('Registro Actualizado Correctamente!');</script>";
-	echo "<script>document.location='cliente.php'</script>";
-
+	if ($update_cliente) {
+		echo "<script type='text/javascript'>alert('Registro Actualizado Correctamente!');</script>";
+		echo "<script>document.location='cliente.php'</script>";
+	} else {
+		echo "<script type='text/javascript'>alert('Ocurrió un error al actualizar Cliente!');</script>";
+		echo "<script>document.location='cliente.php'</script>";
+	}
 
 	?>

@@ -1,4 +1,6 @@
-<?php include '../layout/header.php'; ?>
+<?php include '../layout/header.php';
+$id_sucursal = $_SESSION['id_sucursal'];
+?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
@@ -98,6 +100,7 @@
                                     <th>#</th>
                                     <th>Nombres </th>
                                     <th>Apellidos </th>
+                                    <th>Email </th>
                                     <th>C.I</th>
                                     <th>Telefono</th>
                                     <th>Ruc</th>
@@ -110,15 +113,15 @@
                                 <?php
                                 if (isset($_POST['deporte'])) {
                                     if ($_POST['deporte'] == '0') {
-                                        $query = mysqli_query($con, "SELECT * FROM clientes c") or die(mysqli_error($con));
+                                        $query = mysqli_query($con, "SELECT * FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                                     } else {
-                                        $query = mysqli_query($con, "SELECT c.id_cliente, c.nombre, c.apellido, c.dni, c.telefono, c.ruc, c.fecha_nacimiento, c.estado 
+                                        $query = mysqli_query($con, "SELECT c.id_cliente, c.nombre, c.apellido, c.dni, c.telefono, c.ruc, c.fecha_nacimiento, c.estado, c.email
                                         FROM actividades a 
                                         JOIN clientes c ON a.id_cliente = c.id_cliente
-                                        JOIN deportes d ON a.id_deporte = d.id_deporte WHERE a.id_deporte = " . $_POST['deporte']) or die(mysqli_error($con));
+                                        JOIN deportes d ON a.id_deporte = d.id_deporte WHERE a.id_deporte = '" . $_POST['deporte'] . "' AND a.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                                     }
                                 } else {
-                                    $query = mysqli_query($con, "SELECT * FROM clientes c") or die(mysqli_error($con));
+                                    $query = mysqli_query($con, "SELECT * FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                                 }
 
 
@@ -132,6 +135,7 @@
                                         <td><?php echo $i; ?></td>
                                         <td><?php echo $row['nombre']; ?></td>
                                         <td><?php echo $row['apellido']; ?></td>
+                                        <td><?php echo $row['email']; ?></td>
                                         <td><?php echo $row['dni']; ?></td>
                                         <td><?php echo $row['telefono']; ?></td>
                                         <td><?php echo $row['ruc']; ?></td>

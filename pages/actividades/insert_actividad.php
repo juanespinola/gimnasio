@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('../../dist/includes/dbcon.php');
-//$branch=$_SESSION['branch'];
+
 
 $id_cliente = $_POST['alumno'];
 $id_profesor = $_POST['profesor'];
@@ -10,7 +10,7 @@ $id_dia = $_POST['dia'];
 $horario_inicio = $_POST['horario_inicio'];
 $horario_final = $_POST['horario_final'];
 $id_plan = $_POST['plan'];
-
+$id_sucursal = $_SESSION['id_sucursal'];
 
 $lunes =  isset($_POST['lunes']) ? $_POST['lunes'] : '0';
 $martes = isset($_POST['martes']) ? $_POST['martes'] : '0';
@@ -75,16 +75,13 @@ $select = mysqli_query($con, "SELECT *
     AND id_cliente = $id_cliente 
     AND id_deporte = $id_deporte") or die(mysqli_error($con));
 
-// echo "<pre>";
-// print_r($select);
-// echo "</pre>";
 
 if ($select->num_rows >= 1) {
     echo "<script type='text/javascript'>alert('El registro ya existe!');</script>";
     echo "<script>document.location='actividades.php'</script>";
 } else {
-    $insert = mysqli_query($con, "INSERT INTO actividades(id_cliente, id_profesor, id_deporte, horario_inicio, horario_final, id_plan) 
-    VALUES ('$id_cliente', '$id_profesor','$id_deporte','$horario_inicio','$horario_final', '$id_plan')") or die(mysqli_error($con));
+    $insert = mysqli_query($con, "INSERT INTO actividades(id_cliente, id_profesor, id_deporte, horario_inicio, horario_final, id_plan, id_sucursal) 
+    VALUES ('$id_cliente', '$id_profesor','$id_deporte','$horario_inicio','$horario_final', '$id_plan', '$id_sucursal')") or die(mysqli_error($con));
     $id_actividad = mysqli_insert_id($con);
 
     if ($insert) {

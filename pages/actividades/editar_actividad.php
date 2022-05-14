@@ -83,13 +83,16 @@
                 ad.jueves,
                 ad.viernes,
                 ad.sabado,
-                ad.domingo
+                ad.domingo,
+                pl.id_plan,
+                pl.nombre_plan
                 FROM actividades a
                 JOIN clientes c ON a.id_cliente = c.id_cliente
                 JOIN profesores p ON a.id_profesor = p.id_profesor
                 JOIN deportes d ON a.id_deporte = d.id_deporte
+                JOIN planes pl ON a.id_plan = pl.id_plan
                 JOIN actividades_dias ad ON a.id_actividad = ad.id_actividad 
-                WHERE a.id_actividad= '$id_actividad' ") or die(mysqli_error($con));
+                WHERE a.id_actividad= '$id_actividad'") or die(mysqli_error($con));
                 $i = 1;
                 while ($row = mysqli_fetch_array($query)) {
                     $id_actividad = $row['id_actividad'];
@@ -382,20 +385,15 @@
                         </div>
                     </form>
 
-                    <!--end of modal-->
-
                 <?php } ?>
 
-            </div><!-- /.box-body -->
+            </div>
 
-        </div><!-- /.col -->
+        </div>
 
 
-    </div><!-- /.row -->
+    </div>
 
-    <!-- /page content -->
-
-    <!-- footer content -->
     <footer>
         <div class="pull-right">
             <a href="">Cronos Academy</a>

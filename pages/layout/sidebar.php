@@ -49,7 +49,7 @@ $id = $_SESSION['id'];
 
         <li><a><i class="fa fa-money"></i>Salarios<span class="fa fa-chevron-right"></span></a>
           <ul class="nav child_menu">
-            <li><a href="../asignar_sueldo/asignar_sueldo.php">Empleados</a></li>
+            <!-- <li><a href="../asignar_sueldo/asignar_sueldo.php">Empleados</a></li> -->
             <li><a href="../salarios/salario_profesores.php">Profesores</a></li>
           </ul>
 
@@ -64,7 +64,6 @@ $id = $_SESSION['id'];
 
           <li><a href="../cliente/cliente.php">Lista de Alumnos</a></li>
           <li><a href="../profesores/profesores.php">Lista de Profesores</a></li>
-          <!-- <li><a href="../deporte_profesor/deportes_profesores.php">Agregar</a></li> -->
           <li><a href="../actividades/actividades.php">Actividades</a></li>
           <li><a href="../asistencias/asistencias.php">Asistencias</a></li>
           <li><a href="../alumnos_profesor/alumnos_profesor.php">Alumnos por Profesor</a></li>

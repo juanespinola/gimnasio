@@ -1,4 +1,6 @@
-<?php include '../layout/header.php'; ?>
+<?php include '../layout/header.php';
+$id_sucursal = $_SESSION['id_sucursal'];
+?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
@@ -104,7 +106,8 @@
                                 JOIN profesores p ON a.id_profesor = p.id_profesor
                                 JOIN deportes d ON a.id_deporte = d.id_deporte
                                 JOIN planes pl ON a.id_plan = pl.id_plan
-                                LEFT JOIN actividades_dias ad ON a.id_actividad = ad.id_actividad") or die(mysqli_error($con));
+                                LEFT JOIN actividades_dias ad ON a.id_actividad = ad.id_actividad
+                                WHERE a.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                                 $i = 0;
                                 while ($row = mysqli_fetch_array($query)) {
                                     $id_actividad = $row['id_actividad'];

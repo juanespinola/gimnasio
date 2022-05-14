@@ -57,12 +57,12 @@
                 ?>
 
                 <div class="box-header">
-                    <h3 class="box-title">Editar Tipo Cliente</h3>
-                </div><!-- /.box-header -->
+                    <h3 class="box-title">Editar Profesor</h3>
+                </div>
 
                 <a class="btn btn-warning btn-print" href="profesores.php" role="button">Regresar</a>
                 <?php
-                // $branch=$_SESSION['branch'];
+
                 $query = mysqli_query($con, "select * from profesores where id_profesor= '$id_profesor' ") or die(mysqli_error($con));
                 $i = 1;
                 while ($row = mysqli_fetch_array($query)) {
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label for="date">Nombres </label>
 
-                                </div><!-- /.form group -->
+                                </div>
                             </div>
                             <div class="col-md-4 btn-print">
                                 <div class="form-group">
@@ -93,7 +93,7 @@
                                 <div class="form-group">
                                     <label for="date">Apellidos </label>
 
-                                </div><!-- /.form group -->
+                                </div>
                             </div>
                             <div class="col-md-4 btn-print">
                                 <div class="form-group">
@@ -109,9 +109,26 @@
                         <div class="row">
                             <div class="col-md-3 btn-print">
                                 <div class="form-group">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
+                                <div class="form-group">
+
+                                    <input type="text" class="form-control pull-right" id="email" name="email" value="<?php echo $row['email']; ?>" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-3 btn-print">
+                                <div class="form-group">
                                     <label for="date">Ruc</label>
 
-                                </div><!-- /.form group -->
+                                </div>
                             </div>
                             <div class="col-md-4 btn-print">
                                 <div class="form-group">
@@ -129,7 +146,7 @@
                                 <div class="form-group">
                                     <label for="documento">Documento</label>
 
-                                </div><!-- /.form group -->
+                                </div>
                             </div>
                             <div class="col-md-4 btn-print">
                                 <div class="form-group">
@@ -148,7 +165,7 @@
                                 <div class="form-group">
                                     <label for="date">Telefono</label>
 
-                                </div><!-- /.form group -->
+                                </div>
                             </div>
                             <div class="col-md-4 btn-print">
                                 <div class="form-group">

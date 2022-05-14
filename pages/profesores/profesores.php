@@ -1,4 +1,6 @@
-<?php include '../layout/header.php'; ?>
+<?php include '../layout/header.php';
+$id_sucursal = $_SESSION['id_sucursal'];
+?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
@@ -73,6 +75,7 @@
                                     <th>#</th>
                                     <th>Nombres </th>
                                     <th>Apellidos </th>
+                                    <th>Email </th>
                                     <th>C.I</th>
                                     <th>Telefono</th>
                                     <th>Ruc</th>
@@ -84,7 +87,7 @@
                             <tbody>
                                 <?php
                                 // $branch=$_SESSION['branch'];
-                                $query = mysqli_query($con, "select * from profesores") or die(mysqli_error($con));
+                                $query = mysqli_query($con, "SELECT * FROM profesores WHERE id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                                 $i = 0;
                                 while ($row = mysqli_fetch_array($query)) {
                                     $id_profesor = $row['id_profesor'];
@@ -94,6 +97,7 @@
                                         <td><?php echo $i; ?></td>
                                         <td><?php echo $row['nombre']; ?></td>
                                         <td><?php echo $row['apellido']; ?></td>
+                                        <td><?php echo $row['email']; ?></td>
                                         <td><?php echo $row['documento']; ?></td>
                                         <td><?php echo $row['telefono']; ?></td>
                                         <td><?php echo $row['ruc']; ?></td>
