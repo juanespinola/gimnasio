@@ -24,8 +24,8 @@ $nombre_cliente = empty($_POST['nombre_cliente']) ? $_POST['nombre_cliente'] : '
 $documento_cliente = empty($_POST['documento_cliente']) ? $_POST['documento_cliente'] : '';
 $fecha_actual = date("Y-m-d H:i:s");
 $monto_total = $_POST['monto_total'];
-$id_empresa = empty($_POST['id_empresa']) ? $_POST['id_empresa'] : '';
-$id_sucursal = empty($_POST['id_sucursal']) ? $_POST['id_sucursal'] : '';
+$id_empresa = empty($_SESSION['id_empresa']) ? $_SESSION['id_empresa'] : '';
+$id_sucursal = empty($_SESSION['id_sucursal']) ? $_SESSION['id_sucursal'] : '';
 $estado = 'pagado';
 
 
@@ -39,7 +39,7 @@ $sql = "INSERT INTO `ventas` (`id_cliente`,`nombre_cliente`,`documento`,`fecha_a
         '" . $monto_total . "',  
         NULLIF('" . $id_usuario . "', ''),  
         NULLIF('" . $_POST['id_empresa'] . "', ''),  
-        NULLIF('" . $_POST['id_sucursal'] . "', ''), 
+        NULLIF('" . $_SESSION['id_sucursal'] . "', ''), 
         '" . $estado . "'
     );";
 

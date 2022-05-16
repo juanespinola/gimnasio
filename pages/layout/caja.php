@@ -66,9 +66,7 @@
           <div class="box-body">
             <div class="row">
               <?php
-              echo '<pre>';
-              print_r($_SESSION);
-              echo '</pre>';
+
               $id_empresa = $_SESSION['id_empresa'];
               $id_sucursal = $_SESSION['id_sucursal'];
 

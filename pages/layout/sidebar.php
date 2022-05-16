@@ -109,7 +109,7 @@ $id = $_SESSION['id'];
       if ($tipo == "administrador") {
 
       ?>
-        <li><a href="../graficos/ganancias_anio.php"><i class="fa fa-line-chart"></i>Ganancios del año<span class="fa fa-chevron-right"></span></li></a>
+        <!-- <li><a href="../graficos/ganancias_anio.php"><i class="fa fa-line-chart"></i>Ganancios del año<span class="fa fa-chevron-right"></span></li></a> -->
         <!-- <li><a href="../gastos/buscar_gastos_ingresos.php"><i class="fa fa-line-chart"></i>Informe gastos vs ingresos por mes<span class="fa fa-chevron-right"></span></li></a> -->
       <?php } ?>
 
@@ -119,12 +119,12 @@ $id = $_SESSION['id'];
       if ($tipo == "administrador" or $tipo == "empleado") {
 
       ?>
-        <li><a><i class="fa fa-bar-chart"></i> Ventas realizadas<span class="fa fa-chevron-down"></span></a>
+        <li><a><i class="fa fa-bar-chart"></i> Reportes<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
 
-            <li><a href="../ventas_menbrecia/ventas_planes_totales.php">Planes</a></li>
-            <li><a href="../venta_dia/ventas_diario_totales.php">Por dia</a></li>
-            <li><a href="../ventas/ventas_productos_totales.php">Productos</a></li>
+            <li><a href="../reportes/ventas_productos_por_mes.php">Venta de Productos</a></li>
+            <li><a href="../reportes/gastos_por_mes.php">Gastos</a></li>
+            <!-- <li><a href="../ventas/ventas_productos_totales.php">Productos</a></li> -->
 
           </ul>
         </li>
@@ -134,7 +134,7 @@ $id = $_SESSION['id'];
       if ($tipo == "administrador") {
       ?>
 
-        <li><a><i class="fa fa-bar-chart"></i> Reportes Ventas Planes<span class="fa fa-chevron-down"></span></a>
+        <!-- <li><a><i class="fa fa-bar-chart"></i> Reportes Ventas Planes<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
 
             <li><a href="../reportes_planes/reportes_por_fecha_planes.php">Entre fechas</a></li>
@@ -142,9 +142,9 @@ $id = $_SESSION['id'];
             <li><a href="../reportes_planes/reportes_por_mes_planes.php">Por mes</a></li>
             <li><a href="../reportes_planes/reportes_ultimos_7dias_planes.php">Ultimos 7 dias</a></li>
           </ul>
-        </li>
+        </li> -->
 
-        <li><a><i class="fa fa-bar-chart"></i> Reportes Ventas diario<span class="fa fa-chevron-down"></span></a>
+        <!-- <li><a><i class="fa fa-bar-chart"></i> Reportes Ventas diario<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
 
             <li><a href="../reportes_diario/reportes_por_fecha_diario.php">Entre fechas</a></li>
@@ -152,10 +152,10 @@ $id = $_SESSION['id'];
             <li><a href="../reportes_diario/reportes_por_mes_diario.php">Por mes</a></li>
             <li><a href="../reportes_diario/reportes_ultimos_7dias_diario.php">Ultimos 7 dias</a></li>
           </ul>
-        </li>
+        </li> -->
 
 
-        <li><a><i class="fa fa-bar-chart"></i> Reportes Ventas productos<span class="fa fa-chevron-down"></span></a>
+        <!-- <li><a><i class="fa fa-bar-chart"></i> Reportes Ventas productos<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
 
             <li><a href="../reportes/reportes_por_fecha.php">Entre fechas</a></li>
@@ -163,7 +163,7 @@ $id = $_SESSION['id'];
             <li><a href="../reportes/reportes_por_mes.php">Por mes</a></li>
             <li><a href="../reportes/reportes_ultimos_7dias.php">Ultimos 7 dias</a></li>
           </ul>
-        </li>
+        </li> -->
       <?php
       }
       ?>

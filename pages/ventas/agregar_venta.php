@@ -14,7 +14,7 @@ $fecha_actual = date('Y-m-d');
 
 $porcentaje_impuesto = 0;
 $simbolo_moneda = "";
-$query = mysqli_query($con, "select * from empresa") or die(mysqli_error($con));
+$query = mysqli_query($con, "SELECT * FROM empresa") or die(mysqli_error($con));
 $i = 1;
 while ($row = mysqli_fetch_array($query)) {
     $simbolo_moneda = $row['simbolo_moneda'];
@@ -172,7 +172,7 @@ while ($row = mysqli_fetch_array($query)) {
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <div class="">
-                                    <a type="button" href="../layout/<?php echo "inicio.php"; ?>" class="btn btn-danger">Regresar</a>
+                                    <a type="button" href="../ventas/ventas.php" class="btn btn-danger">Regresar</a>
                                     <button type="submit" class="btn btn-success">Terminar venta</button>
                                 </div>
                             </div>
@@ -224,7 +224,7 @@ while ($row = mysqli_fetch_array($query)) {
                                                     <th>Cantidad</th>
                                                     <th>Precio de venta</th>
                                                     <th>Total</th>
-                                                    <th></th>
+                                                    <th>Accion</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -243,9 +243,9 @@ while ($row = mysqli_fetch_array($query)) {
                                                     </tr>
                                                 <?php } ?>
                                                 <?php
-                                                echo "<pre>";
-                                                print_r($_SESSION);
-                                                echo "</pre>";
+                                                // echo "<pre>";
+                                                // print_r($_SESSION);
+                                                // echo "</pre>";
                                                 ?>
                                             </tbody>
                                         </table>

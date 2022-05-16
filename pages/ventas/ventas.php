@@ -6,7 +6,9 @@
 ?>
 
 
-<?php include '../layout/header.php'; ?>
+<?php include '../layout/header.php';
+$id_sucursal = $_SESSION['id_sucursal'];
+?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
@@ -68,16 +70,17 @@
                 ?>
 
 
-                <!--end of modal-->
+
                 <div class="box-header">
                     <h3 class="box-title"></h3>
 
-                </div><!-- /.box-header -->
+                </div>
 
                 <div class="box-header">
                     <h3 class="box-title">Lista de Ventas</h3>
-                </div><!-- /.box-header -->
+                </div>
                 <!-- <button type="button" class="btn btn-primary btn-print" data-toggle="modal" data-target="#miModal">Nuevo</button> -->
+                <a class="btn btn-primary btn-print" href="../ventas/agregar_venta.php">Nuevo</a>
                 <div class="box-body">
 
                     <table id="example2" class="table table-bordered table-striped">
@@ -89,7 +92,7 @@
                                 <th style="width:10%">Monto Total</th>
                                 <th style="width:10%">Vendedor</th>
                                 <th style="width:10%">Estado</th>
-                                <th style="width:20%" class="btn-print"> Accion </th>
+                                <th style="width:10%" class="btn-print"> Accion </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -109,6 +112,7 @@
                             FROM ventas v
                             LEFT JOIN clientes c ON v.id_cliente = c.id_cliente
                             JOIN usuario u ON v.id_usuario = u.id
+                            WHERE v.id_sucursal = '$id_sucursal'
                             ORDER BY v.id_venta DESC") or die(mysqli_error($con));
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -129,24 +133,14 @@
                                         <!-- <a class="btn btn-danger btn-print" href="<?php echo "eliminar_gastos.php?id_gasto=$id_gasto&cantidad=$cantidad"; ?>" role="button">Anular</a> -->
                                     </td>
                                 </tr>
-
-
-
                             <?php } ?>
                         </tbody>
 
                     </table>
-                </div><!-- /.box-body -->
-
-            </div><!-- /.col -->
-
-
-        </div><!-- /.row -->
-
-
-
-
-    </div><!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <footer>
@@ -155,9 +149,9 @@
         </div>
         <div class="clearfix"></div>
     </footer>
-    <!-- /footer content -->
-    </div>
-    </div>
+
+
+
 
     <?php include '../layout/datatable_script.php'; ?>
 
