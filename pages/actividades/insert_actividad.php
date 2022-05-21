@@ -87,6 +87,9 @@ if ($select->num_rows >= 1) {
     if ($insert) {
         $sql = mysqli_query($con, "INSERT INTO actividades_dias(id_actividad, lunes, martes, miercoles, jueves, viernes, sabado, domingo) 
     VALUES ('$id_actividad', '$lunes','$martes','$miercoles','$jueves', '$viernes','$sabado','$domingo')") or die(mysqli_error($con));
+
+        $cuota = mysqli_query($con, "INSERT INTO cuotas (id_actividad, fecha_inicio, fecha_fin, nro_cuota, estado) 
+            VALUES ('$id_actividad', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY), '1', 'activo')");
         echo "<script>document.location='actividades.php'</script>";
     } else {
         echo "<script type='text/javascript'>alert('Ocurrio un error en el registro de dias');</script>";

@@ -15,10 +15,11 @@ $id = $_SESSION['id'];
 
       <?php if ($tipo == "administrador" or $tipo == "empleado") {  ?>
 
-        <li><a><i class="fa fa-money"></i> Ventas<span class="fa fa-chevron-down"></span></a>
+        <li><a><i class="fa fa-money"></i> Ingresos<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="../ventas/agregar_venta.php">Agregar ventas</a></li>
+            <!-- <li><a href="../ventas/agregar_venta.php">Agregar ventas</a></li> -->
             <li><a href="../ventas/ventas.php">Ventas</a></li>
+            <li><a href="../cuotas/cuotas.php">Cuotas</a></li>
             <!-- <li><a href="../ventas_old/pos.php">Ventas productos</a></li> -->
             <!-- <li><a href="../ventas_menbrecia/pos.php">Venta planes /membresias</a></li>-->
             <!--<li><a href="../venta_dia/venta_diaria.php">Venta diaria</a></li> -->
@@ -26,13 +27,14 @@ $id = $_SESSION['id'];
         </li>
 
       <?php } ?>
+      <li><a href="../gastos/gastos.php"><i class="fa fa-bank"></i> Egresos <span class="fa fa-chevron-right"></span></a></li>
       <li><a href="../planes/planes.php"><i class="fa fa-database"></i> Planes <span class="fa fa-chevron-right"></span></a></li>
       <li><a href="../layout/caja.php"><i class="fa fa-bank"></i> Caja <span class="fa fa-chevron-right"></span></a></li>
       <!-- <li><a href="https://ventadecodigofuente.com" target="_blank"><i class="fa fa-cart-plus"></i> Compre mas sistemas aqui <span class="fa fa-chevron-right"></span></a></li> -->
 
       <!-- <li><a href="https://www.youtube.com/c/tusolutionwebTutos" target="_blank"><i class="fa fa-television"></i> Canal de yotube <span class="fa fa-chevron-right"></span></a></li> -->
 
-      <li><a href="../gastos/gastos.php"><i class="fa fa-bank"></i> Gastos <span class="fa fa-chevron-right"></span></a></li>
+
       <?php
       if ($tipo == "administrador") {
 
@@ -190,7 +192,7 @@ $id = $_SESSION['id'];
           <?php
           }
           ?>
-          <li><a href="../tipos_clientes/tipos_clientes.php">Tipos de Cliente</a></li>
+
           <li><a href="../deportes/deportes.php">Disciplinas</a></li>
 
 

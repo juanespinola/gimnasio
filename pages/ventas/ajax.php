@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // include('../layout/dbcon.php');
 
 
@@ -27,7 +27,8 @@ function getAlumnos($param)
 {
     include('../layout/dbcon.php');
     $cliente = array();
-    $query = mysqli_query($con, "SELECT * FROM clientes WHERE dni LIKE '%$param%'");
+    $sql = "SELECT * FROM clientes WHERE id_sucursal = '" . $_SESSION['id_sucursal'] . "' AND dni LIKE '%$param%'";
+    $query = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_array($query)) {
         $cliente[] = array(
             "id" => $row['id_cliente'],

@@ -84,23 +84,25 @@
                                     s.descripcion as sucursal
                                     FROM gastos g
                                     JOIN sucursales s ON g.id_sucursal = s.id_sucursal
-                                    WHERE date_format(fecha_agregado, '%Y-%m-%d') = '$fecha'
+                                    WHERE date_format(fecha, '%Y-%m-%d') = '$fecha'
                                     ORDER BY id_gastos DESC";
                                 } else {
                                     $sql = "SELECT 
                                     g.id_gastos,
-                                    g.fecha,
-                                    g.descripcion,
-                                    g.cantidad,
+                                    g.fecha as fecha,
+                                    g.descripcion as descripcion,
+                                    g.cantidad as cantidad,
                                     s.descripcion as sucursal
                                     FROM gastos g
                                     JOIN sucursales s ON g.id_sucursal = s.id_sucursal
                                     ORDER BY id_gastos DESC";
                                 }
 
-                                $query = mysqli_query($con, $sql) or die(mysqli_error($con));
+                                $gastos = mysqli_query($con, $sql) or die(mysqli_error($con));
 
-                                while ($row = mysqli_fetch_array($query)) {
+                                echo $sql;
+
+                                while ($row = mysqli_fetch_array($gastos)) {
                                     $id_gasto = $row['id_gastos'];
 
                                 ?>
@@ -143,10 +145,9 @@
                                 },
                                 "search": "Buscar:",
                             },
-                            "lengthMenu": [
-                                [10, 25, 50, -1],
-                                [10, 25, 50, "All"]
-                            ],
+                            "info": false,
+                            "lengthChange": false,
+                            "searching": false,
                             "searching": true,
                             "footerCallback": function(row, data, start, end, display) {
                                 var api = this.api();
@@ -160,14 +161,14 @@
 
                                 // Total over all pages
                                 total = api
-                                    .column(3)
+                                    .column(2)
                                     .data()
                                     .reduce(function(a, b) {
                                         return intVal(a) + intVal(b);
                                     }, 0);
 
                                 // Update footer
-                                $(api.column(3).footer()).html(
+                                $(api.column(2).footer()).html(
                                     total + ' Gs'
                                 );
                             }

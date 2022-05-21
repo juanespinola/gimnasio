@@ -64,12 +64,12 @@ if ($insert) {
 
         $update = mysqli_query($con, "UPDATE producto 
                 SET stock = stock - '$cantidad'
-                WHERE id_producto='" . $value['id_producto'] . "'");
+                WHERE id_producto='" . $value['id_producto'] . "' AND id_sucursal = '" . $_SESSION['id_sucursal'] . "'");
     }
     unset($_SESSION["carrito"]);
     $update = mysqli_query($con, "UPDATE caja 
             SET monto = monto+'$monto_total' 
-            WHERE estado='abierto'");
+            WHERE estado='abierto' AND id_sucursal = '" . $_SESSION['id_sucursal'] . "'");
     echo "<script>document.location='../ventas/agregar_venta.php?status=1'</script>";
 } else {
     echo "<script>document.location='../ventas/agregar_venta.php?status=6'</script>";
