@@ -43,6 +43,8 @@ function getAlumnos($param)
 function getProfesores($param)
 {
     include('../layout/dbcon.php');
+
+
     $profesor = array();
     $query = mysqli_query($con, "SELECT * FROM profesores WHERE nombre LIKE '%$param%'");
     while ($row = mysqli_fetch_array($query)) {

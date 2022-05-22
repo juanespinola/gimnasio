@@ -100,8 +100,6 @@
 
                                 $gastos = mysqli_query($con, $sql) or die(mysqli_error($con));
 
-                                echo $sql;
-
                                 while ($row = mysqli_fetch_array($gastos)) {
                                     $id_gasto = $row['id_gastos'];
 

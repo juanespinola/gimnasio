@@ -10,6 +10,7 @@ $telefono = $_POST['telefono'];
 $dni = $_POST['dni'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
 $email = $_POST['email'];
+$razon_inscripcion = $_POST['razon_inscripcion'];
 $id_sucursal = $_SESSION['id_sucursal'];
 
 $query2 = mysqli_query($con, "SELECT * FROM clientes WHERE dni='$dni'") or die(mysqli_error($con));
@@ -19,7 +20,7 @@ if ($count > 0) {
 	echo "<script type='text/javascript'>alert('Registro ya existe!');</script>";
 	echo "<script>document.location='cliente.php'</script>";
 } else {
-	mysqli_query($con, "INSERT INTO clientes(nombre, apellido, ruc, telefono, dni, fecha_nacimiento, email, id_sucursal) 
-		VALUES ('$nombre','$apellido','$ruc','$telefono','$dni', '$fecha_nacimiento', '$email', '$id_sucursal')") or die(mysqli_error($con));
+	mysqli_query($con, "INSERT INTO clientes(nombre, apellido, ruc, telefono, dni, fecha_nacimiento, email, id_sucursal, id_tipo_cliente, id_razon_inscripcion) 
+		VALUES ('$nombre','$apellido','$ruc','$telefono','$dni', '$fecha_nacimiento', '$email', '$id_sucursal', '1', '$razon_inscripcion')") or die(mysqli_error($con));
 	echo "<script>document.location='cliente.php'</script>";
 }

@@ -11,6 +11,7 @@
 	$telefono = $_POST['telefono'];
 	$fecha_nacimiento = $_POST['fecha_nacimiento'];
 	$estado = $_POST['estado'];
+	$id_razon_inscripcion = $_POST['razon_inscripcion'];
 	$email = $_POST['email'];
 
 	$update_cliente = mysqli_query($con, "UPDATE clientes SET 
@@ -21,7 +22,8 @@
 		dni='$dni',
 		fecha_nacimiento='$fecha_nacimiento',
 		estado='$estado',
-		email = '$email'
+		email = '$email',
+		id_razon_inscripcion='$id_razon_inscripcion'
 	WHERE id_cliente='$id_cliente'") or die(mysqli_error($con));
 
 	if ($update_cliente) {

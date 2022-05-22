@@ -98,7 +98,7 @@
                                         <td><?php echo $row['estado']; ?></td>
                                         <td>
                                             <a class="btn btn-success btn-print" title="Editar Sucursal" href="<?php echo "./editar_sucursal.php?id_sucursal=$id_sucursal"; ?>">Editar</a>
-                                            <a class="btn btn-warning btn-print" title="Agregar Usuario" href="<?php echo "./usuarios_sucursal.php?id_actividad=$id_actividad"; ?>">Usuarios</a>
+                                            <a class="btn btn-warning btn-print" title="Usuario de la Sucursal" href="<?php echo "./usuarios_sucursal.php?id_sucursal=$id_sucursal"; ?>">Usuarios</a>
                                             <?php if ($row['estado'] == 'activo') { ?>
                                                 <a class="btn btn-danger btn-print" title="Cerrar Sucursal" href="<?php echo "./cerrar_sucursal.php?id_sucursal=$id_sucursal"; ?>" onClick="return confirm('¿Está seguro de que quieres cerrar la sucursal?');">Cerrar</a>
                                             <?php } ?>

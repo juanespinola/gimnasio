@@ -126,6 +126,7 @@ $id = $_SESSION['id'];
 
             <li><a href="../reportes/ventas_productos_por_mes.php">Venta de Productos</a></li>
             <li><a href="../reportes/gastos_por_mes.php">Gastos</a></li>
+            <li><a href="../graficos/alumnos_por_profesor.php">Alumnos por Profe</a></li>
             <!-- <li><a href="../ventas/ventas_productos_totales.php">Productos</a></li> -->
 
           </ul>
@@ -173,8 +174,7 @@ $id = $_SESSION['id'];
         <li><a><i class="fa fa-bar-chart"></i>Sucursales<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <li><a href="../sucursales/sucursales.php">Sucursales</a></li>
-            <li><a href="">Agregar Sucursal</a></li>
-            <li><a href="">Agregar Usuario a Sucursal</a></li>
+
           </ul>
         </li>
       <?php  } ?>

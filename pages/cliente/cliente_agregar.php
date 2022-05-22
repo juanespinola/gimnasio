@@ -189,6 +189,30 @@
               </div>
             </div>
 
+            <div class="row">
+              <div class="col-md-3 btn-print">
+                <div class="form-group">
+                  <label for="text">Razón de Inscripcion</label>
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+                <div class="form-group">
+                  <select class="form-control pull-right" name="razon_inscripcion" id="razon_inscripcion">
+                    <option value="0" selected>Seleccione Opcion</option>
+                    <?php
+                    $razones = mysqli_query($con, "SELECT * FROM razon_inscripcion") or die(mysqli_error($con));
+                    while ($razon = mysqli_fetch_array($razones)) {
+                    ?>
+                      <option value="<?php echo $razon['id_razon_inscripcion']; ?>"><?php echo $razon['descripcion']; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 btn-print">
+
+              </div>
+            </div>
+
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
 
             <div class="modal-footer">

@@ -100,13 +100,12 @@ $id_sucursal = $_SESSION['id_sucursal'];
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Nombres </th>
-                  <th>Apellidos </th>
+                  <th>Nombre Apellido</th>
                   <th>Email </th>
                   <th>C.I</th>
                   <th>Telefono</th>
                   <th>Ruc</th>
-                  <th>Fecha Nacimiento</th>
+                  <th>Fecha Nac.</th>
                   <th>Estado</th>
                   <th class="btn-print"> Accion </th>
                 </tr>
@@ -115,16 +114,16 @@ $id_sucursal = $_SESSION['id_sucursal'];
                 <?php
                 if (isset($_POST['profesor'])) {
                   if ($_POST['profesor'] == '0') {
-                    $query = mysqli_query($con, "SELECT * FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
+                    $query = mysqli_query($con, "SELECT c.*, concat(c.nombre,' ', c.apellido) as nombre_completo FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                   } else {
-                    $query = mysqli_query($con, "SELECT c.id_cliente, c.nombre, c.apellido, c.dni, c.telefono, c.ruc, c.fecha_nacimiento, c.estado 
+                    $query = mysqli_query($con, "SELECT c.id_cliente, c.nombre, c.apellido, c.dni, c.telefono, c.ruc, c.fecha_nacimiento, c.estado, concat(c.nombre,' ', c.apellido) as nombre_completo
                     FROM actividades a
                     JOIN clientes c ON a.id_cliente = c.id_cliente
                     JOIN profesores p ON a.id_profesor = p.id_profesor
                     WHERE a.id_profesor = " . $_POST['profesor']) or die(mysqli_error($con));
                   }
                 } else {
-                  $query = mysqli_query($con, "SELECT * FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
+                  $query = mysqli_query($con, "SELECT c.*, concat(c.nombre,' ', c.apellido) as nombre_completo FROM clientes c WHERE c.id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                 }
 
 
@@ -136,8 +135,7 @@ $id_sucursal = $_SESSION['id_sucursal'];
                   <tr>
 
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $row['nombre']; ?></td>
-                    <td><?php echo $row['apellido']; ?></td>
+                    <td><?php echo $row['nombre_completo']; ?></td>
                     <td><?php echo $row['email']; ?></td>
                     <td><?php echo $row['dni']; ?></td>
                     <td><?php echo $row['telefono']; ?></td>
