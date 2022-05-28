@@ -72,27 +72,16 @@ $id_sucursal = $_SESSION['id_sucursal'];
             <h3 class="box-title">Alumnos por Profesores</h3>
           </div><!-- /.box-header -->
           <div class="box-body">
-
-
             <div class="resultados">
               <canvas id="grafico"></canvas>
             </div>
-
           </div><!-- /.box-body -->
-
         </div><!-- /.col -->
-
-
       </div><!-- /.row -->
-
-
-
-
     </div><!-- /.box-body -->
-
   </div>
 
-
+  <?php include '../layout/datatable_script.php'; ?>
 
   <footer>
     <div class="pull-right">
@@ -103,7 +92,7 @@ $id_sucursal = $_SESSION['id_sucursal'];
   <!-- /footer content -->
 
 
-  <?php include '../layout/datatable_script.php'; ?>
+
 
   <script>
     $(document).ready(function() {

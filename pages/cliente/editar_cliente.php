@@ -1,7 +1,4 @@
-<?php include '../layout/header.php';
-
-
-?>
+<?php include '../layout/header.php'; ?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
@@ -65,7 +62,6 @@
 
         <a class="btn btn-warning btn-print" href="cliente.php" role="button">Regresar</a>
         <?php
-        // $branch=$_SESSION['branch'];
         $query = mysqli_query($con, "select * from clientes where id_cliente= '$id_cliente' ") or die(mysqli_error($con));
         $i = 1;
         while ($row = mysqli_fetch_array($query)) {
@@ -264,38 +260,23 @@
             </div>
           </form>
 
-          <!--end of modal-->
-
         <?php } ?>
 
-      </div><!-- /.box-body -->
+      </div>
 
-    </div><!-- /.col -->
+    </div>
 
-
-  </div><!-- /.row -->
-
-
-
-
-  </div><!-- /.box-body -->
 
   </div>
-  </div>
-  </div>
-  </div>
-  <!-- /page content -->
 
-  <!-- footer content -->
+
   <footer>
     <div class="pull-right">
       <a href="">Cronos Academy</a>
     </div>
     <div class="clearfix"></div>
   </footer>
-  <!-- /footer content -->
-  </div>
-  </div>
+
 
   <?php include '../layout/datatable_script.php'; ?>
 
@@ -326,13 +307,8 @@
       );
     });
   </script>
-  <?php
-  // }    
-  ?>
 
 
-
-  <!-- /gauge.js -->
 </body>
 
 </html>

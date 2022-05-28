@@ -292,8 +292,7 @@ if ($query->num_rows == 0) {
     <div class="clearfix"></div>
   </footer>
   <!-- /footer content -->
-  </div>
-  </div>
+
 
   <?php include '../layout/datatable_script.php'; ?>
 
@@ -324,13 +323,6 @@ if ($query->num_rows == 0) {
     });
   </script>
 
-  <?php
-  //}
-  # code...
-
-  ?>
-
-  <!-- /gauge.js -->
 </body>
 
 </html>

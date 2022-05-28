@@ -1,7 +1,4 @@
-<?php include '../layout/header.php';
-
-
-?>
+<?php include '../layout/header.php'; ?>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../layout/plugins/datatables/dataTables.bootstrap.css">
@@ -38,7 +35,7 @@
         }
       </style>
 
-      <!-- page content -->
+
       <div class="right_col" role="main">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -47,7 +44,7 @@
             </div>
 
           </div>
-          <!--end of modal-dialog-->
+
         </div>
 
 
@@ -55,8 +52,6 @@
 
 
         </div>
-
-        <!--end of modal-->
 
 
         <div class="box-header">
@@ -219,46 +214,20 @@
             </div>
 
           </form>
-
-
-
-
-
-        </div><!-- /.box-body -->
-
-
-      </div><!-- /.col -->
-
-
-    </div><!-- /.row -->
-
-
-
-
-  </div><!-- /.box-body -->
-
-  </div>
-  </div>
-  </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- /page content -->
-
-  <!-- footer content -->
   <footer>
     <div class="pull-right">
       <a href="">Cronos Academy</a>
     </div>
     <div class="clearfix"></div>
   </footer>
-  <!-- /footer content -->
-  </div>
-  </div>
+
 
   <?php include '../layout/datatable_script.php'; ?>
-
-
-
 
   <script>
     $(document).ready(function() {
@@ -285,11 +254,6 @@
     });
   </script>
 
-
-
-
-
-  <!-- /gauge.js -->
 </body>
 
 </html>

@@ -157,32 +157,19 @@ $id_sucursal = $_SESSION['id_sucursal'];
 
             </div><!-- /.row -->
 
-
-
-
         </div><!-- /.box-body -->
 
     </div>
-    </div>
-    </div>
-    </div>
-    <!-- /page content -->
 
-    <!-- footer content -->
     <footer>
         <div class="pull-right">
             <a href="">Cronos Academy</a>
         </div>
         <div class="clearfix"></div>
     </footer>
-    <!-- /footer content -->
-    </div>
-    </div>
+
 
     <?php include '../layout/datatable_script.php'; ?>
-
-
-
 
     <script>
         $(document).ready(function() {
@@ -210,9 +197,6 @@ $id_sucursal = $_SESSION['id_sucursal'];
     </script>
 
 
-
-
-    <!-- /gauge.js -->
 </body>
 
 </html>

@@ -153,9 +153,7 @@ $id_sucursal = $_SESSION['id_sucursal'];
         </div>
         <div class="clearfix"></div>
     </footer>
-    <!-- /footer content -->
-    </div>
-    </div>
+
 
     <?php include '../layout/datatable_script.php'; ?>
 
