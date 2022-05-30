@@ -7,19 +7,15 @@ $id = $_SESSION['id'];
     <!-- <h3><?php echo $empresa; ?></h3> -->
 
     <ul class="nav side-menu">
-      <li><a href="../layout/inicio.php"><i class="fa fa-dashboard"></i> inicio <span class="fa fa-chevron-right"></span></a></li>
-
-
+      <li><a href="../layout/inicio.php"><i class="fa fa-dashboard"></i>Inicio<span class="fa fa-chevron-right"></span></a></li>
       <?php if ($tipo == "administrador" or $tipo == "empleado") {  ?>
-
-        <li><a><i class="fa fa-money"></i> Ingresos<span class="fa fa-chevron-down"></span></a>
+        <li>
+          <a>
+            <i class="fa fa-money"></i> Ingresos<span class="fa fa-chevron-down"></span>
+          </a>
           <ul class="nav child_menu">
-            <!-- <li><a href="../ventas/agregar_venta.php">Agregar ventas</a></li> -->
             <li><a href="../ventas/ventas.php">Ventas</a></li>
             <li><a href="../cuotas/cuotas.php">Cuotas</a></li>
-            <!-- <li><a href="../ventas_old/pos.php">Ventas productos</a></li> -->
-            <!-- <li><a href="../ventas_menbrecia/pos.php">Venta planes /membresias</a></li>-->
-            <!--<li><a href="../venta_dia/venta_diaria.php">Venta diaria</a></li> -->
           </ul>
         </li>
 
@@ -27,10 +23,18 @@ $id = $_SESSION['id'];
       <li><a href="../gastos/gastos.php"><i class="fa fa-bank"></i> Egresos <span class="fa fa-chevron-right"></span></a></li>
       <li><a href="../planes/planes.php"><i class="fa fa-database"></i> Planes <span class="fa fa-chevron-right"></span></a></li>
       <li><a href="../layout/caja.php"><i class="fa fa-bank"></i> Caja <span class="fa fa-chevron-right"></span></a></li>
-      <!-- <li><a href="https://ventadecodigofuente.com" target="_blank"><i class="fa fa-cart-plus"></i> Compre mas sistemas aqui <span class="fa fa-chevron-right"></span></a></li> -->
 
-      <!-- <li><a href="https://www.youtube.com/c/tusolutionwebTutos" target="_blank"><i class="fa fa-television"></i> Canal de yotube <span class="fa fa-chevron-right"></span></a></li> -->
-
+      <?php if ($tipo == "administrador") { ?>
+        <li><a><i class="fa fa-money"></i>Eventos<span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li><a href="../eventos/eventos.php">Mis Eventos</a></li>
+            <li><a href="../evento_ingresos/evento_ingresos.php">Ingresos</a></li>
+            <li><a href="">Egresos</a></li>
+            <li><a href="">Reportes</a></li>
+            <li><a href="">Graficos</a></li>
+          </ul>
+        </li>
+      <?php } ?>
 
       <?php if ($tipo == "administrador") { ?>
         <li><a><i class="fa fa-group"></i> Usuarios<span class="fa fa-chevron-down"></span></a>
@@ -42,7 +46,8 @@ $id = $_SESSION['id'];
 
           </ul>
         </li>
-
+      <?php } ?>
+      <?php if ($tipo == "administrador") { ?>
         <li><a><i class="fa fa-money"></i>Salarios<span class="fa fa-chevron-right"></span></a>
           <ul class="nav child_menu">
             <!-- <li><a href="../asignar_sueldo/asignar_sueldo.php">Empleados</a></li> -->
@@ -92,7 +97,6 @@ $id = $_SESSION['id'];
             <li><a href="../reportes/ventas_productos_por_mes.php">Venta de Productos</a></li>
             <li><a href="../reportes/gastos_por_mes.php">Gastos</a></li>
             <li><a href="../graficos/alumnos_por_profesor.php">Alumnos por Profe</a></li>
-            <!-- <li><a href="../ventas/ventas_productos_totales.php">Productos</a></li> -->
 
           </ul>
         </li>
@@ -142,7 +146,7 @@ $id = $_SESSION['id'];
       <?php  } ?>
 
       <li>
-        <a><i class="fa fa-gear"></i>Configuracion<span class="fa fa-chevron-s"></span></a>
+        <a><i class="fa fa-gear"></i>Configuracion<span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="../usuario/editar_usuario_password.php">Cambiar Contraseña</a></li>
           <?php if ($tipo == "administrador") {  ?>
@@ -153,8 +157,8 @@ $id = $_SESSION['id'];
       </li>
 
       <?php if ($tipo == "administrador") { ?>
-        <!-- 
-        <li><a><i class="fa fa-database"></i> Base de datos<span class="fa fa-chevron-down"></span></a>
+
+        <!-- <li><a><i class="fa fa-database"></i> Base de datos<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
 
             <li><a href="../otros/vaciar_bd.php" onClick="return confirm('¿Está seguro de que quieres vaciar la base de datos ??');">Vaciar base de datos</a></li>

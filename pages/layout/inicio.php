@@ -8,6 +8,7 @@ if (empty($_SESSION['id'])) {
 $id_sucursal = $_SESSION['id_sucursal'];
 
 unset($_SESSION["carrito"]);
+unset($_SESSION["carrito_evento"]);
 ?>
 
 <!-- Font Awesome -->

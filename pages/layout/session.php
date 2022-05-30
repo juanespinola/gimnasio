@@ -11,7 +11,7 @@ if (!isset($_SESSION['id']) || (trim($_SESSION['id']) == '')) { ?>
 }
 $session_id = $_SESSION['id'];
 
-$user_query = mysqli_query($con, "select * from usuario where id = '$session_id'") or die(mysqli_error($con));
+$user_query = mysqli_query($con, "SELECT * FROM usuario WHERE id = '$session_id'") or die(mysqli_error($con));
 $user_row = mysqli_fetch_array($user_query);
 $user_username = $user_row['usuario'];
 $nombre = $user_row['usuario'];
