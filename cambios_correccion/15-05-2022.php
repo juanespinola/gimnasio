@@ -15,7 +15,8 @@
  * //todo: tipo cliente?????
  * //todo: tablerito de asistencia para interactuar con la asistencia ()
  * //todo: estadisticas de profesores con sus alumnos, que profesores cuentan con mas alumnos ()
- * todo: modulo de eventos, ingreso egresos y agregar en el apartado de ingreso, definir que es por evento
+ * //todo: modulo de eventos, ingreso egresos y agregar en el apartado de ingreso, definir que es por evento
+ * todo: reporte de ingresos y egresos de eventos
  * //todo: como llego a la academia?
  * //todo: una persona puede ser nuevo, renovacion, inactivo
  * todo: recordatorios

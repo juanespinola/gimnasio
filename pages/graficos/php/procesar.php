@@ -23,6 +23,11 @@ if ($_POST['profesor']) {
 	getProfesores();
 }
 
+if ($_POST['eventos']) {
+	eventos_ingresos_egresos();
+}
+
+
 
 function getProfesores()
 {
@@ -42,6 +47,24 @@ function getProfesores()
 	}
 
 	$json = array('data' => $profesor, 'total' => $query->num_rows);
+	print(json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP));
+	exit;
+}
+
+function eventos_ingresos_egresos()
+{
+	include('../../../dist/includes/dbcon.php');
+	$query = mysqli_query($con, "SELECT 
+	e.descripcion,
+	e.fecha_fin,
+	(SELECT SUM(monto_total) FROM evento_ventas ev WHERE e.id_evento = ev.id_evento) as suma_ingresos,
+	(SELECT SUM(cantidad) FROM evento_gastos eg WHERE e.id_evento = eg.id_evento) as suma_egresos
+	FROM eventos e");
+
+	while ($row = mysqli_fetch_array($query)) {
+	}
+
+	$json = array('data' => $profesor);
 	print(json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP));
 	exit;
 }
