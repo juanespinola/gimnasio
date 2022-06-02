@@ -28,8 +28,8 @@ $id = $_SESSION['id'];
         <li><a><i class="fa fa-money"></i>Eventos<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <li><a href="../eventos/eventos.php">Mis Eventos</a></li>
-            <li><a href="../graficos/eventos_ingresos_egresos.php">Reportes</a></li>
-            <li><a href="">Graficos</a></li>
+            <li><a href="../reportes/eventos_ingresos_egresos.php">Reportes</a></li>
+            <li><a href="../graficos/eventos_ingresos_egresos.php">Graficos</a></li>
           </ul>
         </li>
       <?php } ?>

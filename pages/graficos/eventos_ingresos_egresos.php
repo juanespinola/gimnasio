@@ -69,7 +69,7 @@ $id_sucursal = $_SESSION['id_sucursal'];
 
                 <div class="box-body">
                     <div class="box-header">
-                        <h3 class="box-title">Alumnos por Profesores</h3>
+                        <h3 class="box-title">Eventos - Ingresos/Egresos</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div class="resultados">
@@ -111,27 +111,34 @@ $id_sucursal = $_SESSION['id_sucursal'];
                 },
                 dataType: 'JSON',
                 success: function(response) {
+                    let data = response.data;
+                    let eventos = [];
+                    let ingresos = [];
+                    let egresos = [];
+
+                    data.forEach(element => {
+                        eventos.push(element.evento);
+                        ingresos.push(element.ingreso);
+                        egresos.push(element.egreso);
+                    });
 
                     var Datos = {
-                        labels: [
-                            ['Evento 1'],
-                            ['Evento 2']
-                        ],
+                        labels: eventos,
                         datasets: [{
                                 label: 'Ingresos',
                                 fillColor: 'rgba(91,228,146,0.6)', //COLOR DE LAS BARRAS
                                 strokeColor: 'rgba(57,194,112,0.7)', //COLOR DEL BORDE DE LAS BARRAS
                                 highlightFill: 'rgba(73,206,180,0.6)', //COLOR "HOVER" DE LAS BARRAS
                                 highlightStroke: 'rgba(66,196,157,0.7)', //COLOR "HOVER" DEL BORDE DE LAS BARRAS
-                                data: [5, 2]
+                                data: ingresos
                             },
                             {
                                 label: 'Egresos',
-                                fillColor: 'rgba(91,228,146,0.6)', //COLOR DE LAS BARRAS
+                                fillColor: 'rgb(255, 0, 0)', //COLOR DE LAS BARRAS
                                 strokeColor: 'rgba(57,194,112,0.7)', //COLOR DEL BORDE DE LAS BARRAS
-                                highlightFill: 'rgba(73,206,180,0.6)', //COLOR "HOVER" DE LAS BARRAS
+                                highlightFill: 'rgb(255, 99, 71)', //COLOR "HOVER" DE LAS BARRAS
                                 highlightStroke: 'rgba(66,196,157,0.7)', //COLOR "HOVER" DEL BORDE DE LAS BARRAS
-                                data: [9, 6]
+                                data: egresos
                             }
                         ]
                     }

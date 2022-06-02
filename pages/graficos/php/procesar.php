@@ -54,17 +54,24 @@ function getProfesores()
 function eventos_ingresos_egresos()
 {
 	include('../../../dist/includes/dbcon.php');
+	$eventos = array();
 	$query = mysqli_query($con, "SELECT 
 	e.descripcion,
 	e.fecha_fin,
 	(SELECT SUM(monto_total) FROM evento_ventas ev WHERE e.id_evento = ev.id_evento) as suma_ingresos,
 	(SELECT SUM(cantidad) FROM evento_gastos eg WHERE e.id_evento = eg.id_evento) as suma_egresos
-	FROM eventos e");
+	FROM eventos e
+	WHERE e.estado = 'finalizado'");
 
 	while ($row = mysqli_fetch_array($query)) {
+		$eventos[] = array(
+			"evento" => $row['descripcion'],
+			"ingreso" => $row['suma_ingresos'],
+			"egreso" => $row['suma_egresos'],
+		);
 	}
 
-	$json = array('data' => $profesor);
+	$json = array('data' => $eventos);
 	print(json_encode($json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP));
 	exit;
 }

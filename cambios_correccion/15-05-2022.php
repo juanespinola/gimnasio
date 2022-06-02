@@ -7,7 +7,7 @@
  * //todo: ventas y ventas detalle
  * //todo: usuario x sucursal ()
  * //todo : reportes de venta
- * todo : reportes de gastos (tiene un error) capaz sea porq el post no esta definido
+ * //todo : reportes de gastos (tiene un error) capaz sea porq el post no esta definido
  * //todo: apartado de ventas posee un error al seleccionar un alumno
  * todo: agregar pista para guiar en la venta
  * todo: verificar como se ve siendo empleado
@@ -16,7 +16,8 @@
  * //todo: tablerito de asistencia para interactuar con la asistencia ()
  * //todo: estadisticas de profesores con sus alumnos, que profesores cuentan con mas alumnos ()
  * //todo: modulo de eventos, ingreso egresos y agregar en el apartado de ingreso, definir que es por evento
- * todo: reporte de ingresos y egresos de eventos
+ * //todo: grafico de ingresos y egresos de eventos
+ * //todo: reporte de ingresos y egresos de eventos
  * //todo: como llego a la academia?
  * //todo: una persona puede ser nuevo, renovacion, inactivo
  * todo: recordatorios

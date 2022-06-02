@@ -114,8 +114,10 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="2" style="text-align:left">Total</th>
-                                    <th colspan="3"></th>
+                                    <th colspan="1" style="text-align:left">Total</th>
+                                    <th colspan="1"></th>
+                                    <th colspan="1"></th>
+                                    <th colspan="1"></th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -143,9 +145,6 @@
                                 },
                                 "search": "Buscar:",
                             },
-                            "info": false,
-                            "lengthChange": false,
-                            "searching": false,
                             "searching": true,
                             "footerCallback": function(row, data, start, end, display) {
                                 var api = this.api();
