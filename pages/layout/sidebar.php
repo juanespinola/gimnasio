@@ -8,6 +8,7 @@ $id = $_SESSION['id'];
 
     <ul class="nav side-menu">
       <li><a href="../layout/inicio.php"><i class="fa fa-dashboard"></i>Inicio<span class="fa fa-chevron-right"></span></a></li>
+      <li><a href="../recordatorios/recordatorios.php"><i class="fa fa-dashboard"></i>Recordatorios<span class="fa fa-chevron-right"></span></a></li>
       <?php if ($tipo == "administrador" or $tipo == "empleado") {  ?>
         <li>
           <a>

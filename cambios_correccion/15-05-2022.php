@@ -1,7 +1,7 @@
 <?php
 
 /**
- * todo: eliminar asistencia
+ * //todo: eliminar asistencia
  * todo: despues de un periodo de tiempo, el alumno debe volverse inactivo si es que no viene donde se le enviara un mensaje de texto indicando que vuelva
  * //todo: pagar salario faltaria para pagar el total y tambien dejar la opcion de a uno
  * //todo: ventas y ventas detalle
@@ -11,6 +11,7 @@
  * //todo: apartado de ventas posee un error al seleccionar un alumno
  * todo: agregar pista para guiar en la venta
  * todo: verificar como se ve siendo empleado
+ * todo: arreglar el apartado de recordatorios falta definir condicional
  * //todo: tipos de pago 
  * //todo: tipo cliente?????
  * //todo: tablerito de asistencia para interactuar con la asistencia ()
@@ -20,7 +21,8 @@
  * //todo: reporte de ingresos y egresos de eventos
  * //todo: como llego a la academia?
  * //todo: una persona puede ser nuevo, renovacion, inactivo
- * todo: recordatorios
+ * //todo: recordatorios
  * todo: especificar los tipos de usuario (administrado, empleado)
+ * todo: corregir el menu lateral
  * //todo: donde esta fuentes de ingreso?
  */

@@ -4,6 +4,7 @@ $fechaactual = date('Y-m-d');
 $mes = date('m');
 $dia = date('d');
 $id_sucursal = $_SESSION['id_sucursal'];
+$id_usuario = $_SESSION['id'];
 include '../mi_asistencia/agregar_asistencia.php';
 ?>
 
@@ -89,6 +90,27 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
           </li>
         <?php } ?>
 
+        <?php
+        $recordatorios = mysqli_query($con, "SELECT * 
+        FROM recordatorios r 
+        WHERE r.fecha_desde >= DATE_SUB(CURDATE(), INTERVAL 3 DAY) 
+        OR r.fecha_hasta <= DATE_SUB(CURDATE(), INTERVAL 0 DAY) AND id_sucursal = '$id_sucursal' AND id_usuario = '$id_usuario' AND estado = 'activo'") or die(mysqli_error($con));
+        if ($recordatorios->num_rows > 0) {
+        ?>
+          <li>
+            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <img src="../layout/img/cumpleanos.png" alt=""><?php echo 'Recordatorios ( ' . $recordatorios->num_rows . ' )'; ?>
+
+              <span class="fa fa-angle-down"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-usermenu pull-right">
+              <?php while ($recordatorio = mysqli_fetch_array($recordatorios)) { ?>
+                <li><a href="../recordatorios/recordatorios.php"><?php echo $recordatorio['descripcion']; ?></a></li>
+              <?php }  ?>
+            </ul>
+          </li>
+        <?php } ?>
+
 
 
         <li>
@@ -106,7 +128,7 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
         </li>
 
         <li>
-          <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="modal" aria-expanded="false" data-target="#miModalAsistencia">
+          <a class="user-profile dropdown-toggle" data-toggle="modal" aria-expanded="false" data-target="#miModalAsistencia">
             <img src="../layout/img/gestion-redes-sociales.jpg" alt=""> Marcar Asistencia
           </a>
         </li>

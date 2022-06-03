@@ -99,12 +99,14 @@ if (empty($_GET['id_actividad'])) {
                                 <th style="width:20%">Horario</th>
                                 <th style="width:20%">Profesor</th>
                                 <th style="width:20%">Deporte</th>
+                                <th style="width:20%">Accion</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
 
                             $query = mysqli_query($con, "SELECT 
+                            ac.id_asistencia_cliente,
                             ac.fecha_asistencia,
                             concat(a.horario_inicio, ' - ', a.horario_final) as horario,
                             concat(p.nombre, ' ', p.apellido) as profesor,
@@ -118,6 +120,7 @@ if (empty($_GET['id_actividad'])) {
                             WHERE ac.id_actividad = " . $_GET['id_actividad']) or die(mysqli_error($con));
 
                             while ($row = mysqli_fetch_array($query)) {
+                                $id_asistencia_cliente = $row['id_asistencia_cliente'];
                                 $alumno = $row['alumno'];
                             ?>
                                 <tr>
@@ -125,10 +128,10 @@ if (empty($_GET['id_actividad'])) {
                                     <td><?php echo $row['horario']; ?></td>
                                     <td><?php echo $row['profesor']; ?></td>
                                     <td><?php echo $row['deporte']; ?></td>
-                                    <!-- <td> -->
-                                    <!-- <a class="btn btn-success btn-print" href="./detalle_venta.php?<?php echo $id_venta ?>" style="color:#fff;" role="button">Detalles</a> -->
-                                    <!-- <a class="btn btn-danger btn-print" href="<?php echo "eliminar_gastos.php?id_gasto=$id_gasto&cantidad=$cantidad"; ?>" role="button">Anular</a> -->
-                                    <!-- </td> -->
+                                    <td>
+                                        <!-- <a class="btn btn-success btn-print" href="./detalle_venta.php?<?php echo $id_venta ?>" style="color:#fff;" role="button">Detalles</a> -->
+                                        <a class="btn btn-danger btn-print" href="<?php echo "delete_asistencia.php?id_asistencia_cliente=$id_asistencia_cliente"; ?>" role="button">Eliminar</a>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>

@@ -11,8 +11,8 @@ function obtenerDatos($id_cliente)
     date_default_timezone_set('America/Asuncion');
     $fecha_actual = date("Y-m-d");
     // $fecha_actual = '2022-07-28';
-    // $hora_actual = date('H:i:s');
-    $hora_actual = '19:00:00';
+    $hora_actual = date('H:i:s');
+    // $hora_actual = '19:00:00';
     $query = mysqli_query($con, "SELECT 
         concat(c.nombre, ' ', c.apellido) as nombre_completo,
         c.dni as cedula,
@@ -47,25 +47,29 @@ function obtenerDatos($id_cliente)
     $diferencia = $fecha_1->diff($fecha_2);
 
     $dias_restantes = ($diferencia->invert == 1) ? $diferencia->days : (-$diferencia->days);
+    if ($id_actividad) {
 
-    if ($dias_restantes > 0) {
-        $respuesta = 'El Cliente esta atrasado en su cuota por ' . $dias_restantes . ' dias';
-    } else {
+        if ($dias_restantes > 0) {
+            $respuesta = 'El Cliente esta atrasado en su cuota por ' . $dias_restantes . ' dias';
+        } else {
 
-        $asistencias = mysqli_query($con, "SELECT * FROM asistencia_clientes WHERE id_actividad = '$id_actividad' AND fecha_asistencia BETWEEN '$fecha_actual 06:00:00' AND '$fecha_actual 21:59:59'") or die(mysqli_error($con));
-        $asistencia = mysqli_fetch_array($asistencias);
+            $asistencias = mysqli_query($con, "SELECT * FROM asistencia_clientes WHERE id_actividad = '$id_actividad' AND fecha_asistencia BETWEEN '$fecha_actual 06:00:00' AND '$fecha_actual 21:59:59'") or die(mysqli_error($con));
+            $asistencia = mysqli_fetch_array($asistencias);
 
-        if (!$asistencia) {
-            $sql = "INSERT INTO `asistencia_clientes` (`fecha_asistencia`,`id_actividad`)
+            if (!$asistencia) {
+                $sql = "INSERT INTO `asistencia_clientes` (`fecha_asistencia`,`id_actividad`)
             VALUES
             (
                 '" . date("Y-m-d H:i:s") . "',
                 '" . $id_actividad . "'
             );";
-            mysqli_query($con, $sql) or die(mysqli_error($con));
-        } else {
-            $respuesta = 'El Cliente ya ingreso su asistencia';
+                mysqli_query($con, $sql) or die(mysqli_error($con));
+            } else {
+                $respuesta = 'El Cliente ya ingreso su asistencia';
+            }
         }
+    } else {
+        $respuesta = 'El Cliente no tiene actividades en este horario ' . $hora_actual . '';
     }
 
     $json = array('data' => $data, 'mensaje' => $respuesta);
