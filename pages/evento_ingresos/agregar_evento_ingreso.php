@@ -335,7 +335,7 @@ while ($row = mysqli_fetch_array($query)) {
         </form>
     </div>
 
-
+    <?php include '../layout/datatable_script.php'; ?>
     <!-- jQuery 2.1.4 -->
     <script src="../evento_ingresos/public/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.5 -->

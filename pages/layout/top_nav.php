@@ -41,7 +41,7 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
           </ul>
         </li>
 
-        <li>
+        <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="../layout/images/caja.png" alt="">CAJA <?php echo "$acumulado $simbolo_moneda"; ?>
             <span class=" fa fa-angle-down"></span>
@@ -58,16 +58,14 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
 
 
 
-        <li>
+        <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="../layout/img/pos.png" alt="">Ventas
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
             <li><a href="../ventas/agregar_venta.php">Agregar Venta</a></li>
-            <!-- <li><a href="../ventas/pos.php"><i class="fa fa-money"></i> Venta productos</a></li> -->
-            <!-- <li><a href="../ventas_menbrecia/pos.php"><i class="fa fa-money"></i> Venta planes</a></li> -->
-            <!-- <li><a href="../venta_dia/venta_diaria.php"><i class="fa fa-money"></i> Venta entrada diaria</a></li> -->
+
           </ul>
         </li>
 
@@ -85,7 +83,7 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
               <?php while ($cumpleanero = mysqli_fetch_array($cumpleanos)) { ?>
                 <li><a><?php echo $cumpleanero['nombre']; ?> <?php echo $cumpleanero['apellido']; ?> </a></li>
               <?php }  ?>
-              <!-- <li><a href="cliente_cumple.php"><i class="fa fa-exclamation-triangle"></i> Clientes en cumpleaños</a></li> -->
+
             </ul>
           </li>
         <?php } ?>
@@ -113,7 +111,7 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
 
 
 
-        <li>
+        <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="../layout/img/gestion-redes-sociales.jpg" alt="">Redes Sociales
             <span class="fa fa-angle-down"></span>
@@ -122,12 +120,11 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
             <li><a href="https://web.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i>WhatsApp Web</a></li>
             <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i> Instragram</a></li>
             <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
-            <!-- <li><a href="../venta_dia/venta_diaria.php"><i class="fa fa-money"></i> Venta entrada diaria</a></li> -->
 
           </ul>
         </li>
 
-        <li>
+        <li class="">
           <a class="user-profile dropdown-toggle" data-toggle="modal" aria-expanded="false" data-target="#miModalAsistencia">
             <img src="../layout/img/gestion-redes-sociales.jpg" alt=""> Marcar Asistencia
           </a>

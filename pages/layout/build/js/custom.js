@@ -92,7 +92,7 @@ $(document).ready(function() {
 
     // toggle small or large menu
     $MENU_TOGGLE.on('click', function() {
-        console.log('clocl')
+        
         if ($BODY.hasClass('nav-md')) {
             $SIDEBAR_MENU.find('li.active ul').hide();
             $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
@@ -100,7 +100,7 @@ $(document).ready(function() {
             $SIDEBAR_MENU.find('li.active-sm ul').show();
             $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
         }
-
+        console.log('clocl')
         $BODY.toggleClass('nav-md nav-sm');
 
         setContentHeight();

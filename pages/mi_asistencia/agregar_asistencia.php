@@ -64,7 +64,7 @@
         </div>
     </div>
 </div>
-<?php include '../layout/datatable_script.php'; ?>
+
 <script>
     $(document).ready(function() {
 

@@ -93,7 +93,7 @@ unset($_SESSION["carrito_evento"]);
               </div>
 
               <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+
                 <div class="small-box bg-red">
                   <div class="inner">
 
@@ -127,7 +127,7 @@ unset($_SESSION["carrito_evento"]);
               ?>
 
                 <div class="col-lg-3 col-xs-6">
-                  <!-- small box -->
+
                   <div class="small-box bg-black">
                     <div class="inner">
 
@@ -154,14 +154,11 @@ unset($_SESSION["carrito_evento"]);
               ?>
 
 
-              <?php
-              if ($tipo == "administrador") {
-
-              ?>
+              <?php if ($tipo == "administrador") { ?>
 
 
                 <div class="col-lg-3 col-xs-6">
-                  <!-- small box -->
+
                   <div class="small-box bg-orange">
                     <div class="inner">
 
@@ -318,58 +315,9 @@ unset($_SESSION["carrito_evento"]);
 
 
 
-          <!-- <div class="box-body">
-            <div class="row">
-              <div class="col-lg-3 col-xs-6">
-             
-          <div class="small-box bg-purple">
-            <div class="inner">
 
-              <h4>
-                <?php
 
-                $num = 1;
-                $query = mysqli_query($con, "select * from venta_diaria ") or die(mysqli_error($con));
-                $i = 0;
-                while ($row = mysqli_fetch_array($query)) {
-                  $num++;
-                }
-                echo $num;
-                ?>
-              </h4>
-              <p>Vender</p>
-            </div>
-            <div class="icon"><img height="80" width="80" src="img/fair.png">
-              <i class=""></i>
-            </div>
-            <?php echo ($num > 0) ? '<a href="../venta_dia/venta_diaria.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
-          </div>
-        </div> -->
 
-          <!-- <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-orange">
-                  <div class="inner">
-
-                    <h4>
-                      <?php
-
-                      $num = 1;
-                      $query = mysqli_query($con, "select * from plan_cliente ") or die(mysqli_error($con));
-                      $i = 0;
-                      while ($row = mysqli_fetch_array($query)) {
-                        $num++;
-                      }
-                      echo $num;
-                      ?>
-                    </h4>
-                    <p>Ventas planes</p>
-                  </div>
-                  <div class="icon"><img height="80" width="80" src="img/fair.png">
-                    <i class=""></i>
-                  </div>
-                  <?php echo ($num > 0) ? '<a href="../ventas_menbrecia/pos.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
-                </div>
-              </div> -->
 
 
         </div>
