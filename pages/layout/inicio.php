@@ -287,7 +287,7 @@ unset($_SESSION["carrito_evento"]);
                 </div>
               </div>
 
-              <div class="col-lg-3 col-xs-6">
+              <!-- <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-orange">
                   <div class="inner">
 
@@ -306,7 +306,7 @@ unset($_SESSION["carrito_evento"]);
                   </div>
                   <?php echo ($num > 0) ? '<a href="../mensaje/mensaje.php" class="small-box-footer">Mas info<i class="fa fa-arrow-circle-right"></i></a>' : '<a href="#" class="small-box-footer">-------</a>'; ?>
                 </div>
-              </div>
+              </div> -->
 
             </div>
 
