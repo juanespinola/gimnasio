@@ -42,7 +42,7 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
         </li>
 
         <li class="">
-          <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <!-- <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="../layout/images/caja.png" alt="">CAJA <?php echo "$acumulado $simbolo_moneda"; ?>
             <span class=" fa fa-angle-down"></span>
           </a>
@@ -53,20 +53,35 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
             <?php if ($caja_cont > 0) { ?>
               <li><a href="../layout/caja_close.php"><i class="fa fa-money"></i> Cerrar caja</a></li>
             <?php } ?>
-          </ul>
+          </ul> -->
+          <?php if ($caja_cont == 0) { ?>
+            <a href="../layout/caja.php" class="user-profile dropdown-toggle">
+              <img src="../layout/images/caja.png" alt="">Abrir Caja <?php echo "$acumulado $simbolo_moneda"; ?>
+              <span class=" fa fa-angle-down"></span>
+            </a>
+          <?php } ?>
+          <?php if ($caja_cont > 0) { ?>
+            <a href="../layout/caja_close.php" class="user-profile dropdown-toggle">
+              <img src="../layout/images/caja.png" alt="">Cerrar Caja <?php echo "$acumulado $simbolo_moneda"; ?>
+              <span class=" fa fa-angle-down"></span>
+            </a>
+          <?php } ?>
         </li>
 
 
 
         <li class="">
-          <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <a href="../ventas/agregar_venta.php" class="user-profile dropdown-toggle">
+            <img src="../layout/img/pos.png" alt="">Ventas
+            <span class=" fa fa-angle-down"></span>
+          </a>
+          <!-- <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="../layout/img/pos.png" alt="">Ventas
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
             <li><a href="../ventas/agregar_venta.php">Agregar Venta</a></li>
-
-          </ul>
+          </ul> -->
         </li>
 
         <?php

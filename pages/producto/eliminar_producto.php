@@ -14,5 +14,5 @@ if (isset($_REQUEST['id_producto'])) {
 
 
 
-mysqli_query($con, "update producto set estado='sin stock', stock='0' where id_producto='$id_producto'") or die(mysqli_error($con));
+mysqli_query($con, "UPDATE producto SET estado='sin stock', stock='0' WHERE id_producto='$id_producto'") or die(mysqli_error($con));
 echo "<script>document.location='../producto/producto.php'</script>";

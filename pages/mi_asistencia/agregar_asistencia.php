@@ -16,7 +16,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="input-group col-md-12">
-                                        <input type="text" class="form-control pull-right" id="cedula" name="cedula" placeholder="Cedula" required>
+                                        <input type="text" class="form-control pull-right" id="cedula" name="cedula" placeholder="Cedula" required autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -68,6 +68,11 @@
 <script>
     $(document).ready(function() {
 
+        $('#miModalAsistencia').on('shown.bs.modal', function() {
+            $('#cedula').focus();
+        })
+
+
         $('#btn_ingresar').on('click', function() {
 
             if ($('#cedula').val()) {
@@ -79,6 +84,17 @@
 
         $('#btn_cancelar').on('click', function() {
             location.reload()
+        });
+
+        $('#miModalAsistencia').on('keypress', function(e) {
+
+            if (e.which == 13) {
+                e.preventDefault()
+
+                $('#btn_ingresar').click()
+
+
+            }
         });
     })
 

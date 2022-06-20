@@ -106,7 +106,9 @@ $id_usuario = $_SESSION['id'];
                                         <td>
                                             <a class="btn btn-success btn-print" title="Editar Recordatorio" href="<?php echo "editar_recordatorio.php?id_recordatorio=$id_recordatorio"; ?>">Editar</a>
                                             <a class="btn btn-danger btn-print" title="Eliminar Recordatorio" href="<?php echo "delete_recordatorio.php?id_recordatorio=$id_recordatorio"; ?>" onClick="return confirm('¿Está seguro de que quieres eliminar usuario?');">Eliminar</a>
-                                            <a class="btn btn-warning btn-print" title="Marcar Completado" href="<?php echo "finalizar_recordatorio.php?id_recordatorio=$id_recordatorio"; ?>">Finalizar</a>
+                                            <?php if ($row['estado'] != "finalizado") { ?>
+                                                <a class="btn btn-warning btn-print" title="Marcar Completado" href="<?php echo "finalizar_recordatorio.php?id_recordatorio=$id_recordatorio"; ?>">Finalizar</a>
+                                            <?php } ?>
                                         </td>
                                     </tr>
 

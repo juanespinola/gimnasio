@@ -91,7 +91,7 @@ $id_sucursal = $_SESSION['id_sucursal'];
               <tbody>
                 <?php
                 // $branch=$_SESSION['branch'];
-                $query = mysqli_query($con, "SELECT * FROM producto WHERE estado='activo' AND id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
+                $query = mysqli_query($con, "SELECT * FROM producto WHERE id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
                 $i = 0;
                 while ($row = mysqli_fetch_array($query)) {
                   $imagen_producto = $row['imagen'];
@@ -114,24 +114,20 @@ $id_sucursal = $_SESSION['id_sucursal'];
                     <td><?php echo $row['precio_venta']; ?></td>
                     <td><?php echo $row['stock']; ?></td>
                     <td>
-                      <a class="small-box-footer btn-print" title="Sin Stock Producto" href="<?php echo "eliminar_producto.php?id_producto=$id_producto"; ?>" onClick="return confirm('¿Está seguro de que quieres dejar sin stock el producto?');"><i class="glyphicon glyphicon-remove"></i></a>
-                      <a class="small-box-footer btn-print" href="<?php echo "editar_producto.php?id_producto=$id_producto"; ?>"><i class="glyphicon glyphicon-edit text-blue"></i></a>
+                      <a class="btn btn-danger btn-print" title="Sin Stock Producto" href="<?php echo "eliminar_producto.php?id_producto=$id_producto"; ?>" onClick="return confirm('¿Está seguro de que quieres dejar sin stock el producto?');">Limpiar Stock</a>
+                      <a class="btn btn-success btn-print" href="<?php echo "editar_producto.php?id_producto=$id_producto"; ?>">Editar Producto</a>
                       <a class="btn btn-primary btn-print" href="<?php echo "agregar_stock.php?id_producto=$id_producto"; ?>" role="button">Agregar stock</a>
                     </td>
                   </tr>
-
-                  <!--end of modal-->
 
                 <?php } ?>
               </tbody>
 
             </table>
-          </div><!-- /.box-body -->
+          </div>
 
-        </div><!-- /.col -->
-
-
-      </div><!-- /.row -->
+        </div>
+      </div>
 
 
 
