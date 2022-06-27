@@ -71,7 +71,7 @@
         <div class="box-body">
           <?php
           // $branch=$_SESSION['branch'];
-          $query = mysqli_query($con, "select * from producto where id_producto= '$id_producto' ") or die(mysqli_error($con));
+          $query = mysqli_query($con, "SELECT * FROM producto WHERE id_producto = '$id_producto' ") or die(mysqli_error($con));
           $i = 1;
           while ($row = mysqli_fetch_array($query)) {
           ?>
@@ -124,7 +124,7 @@
                 <div class="col-md-4 btn-print">
                   <div class="form-group">
 
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $row['nombre']; ?>" required>
+                    <input type="text" class="form-control" id="nombre_pro" name="nombre_pro" value="<?php echo $row['nombre']; ?>" required>
                   </div>
                 </div>
                 <div class="col-md-4 btn-print">
@@ -226,11 +226,6 @@
 
 
   </div><!-- /.box-body -->
-
-  </div>
-  </div>
-  </div>
-  </div>
   <!-- /page content -->
 
   <!-- footer content -->
@@ -240,9 +235,7 @@
     </div>
     <div class="clearfix"></div>
   </footer>
-  <!-- /footer content -->
-  </div>
-  </div>
+
 
   <?php include '../layout/datatable_script.php'; ?>
 

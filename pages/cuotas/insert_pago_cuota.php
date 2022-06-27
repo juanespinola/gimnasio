@@ -16,6 +16,7 @@ if ($_POST["id_actividad"] == '') {
 
 $id_actividad = $_POST["id_actividad"];
 $id_metodo_pago = $_POST["metodo_pago"];
+$nro_comprobante = ($_POST["nro_comprobante"]) ? $_POST["nro_comprobante"] : NULL;
 $fecha_actual = date("Y-m-d H:i:s");
 $nro_cuotas = mysqli_query($con, "SELECT nro_cuota, fecha_fin FROM cuotas WHERE id_actividad = '$id_actividad' AND fecha_pago IS NULL");
 while ($row = mysqli_fetch_array($nro_cuotas)) {
@@ -26,9 +27,11 @@ while ($row = mysqli_fetch_array($nro_cuotas)) {
 $sql = "UPDATE `cuotas` SET 
             id_metodo_pago = '$id_metodo_pago',
             fecha_pago = '$fecha_actual',
-            estado='pagado'
-        WHERE id_actividad = '$id_actividad'
-        AND fecha_pago IS NULL";
+            estado='pagado'";
+if ($nro_comprobante != "") {
+    $sql .= ",nro_comprobante='$nro_comprobante'";
+}
+$sql .= "WHERE id_actividad = '$id_actividad' AND fecha_pago IS NULL";
 
 $update = mysqli_query($con, $sql) or die(mysqli_error($con));
 

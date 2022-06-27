@@ -88,17 +88,30 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+
+
                             </div>
+
                             <div class="col-md-4 btn-print">
 
                             </div>
                         </div>
 
+                        <div id="row_comprobante" style="display:none" class="row">
+                            <div class="col-md-3 btn-print">
+                                <div class="form-group">
+                                    <label for="descripcion">Nro Comprobante</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
+                                <div class="form-group">
+                                    <input type="text" class="form-control pull-right" id="nro_comprobante" name="nro_comprobante" placeholder="Nro Comprobante">
+                                </div>
+                            </div>
+                            <div class="col-md-4 btn-print">
 
-
-
-
-
+                            </div>
+                        </div>
 
 
                         <button type="submit" class="btn btn-primary">Guardar cambios</button>
@@ -133,7 +146,16 @@
 
     <?php include '../layout/datatable_script.php'; ?>
 
-
+    <script>
+        $(document).on('change', '#metodo_pago', function(event) {
+            //  $('#servicioSelecionado').val($("#servicio option:selected").text());
+            if ($("#metodo_pago option:selected").val() != 1) {
+                $('#row_comprobante').hide()
+            } else {
+                $('#row_comprobante').show()
+            }
+        });
+    </script>
 
     <!-- <script src="../layout/plugins/timepicker/bootstrap-timepicker.min.js"></script> -->
     <script src="../layout/plugins/select2/select2.min.js"></script>

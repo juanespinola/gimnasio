@@ -1,13 +1,13 @@
-<?php
-
-/**
- * TODO: venta anulada?
- */
-?>
-
-
 <?php include '../layout/header.php';
 $id_sucursal = $_SESSION['id_sucursal'];
+
+$query = mysqli_query($con, "SELECT * FROM caja WHERE estado = 'abierto' AND id_sucursal = '$id_sucursal'") or die(mysqli_error($con));
+
+if ($query->num_rows == 0) {
+    echo "<script type='text/javascript'>alert('Debe contar con una caja activa!');</script>";
+    echo "<script>document.location='../layout/inicio.php'</script>";
+    exit;
+}
 ?>
 
 <!-- Font Awesome -->
