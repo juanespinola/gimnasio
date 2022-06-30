@@ -281,24 +281,11 @@
 
             </table>
           </div><!-- /.box-body -->
-
         </div><!-- /.col -->
-
-
       </div><!-- /.row -->
-
-
-
-
     </div><!-- /.box-body -->
 
-    </div>
-    </div>
-    </div>
-    </div>
-    <!-- /page content -->
 
-    <!-- footer content -->
     <footer>
       <div class="pull-right">
         <a href="">Cronos Academy</a>

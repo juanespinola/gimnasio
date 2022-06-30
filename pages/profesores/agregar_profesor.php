@@ -105,7 +105,7 @@
                             <div class="col-md-4 btn-print">
                                 <div class="form-group">
 
-                                    <input type="text" class="form-control pull-right" id="email" name="email" placeholder="Email" required>
+                                    <input type="email" class="form-control pull-right" id="email" name="email" placeholder="Email" required>
                                 </div>
                             </div>
                             <div class="col-md-4 btn-print">

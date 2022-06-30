@@ -117,9 +117,11 @@ unset($_SESSION["carrito_evento"]);
 
       $('#activar_dashboard').on('click', function() {
         if ($('#activar_dashboard').is(':checked')) {
+          $('#sliders_div').hide()
           $('#dashboard_div').show()
         } else {
           $('#dashboard_div').hide()
+          $('#sliders_div').show()
         }
       });
     });

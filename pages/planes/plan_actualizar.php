@@ -11,17 +11,16 @@
 	$precio = $_POST['precio'];
 
 
+	mysqli_query($con, "UPDATE planes SET 
+	nombre_plan='$nombre_plan', 
+	tipo_tiempo='$tipo_tiempo',
+	descripcion='$descripcion',
+	numero_tiempo='$numero_tiempo',
+	precio='$precio' WHERE id_plan='$id_plan'") or die(mysqli_error($con));
 
 
 
-	///finzalizo encriptacion
-
-
-	mysqli_query($con, "update planes set nombre_plan='$nombre_plan', tipo_tiempo='$tipo_tiempo',descripcion='$descripcion',numero_tiempo='$numero_tiempo',precio='$precio' where id_plan='$id_plan'") or die(mysqli_error($con));
-
-
-
-	echo "<script type='text/javascript'>alert(' actualizado correctamente!');</script>";
+	echo "<script type='text/javascript'>alert('Actualizado Correctamente!');</script>";
 	echo "<script>document.location='planes.php'</script>";
 
 

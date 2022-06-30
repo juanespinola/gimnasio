@@ -478,70 +478,52 @@
 
           </div><!-- /.box-body -->
 
-
-
-
-
         </div><!-- /.col -->
-
-
       </div><!-- /.row -->
-
-
-
-
     </div><!-- /.box-body -->
 
-  </div>
-  </div>
-  </div>
-  </div>
-  <!-- /page content -->
+    <footer>
+      <div class="pull-right">
+        <a href="">Cronos Academy</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
 
-  <!-- footer content -->
-  <footer>
-    <div class="pull-right">
-      <a href="">Cronos Academy</a>
-    </div>
-    <div class="clearfix"></div>
-  </footer>
-  <!-- /footer content -->
-  </div>
-  </div>
 
-  <?php include '../layout/datatable_script.php'; ?>
+    <?php include '../layout/datatable_script.php'; ?>
 
 
 
-  <script>
-    $(document).ready(function() {
-      $('#example2').dataTable({
-          "language": {
-            "paginate": {
-              "previous": "anterior",
-              "next": "posterior"
+    <script>
+      $(document).ready(function() {
+        $('#example2').dataTable({
+            "language": {
+              "paginate": {
+                "previous": "anterior",
+                "next": "posterior"
+              },
+              "search": "Buscar:",
+
+
             },
-            "search": "Buscar:",
+            "lengthMenu": [
+              [10, 25, 50, -1],
+              [10, 25, 50, "All"]
+            ],
 
 
-          },
-          "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-          ],
+            "searching": true,
+          }
 
-
-          "searching": true,
-        }
-
-      );
-    });
-  </script>
+        );
+      });
+    </script>
 
 
 
 
-  <!-- /gauge.js -->
+    <!-- /gauge.js -->
 </body>
 
 </html>

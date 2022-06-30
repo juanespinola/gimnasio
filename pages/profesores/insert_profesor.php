@@ -20,6 +20,6 @@ if ($count > 0) {
     echo "<script>document.location='profesores.php'</script>";
 } else {
     mysqli_query($con, "INSERT INTO profesores(nombre, apellido, ruc, telefono, documento, fecha_nacimiento, id_sucursal, email)
-        VALUES('$nombre','$apellido','$ruc','$telefono','$documento', '$fecha_nacimiento', '$id_sucursal', $email)") or die(mysqli_error($con));
+        VALUES('$nombre','$apellido','$ruc','$telefono','$documento', '$fecha_nacimiento', '$id_sucursal', '$email')") or die(mysqli_error($con));
     echo "<script>document.location='profesores.php'</script>";
 }
