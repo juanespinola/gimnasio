@@ -106,8 +106,8 @@ while ($row_caja = mysqli_fetch_array($caja_query)) {
         <?php
         $recordatorios = mysqli_query($con, "SELECT * 
         FROM recordatorios r 
-        WHERE r.fecha_desde >= DATE_SUB(CURDATE(), INTERVAL 3 DAY) 
-        OR r.fecha_hasta <= DATE_SUB(CURDATE(), INTERVAL 0 DAY) AND id_sucursal = '$id_sucursal' AND id_usuario = '$id_usuario' AND estado = 'activo'") or die(mysqli_error($con));
+        WHERE estado = 'activo' AND (r.fecha_desde >= DATE_SUB(CURDATE(), INTERVAL 3 DAY) 
+        OR r.fecha_hasta <= DATE_SUB(CURDATE(), INTERVAL 0 DAY) AND id_sucursal = '$id_sucursal' AND id_usuario = '$id_usuario')") or die(mysqli_error($con));
         if ($recordatorios->num_rows > 0) {
         ?>
           <li>

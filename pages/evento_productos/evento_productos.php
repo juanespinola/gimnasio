@@ -1,5 +1,7 @@
 <?php include '../layout/header.php';
+
 $id_sucursal = $_SESSION['id_sucursal'];
+$id_evento = $_GET['id_evento'];
 ?>
 
 <!-- Font Awesome -->
@@ -46,64 +48,67 @@ $id_sucursal = $_SESSION['id_sucursal'];
                         </div>
 
                     </div>
-
+                    <!--end of modal-dialog-->
                 </div>
+
 
                 <div class="panel-heading">
+
+
                 </div>
+
+                <!--end of modal-->
+
+
                 <div class="box-header">
                     <h3 class="box-title"> </h3>
 
                 </div><!-- /.box-header -->
-                <a class="btn btn-success btn-print" href="" onclick="window.print()"><i class="glyphicon glyphicon-print"></i> Impresión</a>
-                <a class="btn btn-warning btn-print" href="agregar_evento.php" role="button">Agregar</a>
+                <a class="btn btn-warning btn-print" href="../eventos/eventos.php" role="button">Regresar</a>
+                <a class="btn btn-warning btn-print" href="<?php echo "../evento_productos/agregar_evento_producto.php?id_evento=$id_evento" ?>" role=" button">Agregar</a>
 
                 <div class="box-body">
+
                     <div class="box-header">
-                        <h3 class="box-title">Eventos</h3>
+                        <h3 class="box-title">Lista de Productos</h3>
                     </div><!-- /.box-header -->
+
                     <div class="box-body">
+
                         <table id="example2" class="table table-bordered table-striped">
                             <thead>
-                                <tr>
+                                <tr class=" btn-success">
                                     <th>#</th>
+                                    <th>Nombre</th>
                                     <th>Descripcion</th>
-                                    <th>Fecha Inicio</th>
-                                    <th>Fecha Fin</th>
-                                    <th>Estado</th>
-                                    <th>Sucursal</th>
+                                    <th>Precio compra</th>
+                                    <th>Precio venta</th>
+                                    <th>Stock</th>
                                     <th class="btn-print"> Accion </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $query = mysqli_query($con, "SELECT 
-                                    e.id_evento,
-                                    e.descripcion,
-                                    e.fecha_inicio,
-                                    e.fecha_fin,
-                                    s.descripcion as sucursal,
-                                    e.estado
-                                FROM eventos e
-                                JOIN sucursales s ON e.id_sucursal = s.id_sucursal") or die(mysqli_error($con));
+                                // $branch=$_SESSION['branch'];
+                                $query = mysqli_query($con, "SELECT * FROM evento_productos WHERE id_evento = '$id_evento'") or die(mysqli_error($con));
                                 $i = 0;
                                 while ($row = mysqli_fetch_array($query)) {
-                                    $id_evento = $row['id_evento'];
+                                    $imagen_producto = $row['imagen'];
+                                    $id_producto = $row['id_evento_producto'];
                                     $i++;
                                 ?>
                                     <tr>
+
                                         <td><?php echo $i; ?></td>
+                                        <td><?php echo $row['nombre']; ?></td>
                                         <td><?php echo $row['descripcion']; ?></td>
-                                        <td><?php echo $row['fecha_inicio']; ?></td>
-                                        <td><?php echo $row['fecha_fin']; ?></td>
-                                        <td><?php echo $row['estado']; ?></td>
-                                        <td><?php echo $row['sucursal']; ?></td>
+                                        <td><?php echo $row['precio_compra']; ?></td>
+                                        <td><?php echo $row['precio_venta']; ?></td>
+                                        <td><?php echo $row['stock']; ?></td>
                                         <td>
-                                            <a class="btn btn-warning btn-print" title="Editar Evento" href="<?php echo "editar_evento.php?id_evento=$id_evento"; ?>">Editar</a>
-                                            <a class="btn btn-success btn-print" title="Ingresos" href="../evento_ingresos/<?php echo "evento_ingresos.php?id_evento=$id_evento"; ?>">Ingresos</a>
-                                            <a class="btn btn-danger btn-print" title="Egresos" href="../evento_egresos/<?php echo "evento_egresos.php?id_evento=$id_evento"; ?>">Egresos</a>
-                                            <a class="btn btn-success btn-print" title="Finalizar" href="<?php echo "finalizar_evento.php?id_evento=$id_evento"; ?>">Finalizar</a>
-                                            <a class="btn btn-warning btn-print" title="Productos" href="<?php echo "../evento_productos/evento_productos.php?id_evento=$id_evento"; ?>">Productos</a>
+                                            <a class="btn btn-danger btn-print" title="Sin Stock Producto" href="<?php echo "eliminar_evento_producto.php?id_evento=$id_evento&id_evento_producto=$id_producto"; ?>" onClick="return confirm('¿Está seguro de que quieres dejar sin stock el producto?');">Limpiar Stock</a>
+                                            <a class="btn btn-success btn-print" href="<?php echo "editar_evento_producto.php?id_evento=$id_evento&id_evento_producto=$id_producto"; ?>">Editar Producto</a>
+                                            <a class="btn btn-primary btn-print" href="<?php echo "agregar_stock_evento_producto.php?id_evento=$id_evento&id_evento_producto=$id_producto"; ?>" role="button">Agregar stock</a>
                                         </td>
                                     </tr>
 
@@ -112,13 +117,16 @@ $id_sucursal = $_SESSION['id_sucursal'];
 
                         </table>
                     </div>
+
                 </div>
             </div>
-        </div>
+
+        </div><!-- /.box-body -->
+
     </div>
+    <!-- /page content -->
 
-
-
+    <!-- footer content -->
     <footer>
         <div class="pull-right">
             <a href="">Cronos Academy</a>
@@ -129,6 +137,7 @@ $id_sucursal = $_SESSION['id_sucursal'];
 
     <?php include '../layout/datatable_script.php'; ?>
 
+
     <script>
         $(document).ready(function() {
             $('#example2').dataTable({
@@ -138,11 +147,15 @@ $id_sucursal = $_SESSION['id_sucursal'];
                             "next": "posterior"
                         },
                         "search": "Buscar:",
+
+
                     },
                     "lengthMenu": [
                         [10, 25, 50, -1],
                         [10, 25, 50, "All"]
                     ],
+
+
                     "searching": true,
                 }
 
@@ -150,6 +163,10 @@ $id_sucursal = $_SESSION['id_sucursal'];
         });
     </script>
 
+
+
+
+    <!-- /gauge.js -->
 </body>
 
 </html>

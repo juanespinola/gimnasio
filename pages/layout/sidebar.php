@@ -22,7 +22,12 @@ $id = $_SESSION['id'];
 
       <?php } ?>
       <li><a href="../gastos/gastos.php"><i class="fa fa-bank"></i> Egresos <span class="fa fa-chevron-right"></span></a></li>
-      <li><a href="../planes/planes.php"><i class="fa fa-database"></i> Planes <span class="fa fa-chevron-right"></span></a></li>
+
+
+      <?php if ($tipo == "administrador") { ?>
+        <li><a href="../planes/planes.php"><i class="fa fa-database"></i> Planes <span class="fa fa-chevron-right"></span></a></li>
+      <?php } ?>
+
       <li><a href="../layout/caja.php"><i class="fa fa-bank"></i> Caja <span class="fa fa-chevron-right"></span></a></li>
 
       <?php if ($tipo == "administrador") { ?>
@@ -75,7 +80,7 @@ $id = $_SESSION['id'];
       <?php } ?>
 
 
-      <?php if ($tipo == "administrador" or $tipo == "empleado") { ?>
+      <?php if ($tipo == "administrador") { ?>
 
         <li><a><i class="fa fa-bar-chart"></i> Reportes<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
@@ -106,7 +111,9 @@ $id = $_SESSION['id'];
           <?php if ($tipo == "administrador") {  ?>
             <li><a href="../configuracion/configuracion.php">Mi Empresa</a></li>
           <?php } ?>
-          <li><a href="../deportes/deportes.php">Disciplinas</a></li>
+          <?php if ($tipo == "administrador") {  ?>
+            <li><a href="../deportes/deportes.php">Disciplinas</a></li>
+          <?php } ?>
         </ul>
       </li>
 
