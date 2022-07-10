@@ -282,13 +282,13 @@ while ($row = mysqli_fetch_array($query)) {
                                                 while ($row = mysqli_fetch_array($query)) {
                                                     $id_evento_producto = $row['id_evento_producto'];
                                                     $stock = $row['stock'];
-                                                    echo '<pre>';
-                                                    print_r($row);
-                                                    echo '</pre>';
+                                                    // echo '<pre>';
+                                                    // print_r($row);
+                                                    // echo '</pre>';
 
-                                                    echo '<pre>';
-                                                    print_r($_SESSION['carrito_evento']);
-                                                    echo '</pre>';
+                                                    // echo '<pre>';
+                                                    // print_r($_SESSION['carrito_evento']);
+                                                    // echo '</pre>';
                                                 ?>
                                                     <div class="col-sm-3">
 

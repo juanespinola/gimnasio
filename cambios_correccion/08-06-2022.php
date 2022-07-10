@@ -1,7 +1,7 @@
 <?php
 
 /** 
- * todo: Los iconos de las redes sociales no se muestran ()
+ * //todo: Los iconos de las redes sociales no se muestran ()
  * // todo: Recordatorios siempre va estar como pendiente hasta qué se quite el pendiente? sacar boton cuando este finalizado 
  * // todo: Ventas y cajas tienen una sola funcionalidad, ¿hace falta el drop menu? ¿Por qué no se asocia nada más al botón en el caso qué no tengan otra funcionalidad?
  * //todo: Marcar asistencia, si meto asistencia CI no registrada no me da ningun mensaje de error visible qué este ci no pertenece a los alumnos registrados
@@ -13,7 +13,7 @@
  * // todo: Las impresiones como son reportes deberían tener timestamp
  * // todo: Recordatorio tu texto de ayuda debe estar en español (revisar)
  * // todo: Si fecha de recordatorio es invalida debería tirar un pop o alert pero tira a una página del error digamos
- * todo: debemos contar con un switch para cambiar entre el slide de imagenes o el dashboard tkk
+ * //todo: debemos contar con un switch para cambiar entre el slide de imagenes o el dashboard
  * // todo: boton de eliminar producto, hace un delete 
  * // todo: cambiar disenho de botones
  * */
